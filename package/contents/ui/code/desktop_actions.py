@@ -27,6 +27,13 @@ import subprocess
 import sys
 import tempfile
 import xml.etree.ElementTree as ET
+import ctypes
+import signal
+
+import dbus
+import dbus.service
+from dbus.mainloop.glib import DBusGMainLoop
+from gi.repository import GLib
 from pathlib import Path
 from urllib.parse import unquote, urlparse
 
@@ -158,15 +165,31 @@ def get_storage_id(desktop_path):
     return basename
 
 
+_session_bus = None
+
+
+def _get_session_bus():
+    """Return a cached session bus connection shared by all D-Bus helper calls."""
+    global _session_bus
+    if _session_bus is None:
+        _session_bus = dbus.SessionBus()
+    return _session_bus
+
+
 def get_current_activity():
-    """Get current KDE activity ID via qdbus6."""
+    """Get current KDE activity ID via D-Bus."""
     try:
-        result = subprocess.run(
-            ["qdbus6", "org.kde.ActivityManager",
-             "/ActivityManager/Activities", "CurrentActivity"],
-            capture_output=True, text=True, timeout=2
+        bus = _get_session_bus()
+        # Bounded timeout: this runs on the service's single mainloop, so a hung
+        # ActivityManager must not be able to freeze every tooltip/menu query.
+        activity = bus.call_blocking(
+            "org.kde.ActivityManager",
+            "/ActivityManager/Activities",
+            "org.kde.ActivityManager.Activities",
+            "CurrentActivity", "", [],
+            timeout=2.0,
         )
-        return result.stdout.strip()
+        return str(activity)
     except Exception:
         return None
 
@@ -588,12 +611,18 @@ def clear_recent_documents(desktop_path):
             # Ensure changes are written and visible to others
             cur.execute("PRAGMA wal_checkpoint(FULL)")
         
-        # Notify the daemon that stats have changed
-        subprocess.run([
-            "qdbus6", "org.kde.ActivityManager", "/ActivityManager/Resources/Scoring",
-            "org.freedesktop.DBus.Properties.EmitChanged", 
-            "org.kde.ActivityManager.ResourcesScoring"
-        ], capture_output=True, timeout=1)
+        # Notify the daemon that stats have changed via D-Bus
+        try:
+            bus = _get_session_bus()
+            bus.call_blocking(
+                "org.kde.ActivityManager",
+                "/ActivityManager/Resources/Scoring",
+                "org.freedesktop.DBus.Properties",
+                "EmitChanged", "s", ["org.kde.ActivityManager.ResourcesScoring"],
+                timeout=1.0,
+            )
+        except Exception:
+            pass  # Non-critical: daemon will detect DB changes on next query
         
         return True
     except Exception as e:
@@ -651,13 +680,6 @@ def get_kde_places():
     return places
 
 
-import dbus
-import dbus.service
-from dbus.mainloop.glib import DBusGMainLoop
-from gi.repository import GLib
-import subprocess
-import ctypes
-import signal
 
 def set_pdeathsig():
     """Ensure the process dies when its parent (plasmashell) dies."""
@@ -743,6 +765,23 @@ class DesktopActionsService(dbus.service.Object):
             subprocess.Popen(exec_cmd, shell=True, start_new_session=True)
         except Exception as e:
             print(f"Execute error: {e}", file=sys.stderr)
+
+    @dbus.service.method('io.github.daydve.fancytasksng.Config', in_signature='ss', out_signature='s')
+    def ExportConfig(self, path, content):
+        try:
+            with open(path, 'w', encoding='utf-8') as f:
+                f.write(content)
+            return "OK"
+        except Exception as e:
+            return f"ERROR: {e}"
+
+    @dbus.service.method('io.github.daydve.fancytasksng.Config', in_signature='s', out_signature='s')
+    def ImportConfig(self, path):
+        try:
+            with open(path, 'r', encoding='utf-8') as f:
+                return f.read()
+        except Exception as e:
+            return f"ERROR: {e}"
 
     @dbus.service.method('io.github.daydve.fancytasksng.DesktopActions', in_signature='ss', out_signature='')
     def OpenUrl(self, url, preferred_app):

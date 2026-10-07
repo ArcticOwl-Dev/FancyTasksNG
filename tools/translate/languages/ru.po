@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fancy Tasks\n"
 "Report-Msgid-Bugs-To: https://github.com/daydve/FancyTasksNG\n"
-"POT-Creation-Date: 2026-08-12 01:11+0300\n"
+"POT-Creation-Date: 2026-10-07 12:34+0100\n"
 "PO-Revision-Date: 2025-12-22 13:00+0300\n"
 "Last-Translator: Vitaliy Elin <daydve@smbit/.pro>\n"
 "Language-Team: Russian\n"
@@ -44,8 +44,8 @@ msgid "As on right panel"
 msgstr "Как панель справа"
 
 #: package/contents/config/ConfigAdvanced.qml
-msgid "Panel Settings:"
-msgstr "Настройки панели:"
+msgid "When a window wants attention:"
+msgstr "Если окно требует внимания:"
 
 #: package/contents/config/ConfigAdvanced.qml
 msgid "Unhide panel when a window wants attention"
@@ -53,7 +53,11 @@ msgstr "Показывать панель, если окно требует вн
 
 #: package/contents/config/ConfigAdvanced.qml
 msgid "Animate task icon when a window wants attention"
-msgstr "Анимация кнопки окна требующего внимания"
+msgstr "Анимация кнопки окна, требующего внимания"
+
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Colorize the task button when a window wants attention"
+msgstr "Использовать свой цвет для кнопки окна, требующего внимания"
 
 #: package/contents/config/ConfigAdvanced.qml
 msgid "Layout settings:"
@@ -100,6 +104,50 @@ msgstr "Отображать историю браузеров в контекс
 #: package/contents/config/ConfigAdvanced.qml
 msgid "Number of browser history items:"
 msgstr "Количество элементов истории:"
+
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Configuration:"
+msgstr "Конфигурация:"
+
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Export Configuration…"
+msgstr "Экспортировать конфигурацию…"
+
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Import Configuration…"
+msgstr "Импортировать конфигурацию…"
+
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Export FancyTasksNG Configuration"
+msgstr "Экспорт конфигурации FancyTasksNG"
+
+#: package/contents/config/ConfigAdvanced.qml
+msgid "JSON files (*.json)"
+msgstr "Файлы JSON (*.json)"
+
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Import FancyTasksNG Configuration"
+msgstr "Импорт конфигурации FancyTasksNG"
+
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Configuration exported successfully."
+msgstr "Конфигурация успешно экспортирована."
+
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Failed to export configuration."
+msgstr "Не удалось экспортировать конфигурацию."
+
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Failed to read the configuration file."
+msgstr "Не удалось прочитать файл конфигурации."
+
+#: package/contents/config/ConfigAdvanced.qml
+msgid "This file is not a valid FancyTasksNG configuration."
+msgstr "Этот файл не является корректной конфигурацией FancyTasksNG."
+
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Configuration imported. Click Apply to save the changes."
+msgstr "Конфигурация импортирована. Нажмите «Применить», чтобы сохранить изменения."
 
 #: package/contents/config/ConfigAppearance.qml
 msgid "Use plasma borders"
@@ -425,6 +473,18 @@ msgstr "Отображать всплывающие подсказки при н
 #: package/contents/config/ConfigBehavior.qml
 msgid "Show window thumbnails in tooltips"
 msgstr "Отображать миниатюры окон в подсказках"
+
+#: package/contents/config/ConfigBehavior.qml
+msgid "Thumbnail aspect ratio:"
+msgstr ""
+
+#: package/contents/config/ConfigBehavior.qml
+msgid "Match screen aspect ratio"
+msgstr ""
+
+#: package/contents/config/ConfigBehavior.qml
+msgid "Match window aspect ratio"
+msgstr ""
 
 #: package/contents/config/ConfigBehavior.qml
 msgid "Hide other windows when hovering over a window in the tooltip"
@@ -780,10 +840,6 @@ msgid "Add applications to pin to the taskbar. Drag items to reorder them."
 msgstr "Добавьте приложения для закрепления. Перетаскивайте элементы для изменения порядка."
 
 #: package/contents/config/ConfigPinnedApps.qml
-msgid "Remove"
-msgstr "Удалить"
-
-#: package/contents/config/ConfigPinnedApps.qml
 msgid "Unpin app by dragging its icon off the panel"
 msgstr "Удалять значки перетаскиванием с панели"
 
@@ -812,26 +868,6 @@ msgstr "Добавить приложение"
 msgid "Search applications..."
 msgstr "Поиск приложений..."
 
-#: package/contents/config/config.qml
-msgid "Appearance"
-msgstr "Внешний вид"
-
-#: package/contents/config/config.qml
-msgid "Behavior"
-msgstr "Поведение"
-
-#: package/contents/config/config.qml
-msgid "Indicators"
-msgstr "Индикаторы"
-
-#: package/contents/config/config.qml
-msgid "Advanced"
-msgstr "Прочее"
-
-#: package/contents/config/config.qml
-msgid "Pinned Applications"
-msgstr "Закрепленные приложения"
-
 #: package/contents/config/LivePreview.qml
 msgid "Preview"
 msgstr "Предпросмотр"
@@ -855,6 +891,30 @@ msgstr "Заголовок окна"
 #: package/contents/config/LivePreview.qml
 msgid "%1 — %2"
 msgstr "%1 — %2"
+
+#: package/contents/config/PinnedAppCard.qml
+msgid "Remove"
+msgstr "Удалить"
+
+#: package/contents/config/config.qml
+msgid "Appearance"
+msgstr "Внешний вид"
+
+#: package/contents/config/config.qml
+msgid "Behavior"
+msgstr "Поведение"
+
+#: package/contents/config/config.qml
+msgid "Indicators"
+msgstr "Индикаторы"
+
+#: package/contents/config/config.qml
+msgid "Advanced"
+msgstr "Прочее"
+
+#: package/contents/config/config.qml
+msgid "Pinned Applications"
+msgstr "Закрепленные приложения"
 
 #: package/contents/ui/Badge.qml
 msgctxt "Invalid"
@@ -974,6 +1034,14 @@ msgid "&Pin to Task Manager"
 msgstr "&Закрепить в панели задач"
 
 #: package/contents/ui/ContextMenu.qml
+msgid "On All Activities"
+msgstr "Во всех комнатах"
+
+#: package/contents/ui/ContextMenu.qml
+msgid "On The Current Activity"
+msgstr "В текущей комнате"
+
+#: package/contents/ui/ContextMenu.qml
 msgid "Unpin from Task Manager"
 msgstr "Открепить от панели задач"
 
@@ -1090,6 +1158,15 @@ msgstr "Также доступно в %1"
 msgctxt "Which activities a window is currently on"
 msgid "Available on %1"
 msgstr "Доступно в %1"
+
+#~ msgid "Panel Settings:"
+#~ msgstr "Настройки панели:"
+
+#~ msgid "Use custom color when a window wants attention"
+#~ msgstr "Использовать свой цвет, если окно требует внимания"
+
+#~ msgid "Use custom color for attention highlight"
+#~ msgstr "Свой цвет подсветки при запросе внимания"
 
 #~ msgid "Theme background"
 #~ msgstr "По теме оформления"

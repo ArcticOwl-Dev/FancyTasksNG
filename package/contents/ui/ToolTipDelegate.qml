@@ -139,14 +139,22 @@ Loader {
     readonly property int tooltipInstanceMaximumWidth: Kirigami.Units.gridUnit * 14
     readonly property rect tooltipScreenGeometry: Plasmoid.containment?.screenGeometry ?? Qt.rect(0, 0, 0, 0)
     readonly property bool hasValidTooltipScreenGeometry: tooltipScreenGeometry.width > 0 && tooltipScreenGeometry.height > 0
-    property real tooltipThumbnailAspectRatio: 16 / 9
+    readonly property bool matchWindowAspectRatio: toolTipDelegate.config.tooltipMatchWindowAspectRatio
+    // Keep screen-based sizing as the default, including the ultrawide fix (#55).
+    readonly property real screenRatio: Math.max(4 / 3, Math.min(21 / 9, Screen.width / Screen.height))
+    property real windowThumbnailAspectRatio: 16 / 9
+    readonly property real tooltipThumbnailAspectRatio: matchWindowAspectRatio ? windowThumbnailAspectRatio : screenRatio
     readonly property int tooltipThumbnailHeight: Math.round(tooltipInstanceMaximumWidth / tooltipThumbnailAspectRatio)
 
     function updateTooltipThumbnailAspectRatio(): void {
+        if (!toolTipDelegate.matchWindowAspectRatio) {
+            return;
+        }
+
         const model = toolTipDelegate.tasksModel;
         const currentRootIndex = toolTipDelegate.rootIndex;
-        if (!model || currentRootIndex === undefined || !currentRootIndex.valid) {
-            toolTipDelegate.tooltipThumbnailAspectRatio = 16 / 9;
+        if (!model || currentRootIndex == null || !currentRootIndex.valid) {
+            toolTipDelegate.windowThumbnailAspectRatio = 16 / 9;
             return;
         }
 
@@ -167,7 +175,7 @@ Loader {
         }
 
         if (ratios.length === 0) {
-            toolTipDelegate.tooltipThumbnailAspectRatio = 16 / 9;
+            toolTipDelegate.windowThumbnailAspectRatio = 16 / 9;
             return;
         }
 
@@ -176,13 +184,14 @@ Loader {
         const medianRatio = ratios.length % 2 === 1
             ? ratios[middle]
             : Math.sqrt(ratios[middle - 1] * ratios[middle]);
-        toolTipDelegate.tooltipThumbnailAspectRatio = Math.max(1, Math.min(2, medianRatio));
+        toolTipDelegate.windowThumbnailAspectRatio = Math.max(1, Math.min(2, medianRatio));
     }
 
     onRootIndexChanged: updateTooltipThumbnailAspectRatio()
     onWindowsChanged: updateTooltipThumbnailAspectRatio()
     onIsGroupChanged: updateTooltipThumbnailAspectRatio()
     onTasksModelChanged: updateTooltipThumbnailAspectRatio()
+    onMatchWindowAspectRatioChanged: updateTooltipThumbnailAspectRatio()
 
     Connections {
         target: toolTipDelegate.parentTask
@@ -502,7 +511,7 @@ Loader {
                     readonly property int safeCount: groupRoot.isWin ? groupRoot.windows.length : count
 
                     // If thumbnails disabled -> height is 0
-                    readonly property int instanceThumbHeight: groupRoot.showThumbnails ? 
+                    readonly property int instanceThumbHeight: groupRoot.showThumbnails ?
                         groupRoot.tooltipThumbnailHeight : 0
                     
                     // Reduced padding for overlay style (was * 3)

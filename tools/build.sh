@@ -29,12 +29,20 @@ trap cleanup EXIT
     "${SCRIPT_DIR}/compile_messages.sh"
 )
 
+# Keep ConfigPage.qml's cfg_*Default values in sync with main.xml
+python3 "${SCRIPT_DIR}/sync_defaults.py"
+
 # Prepare directories
 rm -rf "${RELEASE_DIR}"
 mkdir -p "${BUILD_DIR}" "${RELEASE_DIR}"
 
 # Copy package files
 cp -r "${PACKAGE_DIR}"/{contents,metadata.json,"${ICON_NAME}.svg"} "${BUILD_DIR}"
+
+# Stamp the copy (never the committed package/metadata.json) with a version
+# traceable to the exact commit this was built from.
+DISPLAY_VERSION="$(resolve_display_version "${BUILD_DIR}/metadata.json")"
+set_metadata_version "${BUILD_DIR}/metadata.json" "${DISPLAY_VERSION}"
 
 # Create archive
 cd "${BUILD_DIR}"

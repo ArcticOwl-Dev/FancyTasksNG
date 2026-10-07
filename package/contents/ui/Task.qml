@@ -130,7 +130,7 @@ Item {
     property bool inPopup: false
 
     property bool isWindow: !!(task.model && task.model.IsWindow)
-    readonly property bool isHovered: (tasksRoot && tasksRoot.mouseHandler) ? (tasksRoot.mouseHandler.hoveredItem === task) : false
+    readonly property bool isHovered: tasksRoot.mouseHandler.hoveredItem === task
     
     // Modern taskState property for internal and Indicators.qml usage
     readonly property string taskState: {
@@ -250,7 +250,7 @@ Item {
         (!task.inPopup && (containsMouse || isHovered)) || (tasksRoot.currentHoveredTask === task) || 
         (task.contextMenu && task.contextMenu.status === PlasmaExtras.Menu.Open)
 
-    property int itemIndex: index
+
 
     property bool isAudioHovered: false
     readonly property bool containsMouse: hoverHandler.hovered || isAudioHovered
@@ -521,13 +521,7 @@ Item {
         return undefined;
     }
 
-    function modelRow(): int {
-        if (tasksRoot && tasksRoot.filteredTasksModel) {
-            const proxyIdx = tasksRoot.filteredTasksModel.index(task.index, 0);
-            return tasksRoot.filteredTasksModel.mapToSource(proxyIdx).row;
-        }
-        return task.index;
-    }
+
 
     function openTooltip(): void {
         if (!task.config.enableToolTips)
@@ -720,7 +714,9 @@ Item {
         visible: (!task.model || task.model.IsLauncher || task.model.IsDemandingAttention || task.model.IsActive || backgroundFrame.isHovered) ?
             true : !task.config.disableButtonInactiveSvg
 
-        layer.enabled: (!task.model || task.model.IsLauncher || !task.config.buttonColorize) ? false :
+        layer.enabled: (!task.model || task.model.IsLauncher) ? false :
+                       (task.model.IsDemandingAttention && task.config.attentionCustomColorEnabled) ? true :
+                       (!task.config.buttonColorize) ? false :
                        (task.model.IsDemandingAttention && !backgroundFrame.isHovered) ? false :
                        (task.model.IsActive || backgroundFrame.isHovered) ? true :
                        (!task.config.disableButtonInactiveSvg && task.config.buttonColorizeInactive)
@@ -728,8 +724,9 @@ Item {
         layer.effect: MultiEffect {
             brightness: 1.0
             colorization: 1.0
-            colorizationColor: task.config.buttonColorizeDominant ?
-                backgroundFrame.indicatorColor : task.config.buttonColorizeCustom
+            colorizationColor: (task.model.IsDemandingAttention && task.config.attentionCustomColorEnabled) ?
+                task.config.attentionCustomColor :
+                (task.config.buttonColorizeDominant ? backgroundFrame.indicatorColor : task.config.buttonColorizeCustom)
         }
 
         // Avoid repositioning delegate item after dragFinished
@@ -911,7 +908,11 @@ Item {
         task.completed = true;
 
         if (task.model && task.model.LauncherUrlWithoutIcon) {
-            DesktopActionsManager.prefetch(task.model.LauncherUrlWithoutIcon);
+            // Same parameters ContextMenu.query() will use, so the prefetched cache entry actually hits
+            DesktopActionsManager.prefetch(task.model.LauncherUrlWithoutIcon,
+                task.model.AppPid,
+                DesktopActionsManager.shouldShowHistory(task.model.AppPid, task.config.showBrowserHistory),
+                task.config.browserHistoryLimit);
         }
     }
     Component.onDestruction: {

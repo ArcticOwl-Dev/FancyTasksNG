@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fancy Tasks\n"
 "Report-Msgid-Bugs-To: https://github.com/daydve/FancyTasksNG\n"
-"POT-Creation-Date: 2026-08-12 01:11+0300\n"
+"POT-Creation-Date: 2026-10-07 12:34+0100\n"
 "PO-Revision-Date: 2023-09-21 16:18-0300\n"
 "Last-Translator:  Douglas Guimarães <<dg2003gh@gmail.com>>\n"
 "Language-Team: \n"
@@ -46,7 +46,7 @@ msgid "As on right panel"
 msgstr ""
 
 #: package/contents/config/ConfigAdvanced.qml
-msgid "Panel Settings:"
+msgid "When a window wants attention:"
 msgstr ""
 
 #: package/contents/config/ConfigAdvanced.qml
@@ -55,6 +55,10 @@ msgstr ""
 
 #: package/contents/config/ConfigAdvanced.qml
 msgid "Animate task icon when a window wants attention"
+msgstr ""
+
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Colorize the task button when a window wants attention"
 msgstr ""
 
 #: package/contents/config/ConfigAdvanced.qml
@@ -99,6 +103,50 @@ msgstr ""
 
 #: package/contents/config/ConfigAdvanced.qml
 msgid "Number of browser history items:"
+msgstr ""
+
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Configuration:"
+msgstr ""
+
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Export Configuration…"
+msgstr ""
+
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Import Configuration…"
+msgstr ""
+
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Export FancyTasksNG Configuration"
+msgstr ""
+
+#: package/contents/config/ConfigAdvanced.qml
+msgid "JSON files (*.json)"
+msgstr ""
+
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Import FancyTasksNG Configuration"
+msgstr ""
+
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Configuration exported successfully."
+msgstr ""
+
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Failed to export configuration."
+msgstr ""
+
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Failed to read the configuration file."
+msgstr ""
+
+#: package/contents/config/ConfigAdvanced.qml
+msgid "This file is not a valid FancyTasksNG configuration."
+msgstr ""
+
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Configuration imported. Click Apply to save the changes."
 msgstr ""
 
 #: package/contents/config/ConfigAppearance.qml
@@ -424,6 +472,18 @@ msgstr ""
 
 #: package/contents/config/ConfigBehavior.qml
 msgid "Show window thumbnails in tooltips"
+msgstr ""
+
+#: package/contents/config/ConfigBehavior.qml
+msgid "Thumbnail aspect ratio:"
+msgstr ""
+
+#: package/contents/config/ConfigBehavior.qml
+msgid "Match screen aspect ratio"
+msgstr ""
+
+#: package/contents/config/ConfigBehavior.qml
+msgid "Match window aspect ratio"
 msgstr ""
 
 #: package/contents/config/ConfigBehavior.qml
@@ -780,10 +840,6 @@ msgid "Add applications to pin to the taskbar. Drag items to reorder them."
 msgstr ""
 
 #: package/contents/config/ConfigPinnedApps.qml
-msgid "Remove"
-msgstr ""
-
-#: package/contents/config/ConfigPinnedApps.qml
 msgid "Unpin app by dragging its icon off the panel"
 msgstr ""
 
@@ -811,26 +867,6 @@ msgstr ""
 msgid "Search applications..."
 msgstr ""
 
-#: package/contents/config/config.qml
-msgid "Appearance"
-msgstr "Aparência"
-
-#: package/contents/config/config.qml
-msgid "Behavior"
-msgstr "Comportamento"
-
-#: package/contents/config/config.qml
-msgid "Indicators"
-msgstr "Indicadores"
-
-#: package/contents/config/config.qml
-msgid "Advanced"
-msgstr ""
-
-#: package/contents/config/config.qml
-msgid "Pinned Applications"
-msgstr ""
-
 #: package/contents/config/LivePreview.qml
 msgid "Preview"
 msgstr ""
@@ -853,6 +889,30 @@ msgstr ""
 
 #: package/contents/config/LivePreview.qml
 msgid "%1 — %2"
+msgstr ""
+
+#: package/contents/config/PinnedAppCard.qml
+msgid "Remove"
+msgstr ""
+
+#: package/contents/config/config.qml
+msgid "Appearance"
+msgstr "Aparência"
+
+#: package/contents/config/config.qml
+msgid "Behavior"
+msgstr "Comportamento"
+
+#: package/contents/config/config.qml
+msgid "Indicators"
+msgstr "Indicadores"
+
+#: package/contents/config/config.qml
+msgid "Advanced"
+msgstr ""
+
+#: package/contents/config/config.qml
+msgid "Pinned Applications"
 msgstr ""
 
 #: package/contents/ui/Badge.qml
@@ -970,6 +1030,14 @@ msgstr "Mover para %1"
 #: package/contents/ui/ContextMenu.qml
 msgid "&Pin to Task Manager"
 msgstr "&Fixar no gerenciador de tarefas"
+
+#: package/contents/ui/ContextMenu.qml
+msgid "On All Activities"
+msgstr ""
+
+#: package/contents/ui/ContextMenu.qml
+msgid "On The Current Activity"
+msgstr ""
 
 #: package/contents/ui/ContextMenu.qml
 msgid "Unpin from Task Manager"

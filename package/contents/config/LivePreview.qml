@@ -24,7 +24,7 @@ Item {
     Layout.fillWidth: true
     Layout.maximumWidth: 650
     Layout.alignment: Qt.AlignLeft
-    implicitHeight: cfg_page && cfg_page.cfg_showLivePreview ? 290 : titleLayout.height
+    implicitHeight: cfg_page.cfg_showLivePreview ? 290 : titleLayout.height
     clip: false
 
     readonly property int locationBottom: PlasmaCore.Types.BottomEdge
@@ -33,10 +33,10 @@ Item {
     readonly property int locationRight: PlasmaCore.Types.RightEdge
     readonly property bool multiStripe: simulatedStripeCount > 1
 
-    property var cfg_page: null
+    required property var cfg_page
     property int location: PlasmaCore.Types.BottomEdge
 
-    readonly property bool cfg_showToolTips: cfg_page ? cfg_page.cfg_showToolTips : true
+    readonly property bool cfg_showToolTips: cfg_page.cfg_showToolTips
 
     // Reference to the zoomed task item (Index 1) for tooltip positioning
     property var zoomedTaskItem: null
@@ -47,9 +47,9 @@ Item {
     }
 
     // Grouping mode tracking
-    readonly property int groupMode: cfg_page ? cfg_page.cfg_groupingStrategy : 0
-    readonly property bool groupPopups: cfg_page ? cfg_page.cfg_groupPopups : true
-    readonly property bool groupOverlay: cfg_page ? cfg_page.cfg_groupIconEnabled : true
+    readonly property int groupMode: cfg_page.cfg_groupingStrategy
+    readonly property bool groupPopups: cfg_page.cfg_groupPopups
+    readonly property bool groupOverlay: cfg_page.cfg_groupIconEnabled
 
     onGroupModeChanged: rebuildTaskModel()
     onGroupPopupsChanged: rebuildTaskModel()
@@ -82,7 +82,7 @@ Item {
     }
 
     // Current hover state for tooltip positioning parity
-    readonly property int effectiveGrowSize: (zoomedTaskItem && cfg_page && cfg_page.cfg_iconOnly === 1 && cfg_page.cfg_taskHoverEffect) ? cfg_page.cfg_iconZoomFactor : 0
+    readonly property int effectiveGrowSize: (zoomedTaskItem && cfg_page.cfg_iconOnly === 1 && cfg_page.cfg_taskHoverEffect) ? cfg_page.cfg_iconZoomFactor : 0
 
     readonly property int currentEdgeIdx: {
         switch (location) {
@@ -98,12 +98,12 @@ Item {
     property int simulatedLocation: currentEdgeIdx === 0 ? locationBottom :
                                     currentEdgeIdx === 1 ? locationTop :
                                     currentEdgeIdx === 2 ? locationLeft : locationRight
-    property int simulatedThickness: cfg_page ? cfg_page.cfg_previewSize : Math.round(Kirigami.Units.gridUnit * 2.5)
+    property int simulatedThickness: cfg_page.cfg_previewSize
 
     // Multistripe simulation
     readonly property int taskCountDisplay: taskModel.count
     readonly property int simulatedStripeCount: {
-        let maxS = (cfg_page && cfg_page.cfg_maxStripes !== undefined) ? cfg_page.cfg_maxStripes : 1
+        let maxS = cfg_page.cfg_maxStripes
         if (maxS <= 1) return 1
 
         // preferredMinHeight from LayoutMetrics.js
@@ -115,7 +115,7 @@ Item {
     readonly property int laneHeight: Math.floor(simulatedThickness / simulatedStripeCount)
 
     // Inner padding (iconSpacing) logic
-    readonly property real spacingAdjustment: (cfg_page && cfg_page.cfg_iconSpacing !== undefined) ? cfg_page.cfg_iconSpacing : 1
+    readonly property real spacingAdjustment: cfg_page.cfg_iconSpacing
     function horizontalMargins() {
         return (taskFrame.margins.left + taskFrame.margins.right) * (isVertical ? 1 : spacingAdjustment)
     }
@@ -147,8 +147,8 @@ Item {
     
     readonly property int simulatedMaxWidth: iconsOnly ? (isVertical ? (simulatedThickness + verticalMargins()) : (simulatedThickness + horizontalMargins())) : (Kirigami.Units.gridUnit * 12)
 
-    readonly property bool iconsOnly: cfg_page ? cfg_page.cfg_iconOnly === 1 : true
-    readonly property bool centerAlign: iconsOnly && cfg_page && cfg_page.cfg_fill && cfg_page.cfg_fillAlignment === 1
+    readonly property bool iconsOnly: cfg_page.cfg_iconOnly === 1
+    readonly property bool centerAlign: iconsOnly && cfg_page.cfg_fill && cfg_page.cfg_fillAlignment === 1
 
     // Theme FrameSvg for authentic margins calculation
     KSvg.FrameSvgItem {
@@ -169,8 +169,8 @@ Item {
         CheckBox {
             id: headerToggle
             leftPadding: 0
-            checked: previewRoot.cfg_page ? previewRoot.cfg_page.cfg_showLivePreview : true
-            onToggled: if (previewRoot.cfg_page) previewRoot.cfg_page.cfg_showLivePreview = checked
+            checked: previewRoot.cfg_page.cfg_showLivePreview
+            onToggled: previewRoot.cfg_page.cfg_showLivePreview = checked
         }
 
         Label {
@@ -189,7 +189,7 @@ Item {
         anchors.bottom: parent.bottom
         padding: Kirigami.Units.smallSpacing
         topPadding: Kirigami.Units.mediumSpacing
-        visible: previewRoot.cfg_page && previewRoot.cfg_page.cfg_showLivePreview
+        visible: previewRoot.cfg_page.cfg_showLivePreview
     }
 
     ColumnLayout {
@@ -247,8 +247,8 @@ Item {
                         id: localSizeSpinner
                         from: 24
                         to: 128
-                        value: previewRoot.cfg_page && previewRoot.cfg_page.cfg_previewSize !== undefined ? previewRoot.cfg_page.cfg_previewSize : 48
-                        onValueModified: { if (previewRoot.cfg_page) previewRoot.cfg_page.cfg_previewSize = value }
+                        value: previewRoot.cfg_page.cfg_previewSize
+                        onValueModified: { previewRoot.cfg_page.cfg_previewSize = value }
                         stepSize: 2
                         editable: true
 
@@ -332,8 +332,8 @@ Item {
                         columns: previewRoot.isVertical ? previewRoot.simulatedStripeCount : previewRoot.simulatedOrthogonalCount
                         rows: previewRoot.isVertical ? previewRoot.simulatedOrthogonalCount : previewRoot.simulatedStripeCount
 
-                        rowSpacing: previewRoot.cfg_page ? previewRoot.cfg_page.cfg_taskSpacingSize : 0
-                        columnSpacing: previewRoot.cfg_page ? previewRoot.cfg_page.cfg_taskSpacingSize : 0
+                        rowSpacing: previewRoot.cfg_page.cfg_taskSpacingSize
+                        columnSpacing: previewRoot.cfg_page.cfg_taskSpacingSize
 
                         Repeater {
                             id: taskRepeater
@@ -347,7 +347,7 @@ Item {
                                     if (mockTask.isHovered) previewRoot.zoomedTaskItem = mockTask;
                                 }
 
-                                readonly property int maxW: (previewRoot.cfg_page ? previewRoot.cfg_page.cfg_maxButtonLength : Kirigami.Units.gridUnit * 10)
+                                readonly property int maxW: previewRoot.cfg_page.cfg_maxButtonLength
 
                                 Layout.preferredWidth: mockTask.showText ? maxW : previewRoot.simulatedMaxWidth
                                 Layout.preferredHeight: previewRoot.laneHeight + (previewRoot.isVertical ? (previewRoot.verticalMargins() - (taskFrame.margins.top + taskFrame.margins.bottom)) : 0)
@@ -456,19 +456,23 @@ Item {
                                 Loader {
                                     id: groupExpanderLoader
                                     active: (mockTask.cfgReady && mockTask.cfg.cfg_groupIconEnabled) && mockTask.isGroupParent
-                                    sourceComponent: Component {
-                                         FancyUI.GroupExpanderOverlay {
-                                            iconBox: previewIconBox
-                                            taskModel: ({ "IsGroupParent": true, "IsWindow": false })
-                                            parent: mockTask
-                                            locationOverride: mockTask.effLoc
-                                        }
+                                    sourceComponent: FancyUI.GroupExpanderOverlay {
+                                        iconBox: previewIconBox
+                                        taskModel: ({ "IsGroupParent": true, "IsWindow": false })
+                                        parent: mockTask
+                                        locationOverride: mockTask.effLoc
                                     }
                                 }
 
                                 // 4. Icon & badges
                                 Item {
                                     id: previewIconBox
+
+                                    // previewIconColorsLoader is only active for certain color modes
+                                    // (see the Loader below); this centralizes the "not ready yet" fallback.
+                                    function loaderColor(key) {
+                                        return previewIconColorsLoader.item ? previewIconColorsLoader.item[key] : "transparent";
+                                    }
 
                                     readonly property int mLeft: previewRoot.adjustMargin(true, parent.width, taskFrame.margins.left)
                                     readonly property int mRight: previewRoot.adjustMargin(true, parent.width, taskFrame.margins.right)
@@ -627,15 +631,13 @@ Item {
                                             }
                                             const mode = mockTask.cfg.cfg_clipIconBackgroundColorMode;
                                             if (mode === 1) {
-                                                let pDom = "dominant";
-                                                const domColor = previewIconColorsLoader.item ? previewIconColorsLoader.item[pDom] : "transparent";
+                                                const domColor = previewIconBox.loaderColor("dominant");
                                                 return TaskTools.harmonizeIconColor(domColor, domColor, Kirigami.Theme.backgroundColor, false);
                                             } else if (mode === 2) {
-                                                let pDom = "dominant";
+                                                const domColor = previewIconBox.loaderColor("dominant");
                                                 let pPal = "palette";
                                                 let pAvg = "average";
                                                 const avgColor = previewIconColorsLoader.item ? TaskTools.getAveragePaletteColor(previewIconColorsLoader.item[pPal], previewIconColorsLoader.item[pAvg]) : "transparent";
-                                                const domColor = previewIconColorsLoader.item ? previewIconColorsLoader.item[pDom] : "transparent";
                                                 return TaskTools.harmonizeIconColor(avgColor, domColor, Kirigami.Theme.backgroundColor, true);
                                             } else if (mode === 3) {
                                                 return Kirigami.Theme.highlightColor;
@@ -724,65 +726,7 @@ Item {
                                     maximumLineCount: 1
                                 }
 
-                                // 6. Group expander overlay (Matching GroupExpanderOverlay.qml)
-                                KSvg.SvgItem {
-                                    id: groupArrow
-                                    visible: mockTask.isGroup && mockTask.cfgReady && mockTask.cfg.cfg_groupIconEnabled
-                                    z: 60
-
-                                    readonly property int effLoc: mockTask.effLoc
-                                    
-                                    anchors.horizontalCenter: parent.horizontalCenter
-                                    anchors.bottom: parent.bottom
-
-                                    states: [
-                                        State {
-                                            name: "left"
-                                            when: groupArrow.effLoc === 1
-                                            AnchorChanges {
-                                                target: groupArrow
-                                                anchors.left: parent.left
-                                                anchors.verticalCenter: parent.verticalCenter
-                                                anchors.horizontalCenter: undefined
-                                                anchors.bottom: undefined
-                                            }
-                                        },
-                                        State {
-                                            name: "right"
-                                            when: groupArrow.effLoc === 2
-                                            AnchorChanges {
-                                                target: groupArrow
-                                                anchors.right: parent.right
-                                                anchors.verticalCenter: parent.verticalCenter
-                                                anchors.horizontalCenter: undefined
-                                                anchors.bottom: undefined
-                                            }
-                                        },
-                                        State {
-                                            name: "top"
-                                            when: groupArrow.effLoc === 3
-                                            AnchorChanges {
-                                                target: groupArrow
-                                                anchors.top: parent.top
-                                                anchors.horizontalCenter: parent.horizontalCenter
-                                                anchors.bottom: undefined
-                                            }
-                                        }
-                                    ]
-
-                                    implicitWidth: Math.min(naturalSize.width, 16)
-                                    implicitHeight: Math.min(naturalSize.height, 16)
-
-                                    imagePath: "widgets/tasks"
-                                    elementId: {
-                                        switch (effLoc) {
-                                            case 1: return "group-expander-left";
-                                            case 3: return "group-expander-top";
-                                            case 2: return "group-expander-right";
-                                            default: return "group-expander-bottom";
-                                        }
-                                    }
-                                }
+                                // 6. Group expander overlay is rendered by groupExpanderLoader above
 
                                 // 6. Indicator
                                 Item {

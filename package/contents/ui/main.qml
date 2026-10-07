@@ -32,6 +32,7 @@ import org.kde.kirigami as Kirigami
 import org.kde.plasma.workspace.trianglemousefilter
 
 import org.kde.taskmanager as TaskManager
+import Qt.labs.settings as LabsSettings
 // import org.kde.plasma.private.taskmanager as TaskManagerApplet
 import org.kde.plasma.workspace.dbus as DBus
 import org.kde.kitemmodels as KItemModels
@@ -73,10 +74,6 @@ PlasmoidItem {
     property Item dropIndicator: dropIndicatorRect
     property int dropIndex: -1
     property Item dragSource: null
-    property alias taskRepeater: internalTaskRepeater
-    // Set to true in Task.qml when drag ends with cursor outside the panel bounds.
-    // Used in Drag.onDragFinished to trigger unpin regardless of the dropAction
-    // (some Plasma components may accept the drop and return non-IgnoreAction).
     property bool dragEndedOutsidePanel: false
 
     property bool _isApplyingConfig: false
@@ -88,8 +85,95 @@ PlasmoidItem {
         interval: 1500
         repeat: false
         onTriggered: {
-            tasks._initialStartup = false;
             tasks.applyModelConfiguration();
+            tasks.restoreTaskOrder();
+            // Deferred: restoreTaskOrder()'s move() calls pass through several
+            // chained proxy models, so their rowsMoved signals aren't
+            // guaranteed to arrive in this same tick. Qt.callLater() only
+            // runs once those are drained, so the Connections guard below
+            // stays active until they have.
+            Qt.callLater(() => { tasks._initialStartup = false; });
+        }
+    }
+
+    // Snapshot of the visible task order, restored after a plasmashell
+    // restart. TasksModel's own manual-sort logic has no memory of the
+    // previous live arrangement (e.g. a dragged-away pinned button) - it
+    // only rebuilds sort order from scratch. Saved on every real order
+    // change, applied once the model has settled at startup.
+    LabsSettings.Settings {
+        id: taskOrderSettings
+        category: "TaskOrder"
+        property string savedOrder: "[]"
+    }
+
+    Timer {
+        id: taskOrderSaveTimer
+        interval: 500
+        repeat: false
+        onTriggered: tasks.snapshotTaskOrder()
+    }
+
+    Connections {
+        target: tasks.tasksModel
+        // Ignored during the startup settling window: row churn while the
+        // model is still populating isn't a real change, and saving it would
+        // overwrite the snapshot restoreTaskOrder() is about to read.
+        function onRowsInserted() { if (!tasks._initialStartup) taskOrderSaveTimer.restart(); }
+        function onRowsRemoved() { if (!tasks._initialStartup) taskOrderSaveTimer.restart(); }
+        function onRowsMoved() { if (!tasks._initialStartup) taskOrderSaveTimer.restart(); }
+    }
+
+    // Stable across a plasmashell restart, unlike WinIdList (only meaningful
+    // within the same process on Wayland). Can't disambiguate multiple
+    // windows of the same app - restoreTaskOrder() matches those in order as
+    // a best-effort fallback.
+    function taskOrderIdentifierAt(index) {
+        const idx = tasks.tasksModel.index(index, 0);
+        const isLauncher = tasks.tasksModel.data(idx, TaskManager.AbstractTasksModel.IsLauncher);
+        const winIds = tasks.tasksModel.data(idx, TaskManager.AbstractTasksModel.WinIdList);
+        if (isLauncher && (!winIds || winIds.length === 0)) {
+            return "L:" + tasks.tasksModel.data(idx, TaskManager.AbstractTasksModel.LauncherUrlWithoutIcon);
+        }
+        return "A:" + tasks.tasksModel.data(idx, TaskManager.AbstractTasksModel.AppId);
+    }
+
+    function snapshotTaskOrder() {
+        if (!tasks.tasksModel || tasks._isDestroying)
+            return;
+        const order = [];
+        for (let i = 0; i < tasks.tasksModel.count; i++) {
+            order.push(tasks.taskOrderIdentifierAt(i));
+        }
+        taskOrderSettings.savedOrder = JSON.stringify(order);
+    }
+
+    function restoreTaskOrder() {
+        if (!tasks.tasksModel)
+            return;
+
+        let savedOrder;
+        try {
+            savedOrder = JSON.parse(taskOrderSettings.savedOrder);
+        } catch (e) {
+            return;
+        }
+        if (!Array.isArray(savedOrder) || savedOrder.length === 0)
+            return;
+
+        // Mirrors the model's order locally, updated after each move() so
+        // later lookups search post-move positions.
+        const current = [];
+        for (let i = 0; i < tasks.tasksModel.count; i++) {
+            current.push(tasks.taskOrderIdentifierAt(i));
+        }
+
+        for (let target = 0; target < savedOrder.length && target < current.length; target++) {
+            const from = current.indexOf(savedOrder[target], target);
+            if (from === -1 || from === target)
+                continue;
+            tasks.tasksModel.move(from, target);
+            current.splice(target, 0, current.splice(from, 1)[0]);
         }
     }
 
@@ -160,8 +244,38 @@ PlasmoidItem {
         });
     }
 
-    // Key: WinId, Value: ItemGrabResult
+    // Key: WinId, Value: { result: ItemGrabResult, stamp: ms }
+    // Capped at THUMBNAIL_CACHE_MAX entries; entries older than THUMBNAIL_CACHE_TTL_MS are treated as stale.
     property var thumbnailCache: ({})
+    readonly property int thumbnailCacheMax: 48
+    readonly property int thumbnailCacheTtlMs: 120000
+
+    function cacheThumbnail(winId, result) {
+        const now = Date.now();
+        // Build a fresh object rather than mutating in place: reassigning the
+        // property (not just its contents) is what makes the change propagate
+        // through the tasks.thumbnailCache -> toolTipDelegate.thumbnailCache
+        // binding chain, since QML skips a changed signal when the rebound
+        // value is reference-equal to the previous one.
+        const next = {};
+        let count = 0;
+        let oldestKey = null, oldestStamp = Infinity;
+        for (const k of Object.keys(thumbnailCache)) {
+            const entry = thumbnailCache[k];
+            if (now - entry.stamp > thumbnailCacheTtlMs) continue; // evict stale
+            next[k] = entry;
+            count++;
+            if (entry.stamp < oldestStamp) {
+                oldestStamp = entry.stamp;
+                oldestKey = k;
+            }
+        }
+        if (count >= thumbnailCacheMax && oldestKey !== null) {
+            delete next[oldestKey]; // enforce cap by dropping the oldest survivor
+        }
+        next[winId] = { result: result, stamp: now };
+        thumbnailCache = next;
+    }
 
     onCurrentHoveredTaskChanged: {
         if (currentHoveredTask) {
@@ -183,7 +297,6 @@ PlasmoidItem {
     readonly property Component contextMenuComponent: Qt.createComponent("ContextMenu.qml")
     readonly property Component audioStreamManagerComponent: Qt.createComponent("AudioStreamManager.qml")
 
-    property bool needLayoutRefresh: false
 
     property alias taskList: taskListView
     property alias effectWatcher: windowViewEffectWatcher
@@ -193,6 +306,8 @@ PlasmoidItem {
     property alias taskFrame: taskFrame
     property alias filteredTasksModel: internalFilteredTasksModel
     property alias busyIndicator: busyIndicator
+    property alias virtualDesktopInfo: virtualDesktopInfo
+    property alias mouseHandler: mouseHandler
     FancyTasksExplosion {
         id: explosionManager
     }
@@ -332,10 +447,14 @@ PlasmoidItem {
         }
 
         Component.onCompleted: {
+            // Runs before launcherList below: setting launcherList inserts
+            // launcher rows through the same incremental path a running
+            // window uses, which only queues a row for launcher-position
+            // matching if separateLaunchers is already at its final value.
+            tasks.applyModelConfiguration();
             launcherList = tasks.config.launchers;
             groupingAppIdBlacklist = tasks.config.groupingAppIdBlacklist;
             groupingLauncherUrlBlacklist = tasks.config.groupingLauncherUrlBlacklist;
-            tasks.applyModelConfiguration();
             startupTimer.start();
         }
     }
@@ -400,7 +519,6 @@ PlasmoidItem {
         }
     }
 
-    readonly property alias tasksModelAlias: internalTasksModel // keep compatibility if needed
     readonly property var effectiveTasksModel: (tasks.config.minimizedFilter === 0 && !tasks.config.reverseFilters) ? internalTasksModel : internalFilteredTasksModel
 
     Timer {
@@ -423,10 +541,17 @@ PlasmoidItem {
         // The above is now handled by filteredTasksModel proxy to prevent crashes.
         tasks.tasksModel.filterNotMinimized = false;
 
-        tasks.tasksModel.hideActivatedLaunchers = tasks.iconsOnly || tasks.tasksModel.launchInPlace;
+        // Must be set before sortMode: setting sortMode to SortManual can
+        // synchronously trigger TasksModel's internal bulk re-sort (if its
+        // sort map is still empty), which reads whatever launchInPlace/
+        // separateLaunchers currently are - stale values there silently
+        // break launcher-position matching for any pre-existing row.
+        const launchInPlace = (tasks.config.sortingStrategy === 1 || tasks.config.sortingStrategy === 0);
+        const separateLaunchers = (tasks.config.sortingStrategy !== 1);
+        tasks.tasksModel.launchInPlace = launchInPlace;
+        tasks.tasksModel.separateLaunchers = separateLaunchers;
+        tasks.tasksModel.hideActivatedLaunchers = tasks.iconsOnly || launchInPlace;
         tasks.tasksModel.sortMode = tasks.sortModeEnumValue(tasks.config.sortingStrategy);
-        tasks.tasksModel.launchInPlace = (tasks.config.sortingStrategy === 1 || tasks.config.sortingStrategy === 0);
-        tasks.tasksModel.separateLaunchers = (tasks.config.sortingStrategy !== 1);
 
         tasks.tasksModel.groupMode = tasks.groupModeEnumValue(tasks.config.groupingStrategy);
         tasks.tasksModel.groupInline = !tasks.config.groupPopups;
@@ -513,9 +638,6 @@ PlasmoidItem {
         }
     }
 
-    function hasLauncher(url: url): bool {
-        return tasks.tasksModel ? tasks.tasksModel.launcherPosition(url) !== -1 : false;
-    }
     function addLauncher(url: url): void {
         if (Plasmoid.immutability !== PlasmaCore.Types.SystemImmutable && tasks.tasksModel)
             tasks.tasksModel.requestAddLauncher(url);
@@ -524,6 +646,8 @@ PlasmoidItem {
         if (Plasmoid.immutability !== PlasmaCore.Types.SystemImmutable && tasks.tasksModel)
             tasks.tasksModel.requestRemoveLauncher(url);
     }
+    // Called by plasmashell (C++, not QML) in response to a Meta+number shortcut -
+    // no in-repo caller, do not remove as "dead code".
     function activateTaskAtIndex(index: var): void {
         if (typeof index !== "number")
             return;
@@ -796,9 +920,6 @@ PlasmoidItem {
                     delegate: Task {
                         tasksRoot: tasks
                     }
-                    onItemRemoved: {
-                        tasks.needLayoutRefresh = true;
-                    }
                 }
 
                 Connections {
@@ -947,7 +1068,15 @@ PlasmoidItem {
 
                     readonly property var taskModel: parentTask ? parentTask.model : null
 
-                    rootIndex: internalTasksModel.makeModelIndex(parentTask ? parentTask.index : 0, -1)
+                    // parentTask.index is a row in the filtered proxy; map it to the source model,
+                    // otherwise lookups below read the wrong task whenever filters are active
+                    rootIndex: {
+                        if (parentTask) {
+                            const idx = parentTask.modelIndex();
+                            if (idx !== undefined && idx !== null) return idx;
+                        }
+                        return internalTasksModel.makeModelIndex(parentTask ? parentTask.index : 0, -1);
+                    }
                     appName: taskModel ? taskModel.AppName : ""
                     pidParent: taskModel ? taskModel.AppPid : 0
                     windows: taskModel ? taskModel.WinIdList : []
