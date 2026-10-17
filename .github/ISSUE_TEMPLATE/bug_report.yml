@@ -43,12 +43,12 @@ body:
     attributes:
       label: Diagnostic report
       description: |
-        Clone this repository (or just download `tools/diag.sh`), then from the
-        repo root run:
+        Download [`tools/diag.sh`](https://raw.githubusercontent.com/daydve/FancyTasksNG/develop/tools/diag.sh)
+        and run it (or run `make diag` from a clone of this repository):
         ```
-        make diag
+        bash diag.sh
         ```
-        This writes a file `fancytasks-diag.txt` next to the Makefile, with
+        This writes a file `fancytasks-diag.txt` into the current directory, with
         personal data (username, home path, hostname, MAC addresses) masked.
         Drag that file here to attach it.
     validations:

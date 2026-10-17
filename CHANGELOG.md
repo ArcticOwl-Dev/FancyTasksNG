@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- **Diagnostic Report:** Reworked `make diag` / `tools/diag.sh` to collect what's actually needed to diagnose a report: which installed copy plasmashell really loads (with its own version, install time and a content fingerprint) instead of the version of the source tree the script happened to be run from, whether plasmashell was restarted after the last install, whether every QML module the widget imports is present, whether the Python D-Bus bridges can run, the panel's settings next to the widget's, and only the log lines that concern Fancy Tasks NG instead of an unfiltered tail of the whole shell log. Detected problems are listed at the top of the report. The script no longer depends on the rest of the repository, so downloading just `tools/diag.sh` works as the bug report template says.
+
 ### Fixed
 - **Meta+Number Shortcuts:** Restored `activateTaskAtIndex()`, the method plasmashell calls in response to Meta+Number shortcuts — it was mistakenly removed as "dead code" in 2.1.0's refactor since it has no in-repo caller (it's invoked externally by plasmashell itself) (fixes #54).
 - **Task Order Lost on Plasmashell Restart:** Already-running windows and manually-repositioned pinned buttons could land in the wrong spot after a `plasmashell --replace` restart, staying scrambled until fixed by hand. Fixed a real startup-ordering race in the task model configuration, and added a snapshot of the actual visible task order that's restored once the model settles after a restart (fixes #53).
