@@ -51,6 +51,28 @@
       <label>Also apply application rules to pinned launchers without running windows.</label>
       <default>false</default>
     </entry>
+    <entry name="titleDisplayMode" type="Enum">
+      <label>Window title mode: 0 = Off, 1 = Automatic with two or more windows, 2 = Always labeled</label>
+      <default>1</default>
+    </entry>
+    <entry name="applicationTitleOverrides" type="String">
+      <label>Versioned JSON per-application title preferences.</label>
+      <default>{"version":1,"rules":[]}</default>
+    </entry>
+    <entry name="titleOnly" type="Bool">
+      <label>Hide a trailing program name in task labels when it matches the application's name.</label>
+      <default>false</default>
+    </entry>
+    <entry name="animateTitleWidth" type="Bool">
+      <label>Animate task button layout width when title visibility changes.</label>
+      <default>true</default>
+    </entry>
+    <entry name="titleWidthAnimationDuration" type="Int">
+      <label>Task title width animation duration in milliseconds.</label>
+      <default>200</default>
+      <min>0</min>
+      <max>1000</max>
+    </entry>
     <entry name="unhideOnAttention" type="Bool">
       <label>Whether to unhide if a window wants attention.</label>
       <default>true</default>

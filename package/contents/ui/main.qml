@@ -41,6 +41,7 @@ import "code/tools.js" as TaskTools
 import "code/FloatingLogic.js" as FloatingLogic
 import "code/TaskIndexes.js" as TaskIndexes
 import "code/AppRules.js" as AppRules
+import "code/TitlePolicy.js" as TitlePolicy
 
 PlasmoidItem {
     id: tasks
@@ -129,6 +130,12 @@ PlasmoidItem {
         function onApplicationAllowlistChanged() { proxyFilterTimer.restart(); }
         function onApplicationBlocklistChanged() { proxyFilterTimer.restart(); }
         function onFilterPinnedLaunchersChanged() { proxyFilterTimer.restart(); }
+        function onTitleDisplayModeChanged() { titlePolicyTimer.restart(); }
+        function onApplicationTitleOverridesChanged() { titlePolicyTimer.restart(); }
+        function onIconOnlyChanged() { modelUpdateTimer.restart(); titlePolicyTimer.restart(); }
+        function onGroupPopupsChanged() { modelUpdateTimer.restart(); }
+        function onGroupingAppIdBlacklistChanged() { titlePolicyTimer.restart(); }
+        function onGroupingLauncherUrlBlacklistChanged() { titlePolicyTimer.restart(); }
 
         function onLaunchersChanged(): void {
             if (tasks.tasksModel && !tasks._isInternalLauncherUpdate) {
@@ -356,12 +363,14 @@ PlasmoidItem {
         }
         onGroupingAppIdBlacklistChanged: {
             if (!tasks._isApplyingConfig) {
-                tasks.config.groupingAppIdBlacklist = groupingAppIdBlacklist;
+                tasks.config.groupingAppIdBlacklist = groupingAppIdBlacklist.filter(value => !tasks.titlePolicy.appIds.includes(value) || tasks.config.groupingAppIdBlacklist.includes(value));
+                titlePolicyTimer.restart();
             }
         }
         onGroupingLauncherUrlBlacklistChanged: {
             if (!tasks._isApplyingConfig) {
-                tasks.config.groupingLauncherUrlBlacklist = groupingLauncherUrlBlacklist;
+                tasks.config.groupingLauncherUrlBlacklist = groupingLauncherUrlBlacklist.filter(value => !tasks.titlePolicy.launcherUrls.includes(value) || tasks.config.groupingLauncherUrlBlacklist.includes(value));
+                titlePolicyTimer.restart();
             }
         }
 
@@ -383,7 +392,10 @@ PlasmoidItem {
     KItemModels.KSortFilterProxyModel {
         id: internalFilteredTasksModel
         sourceModel: internalTasksModel
-        filterRowCallback: (source_row, source_parent) => {
+        // Counting uses the location/state filters before application rules.
+        // Otherwise an App Name rule could change the count when a group is
+        // split, feeding back into the generated grouping exclusions.
+        filterRowCallback: (source_row, source_parent, countOnly) => {
             const idx = internalTasksModel.index(source_row, 0, source_parent);
 
             // Minimized Filter
@@ -436,7 +448,7 @@ PlasmoidItem {
                 }
             }
 
-            return tasks.acceptsApplicationIndex(idx, source_parent);
+            return countOnly || tasks.acceptsApplicationIndex(idx, source_parent);
         }
     }
 
@@ -445,6 +457,63 @@ PlasmoidItem {
         (tasks.config.applicationFilterMode === 1 ? tasks.config.applicationAllowlist : tasks.config.applicationBlocklist)).rules
     readonly property bool usesFilteredTasksModel: applicationFiltering || tasks.config.minimizedFilter !== 0 || tasks.config.reverseFilters
     readonly property var effectiveTasksModel: usesFilteredTasksModel ? internalFilteredTasksModel : internalTasksModel
+
+    property var titlePolicy: ({counts: {}, appIds: [], launcherUrls: []})
+    readonly property var titleOverrides: AppRules.parseRules(tasks.config.applicationTitleOverrides, "titles").rules
+
+    Loader {
+        id: iconIdentityLoader
+        source: "IconIdentity.qml"
+        onLoaded: titlePolicyTimer.restart()
+        onStatusChanged: if (status === Loader.Error)
+            console.warn("FancyTasksNG: icon comparison unavailable; counting windows by app name only.")
+    }
+
+    function windowIconKey(decoration) {
+        return iconIdentityLoader.item ? iconIdentityLoader.item.identity(decoration) : "";
+    }
+
+    function titleOverride(appId, appName) {
+        return AppRules.titlePreference(appId, appName, titleOverrides);
+    }
+
+    function windowHasTitle(appId, appName, decoration) {
+        return TitlePolicy.labeled(tasks.config.titleDisplayMode,
+            titlePolicy.counts[TitlePolicy.key(appId, appName, windowIconKey(decoration))] || 0, titleOverride(appId, appName));
+    }
+
+    function updateTitlePolicy() {
+        const windows = [];
+        function collect(row, parent) {
+            const index = parent ? internalTasksModel.index(row, 0, parent) : internalTasksModel.index(row, 0);
+            const children = internalTasksModel.rowCount(index);
+            if (children) {
+                for (let child = 0; child < children; ++child) collect(child, index);
+            } else if (internalTasksModel.data(index, TaskManager.AbstractTasksModel.IsWindow) === true
+                && internalFilteredTasksModel.filterRowCallback(row, parent || internalTasksModel.index(-1, 0), true)) {
+                windows.push({appId: String(internalTasksModel.data(index, TaskManager.AbstractTasksModel.AppId) || ""),
+                    appName: String(internalTasksModel.data(index, TaskManager.AbstractTasksModel.AppName) || ""),
+                    iconKey: tasks.windowIconKey(internalTasksModel.data(index, Qt.DecorationRole)),
+                    launcherUrl: String(internalTasksModel.data(index, TaskManager.AbstractTasksModel.LauncherUrlWithoutIcon) || "")});
+            }
+        }
+        for (let row = 0; row < internalTasksModel.count; ++row) collect(row, null);
+        const next = TitlePolicy.build(windows, tasks.config.titleDisplayMode, tasks.iconsOnly, titleOverrides);
+        const ids = Array.from(new Set([...tasks.config.groupingAppIdBlacklist, ...next.appIds]));
+        const urls = Array.from(new Set([...tasks.config.groupingLauncherUrlBlacklist, ...next.launcherUrls]));
+        titlePolicy = next;
+        const wasApplying = tasks._isApplyingConfig;
+        tasks._isApplyingConfig = true;
+        if (JSON.stringify(internalTasksModel.groupingAppIdBlacklist) !== JSON.stringify(ids)) internalTasksModel.groupingAppIdBlacklist = ids;
+        if (JSON.stringify(internalTasksModel.groupingLauncherUrlBlacklist) !== JSON.stringify(urls)) internalTasksModel.groupingLauncherUrlBlacklist = urls;
+        tasks._isApplyingConfig = wasApplying;
+    }
+
+    Timer {
+        id: titlePolicyTimer
+        interval: 0
+        onTriggered: tasks.updateTitlePolicy()
+    }
 
     function acceptsApplicationIndex(index, parentIndex) {
         if (!applicationFiltering)
@@ -478,31 +547,34 @@ PlasmoidItem {
     Timer {
         id: proxyFilterTimer
         interval: 0
-        onTriggered: internalFilteredTasksModel.invalidateFilter()
+        onTriggered: {
+            internalFilteredTasksModel.invalidateFilter();
+            titlePolicyTimer.restart();
+        }
     }
 
     Connections {
         target: internalTasksModel
         function onDataChanged(topLeft, bottomRight, roles) {
-            if (!tasks.usesFilteredTasksModel)
-                return;
-            const relevant = [TaskManager.AbstractTasksModel.AppId, TaskManager.AbstractTasksModel.AppName,
+            const relevant = [Qt.DecorationRole, TaskManager.AbstractTasksModel.AppId, TaskManager.AbstractTasksModel.AppName,
                 TaskManager.AbstractTasksModel.IsLauncher, TaskManager.AbstractTasksModel.IsWindow,
                 TaskManager.AbstractTasksModel.IsStartup, TaskManager.AbstractTasksModel.WinIdList,
                 TaskManager.AbstractTasksModel.IsGroupParent, TaskManager.AbstractTasksModel.ChildCount,
                 TaskManager.AbstractTasksModel.IsMinimized, TaskManager.AbstractTasksModel.ScreenGeometry,
                 TaskManager.AbstractTasksModel.VirtualDesktops, TaskManager.AbstractTasksModel.IsOnAllVirtualDesktops,
                 TaskManager.AbstractTasksModel.Activities, TaskManager.AbstractTasksModel.IsDemandingAttention];
-            if (!roles.length || relevant.some(role => roles.includes(role)))
-                proxyFilterTimer.restart();
+            if (!roles.length || relevant.some(role => roles.includes(role))) {
+                if (tasks.usesFilteredTasksModel) proxyFilterTimer.restart();
+                titlePolicyTimer.restart();
+            }
         }
-        function onRowsInserted() { if (tasks.usesFilteredTasksModel) proxyFilterTimer.restart(); }
-        function onRowsRemoved() { if (tasks.usesFilteredTasksModel) proxyFilterTimer.restart(); }
+        function onRowsInserted() { if (tasks.usesFilteredTasksModel) proxyFilterTimer.restart(); titlePolicyTimer.restart(); }
+        function onRowsRemoved() { if (tasks.usesFilteredTasksModel) proxyFilterTimer.restart(); titlePolicyTimer.restart(); }
         function onModelAboutToBeReset() {
             if (tasks.currentHoveredTask)
                 tasks.hideTooltipImmediately();
         }
-        function onModelReset() { if (tasks.usesFilteredTasksModel) proxyFilterTimer.restart(); }
+        function onModelReset() { if (tasks.usesFilteredTasksModel) proxyFilterTimer.restart(); titlePolicyTimer.restart(); }
         function onVirtualDesktopChanged() { if (tasks.usesFilteredTasksModel) proxyFilterTimer.restart(); }
         function onScreenGeometryChanged() { if (tasks.usesFilteredTasksModel) proxyFilterTimer.restart(); }
         function onActivityChanged() { if (tasks.usesFilteredTasksModel) proxyFilterTimer.restart(); }
@@ -538,10 +610,10 @@ PlasmoidItem {
         // The above is now handled by filteredTasksModel proxy to prevent crashes.
         tasks.tasksModel.filterNotMinimized = false;
 
-        tasks.tasksModel.hideActivatedLaunchers = tasks.iconsOnly || tasks.tasksModel.launchInPlace;
         tasks.tasksModel.sortMode = tasks.sortModeEnumValue(tasks.config.sortingStrategy);
         tasks.tasksModel.launchInPlace = (tasks.config.sortingStrategy === 1 || tasks.config.sortingStrategy === 0);
         tasks.tasksModel.separateLaunchers = (tasks.config.sortingStrategy !== 1);
+        tasks.tasksModel.hideActivatedLaunchers = tasks.iconsOnly || tasks.tasksModel.launchInPlace;
 
         tasks.tasksModel.groupMode = tasks.groupModeEnumValue(tasks.config.groupingStrategy);
         tasks.tasksModel.groupInline = !tasks.config.groupPopups;
@@ -550,6 +622,7 @@ PlasmoidItem {
         internalFilteredTasksModel.invalidateFilter();
 
         positionSorter.schedule();
+        titlePolicyTimer.restart();
 
         tasks._isApplyingConfig = false;
     }
@@ -878,7 +951,7 @@ PlasmoidItem {
                 Layout.maximumWidth: {
                     if (widthOccupation <= 0)
                         return 0;
-                    if (tasks.iconsOnly) {
+                    if (tasks.iconsOnly && !children.some(child => child.conditionalLabel || child.titleLayoutWidth > child.iconTaskWidth + 0.5)) {
                         return Math.round((internalTaskRepeater.count * LayoutMetrics.preferredMaxWidth()) / widthOccupation);
                     }
                     return Math.round(children.reduce((acc, child) => (child && child.visible && isFinite(child.Layout.maximumWidth)) ? acc + child.Layout.maximumWidth : acc, 0) / widthOccupation);

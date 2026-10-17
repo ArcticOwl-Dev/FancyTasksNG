@@ -47,6 +47,16 @@ Kirigami.Page {
     property string cfg_applicationBlocklistDefault: "{\"version\":1,\"rules\":[]}"
     property bool cfg_filterPinnedLaunchers: false
     property bool cfg_filterPinnedLaunchersDefault: false
+    property int cfg_titleDisplayMode: 1
+    property int cfg_titleDisplayModeDefault: 1
+    property string cfg_applicationTitleOverrides: "{\"version\":1,\"rules\":[]}"
+    property string cfg_applicationTitleOverridesDefault: "{\"version\":1,\"rules\":[]}"
+    property bool cfg_titleOnly: false
+    property bool cfg_titleOnlyDefault: false
+    property bool cfg_animateTitleWidth: true
+    property bool cfg_animateTitleWidthDefault: true
+    property int cfg_titleWidthAnimationDuration: 200
+    property int cfg_titleWidthAnimationDurationDefault: 200
 
     property bool cfg_unhideOnAttention: false
     property bool cfg_unhideOnAttentionDefault: true

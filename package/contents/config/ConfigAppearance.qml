@@ -9,6 +9,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
+import org.kde.kirigami as Kirigami
 import org.kde.plasma.core as PlasmaCore
 import org.kde.kquickcontrols as KQuickAddons
 
@@ -45,6 +46,82 @@ ConfigPage {
         currentIndex: appearancePage.cfg_iconOnly
         onActivated: (index) => appearancePage.cfg_iconOnly = index
                 }
+
+        Item {
+            visible: appearancePage.cfg_iconOnly === 1
+            implicitHeight: windowTitleSettings.implicitHeight
+            Layout.fillWidth: true
+            Layout.minimumWidth: 0
+            Layout.preferredWidth: appearancePage.gridUnit * 28
+            Layout.maximumWidth: Math.max(0, appearancePage.width - appearancePage.gridUnit * 2)
+            Kirigami.FormData.isSection: true
+
+            ColumnLayout {
+                id: windowTitleSettings
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.leftMargin: appearancePage.gridUnit
+
+                Kirigami.Heading {
+                    text: Wrappers.i18n("Window titles")
+                    level: 2
+                }
+
+                Label {
+                    text: Wrappers.i18n("Title display mode:")
+                }
+                ComboBox {
+                    Layout.fillWidth: true
+                    model: [Wrappers.i18n("Off"), Wrappers.i18n("Automatic (2+ windows)"), Wrappers.i18n("Always labeled")]
+                    currentIndex: appearancePage.cfg_titleDisplayMode
+                    onActivated: index => appearancePage.cfg_titleDisplayMode = index
+                }
+
+                Label {
+                    Layout.fillWidth: true
+                    wrapMode: Text.WordWrap
+                    text: Wrappers.i18n("Automatic shows an icon for one window and separate labeled buttons for two or more windows with the same app name and icon name. Pinned-only launchers stay icon-only. Maximum button width is set in Appearance.")
+                }
+
+                Label {
+                    Layout.fillWidth: true
+                    wrapMode: Text.WordWrap
+                    text: Wrappers.i18n("Per-app title overrides are in Filter → Title overrides.")
+                }
+
+                CheckBox {
+                    text: Wrappers.i18n("Show only the window title in labels")
+                    checked: appearancePage.cfg_titleOnly
+                    onToggled: appearancePage.cfg_titleOnly = checked
+                }
+
+                Label {
+                    Layout.fillWidth: true
+                    wrapMode: Text.WordWrap
+                    text: Wrappers.i18n("Removes a trailing program name separated by a dash or vertical bar when it matches the application name reported by Plasma. Other titles stay unchanged.")
+                }
+
+                CheckBox {
+                    text: Wrappers.i18n("Animate title width changes")
+                    checked: appearancePage.cfg_animateTitleWidth
+                    onToggled: appearancePage.cfg_animateTitleWidth = checked
+                }
+
+                Label {
+                    text: Wrappers.i18n("Width animation duration (ms):")
+                }
+                SpinBox {
+                    from: 0
+                    to: 1000
+                    stepSize: 50
+                    editable: true
+                    enabled: appearancePage.cfg_animateTitleWidth
+                    value: appearancePage.cfg_titleWidthAnimationDuration
+                    onValueModified: appearancePage.cfg_titleWidthAnimationDuration = value
+                }
+            }
+        }
+
     
                 Item { height: appearancePage.largeSpacing }
     

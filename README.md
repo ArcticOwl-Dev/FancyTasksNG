@@ -43,10 +43,22 @@ Fancy Tasks NG is a standalone task manager widget that includes the following f
 
 For a complete list of features and version history, refer to the [CHANGELOG](CHANGELOG.md).
 
-## Application filtering (development)
+## Application rules and window titles (development)
 
-The **Filter** settings page provides application allow/block rules and a
-window inspector.
+The **Filter** settings page contains allow/block rules, an open-window
+inspector and per-app title overrides. Global window title settings are in
+**Appearance**, below the Classic panel / Show icons only selection. Rules match App ID or App Name; blocks take
+priority. The inspector can prepare rules and title overrides without matching
+window titles as application identities. Changes take effect after Apply.
+
+In the icon-only layout, Automatic titles show one window as an icon and two or
+more eligible windows as separate labeled buttons. Always labeled and per-app
+Inherit/Icon only/Labeled overrides are available. Width animation defaults to
+200ms; Maximum button width remains in Appearance. Classic mode is retained.
+
+To return to the previous task presentation, set filtering Off, set title mode
+Off and remove title overrides or set them to Inherit. These options do not
+change the saved launcher list.
 
 ## Requirements
 
@@ -75,6 +87,7 @@ kpackagetool6 -t Plasma/Applet --install FancyTasksNG.plasmoid
 ```
 
 ### Testing an in-development build
+
 Want to try a fix or feature before it's released? Every commit to `develop` that touches the widget gets built automatically and uploaded as a workflow artifact — no need to build it yourself. Grab it from the **[Nightly Build workflow runs](https://github.com/daydve/FancyTasksNG/actions/workflows/nightly.yml)**: open the latest successful run and download the `.plasmoid` from its Artifacts section (requires being signed in to GitHub), then install it the same way as above.
 
 *(These are unreleased, in-progress builds — expect rough edges. The version shown in the widget's settings tells you exactly which commit it was built from.)*
@@ -102,6 +115,7 @@ make uninstall
 ```
 
 ## Contributing
+
 Found a bug? Have a great idea for a feature? Want to help translate the widget into your language? All contributions are welcome! 
 
 Head over to the [GitHub Issues tracker](https://github.com/daydve/FancyTasksNG/issues) to report bugs or request features. If you want to help with translations, you'll find the `.po` files in the `tools/translate/` directory.

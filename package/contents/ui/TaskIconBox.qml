@@ -31,7 +31,7 @@ Item {
     readonly property var tasksRoot: iconBox.tasksRootContext
     readonly property int location: Plasmoid.location
 
-    readonly property bool _iconsOnly: iconBox.tasksRoot ? iconBox.tasksRoot.iconsOnly : true
+    readonly property bool _iconsOnly: iconBox.taskItem ? iconBox.taskItem.isIcon : true
     readonly property real _trHeight: iconBox.tasksRoot ? iconBox.tasksRoot.height : 0
     readonly property var _trTaskFrame: iconBox.tasksRoot ? iconBox.tasksRoot.taskFrame : null
     
@@ -45,15 +45,23 @@ Item {
 
     anchors.centerIn: iconBox._iconsOnly ? parent : undefined
     anchors.top: iconBox._iconsOnly ? undefined : parent.top
-    anchors.bottom: iconBox._iconsOnly ? undefined : parent.bottom
     anchors.left: iconBox._iconsOnly ? undefined : parent.left
     
     anchors.topMargin: iconBox._iconsOnly ? 0 : adjustMargin(false, parent.height, LayoutMetrics.topMargin())
     anchors.bottomMargin: iconBox._iconsOnly ? 0 : adjustMargin(false, parent.height, LayoutMetrics.bottomMargin())
-    anchors.leftMargin: iconBox._iconsOnly ? 0 : adjustMargin(true, parent.height, LayoutMetrics.leftMargin())
+    // Labeled dock tasks keep the same leading gutter as a centered icon-only
+    // task. The label extends that icon slot instead of shifting its icon.
+    anchors.leftMargin: iconBox._iconsOnly ? 0
+        : iconBox.tasksRoot?.iconsOnly && !iconBox.tasksRoot.vertical && iconBox.taskItem?.conditionalLabel
+            ? Math.max(0, (iconBox.taskItem.iconTaskWidth - height) / 2)
+            : adjustMargin(true, parent.height, LayoutMetrics.leftMargin())
 
-    width: iconBox._iconsOnly ? (parent.width - 2 * Math.max(LayoutMetrics.leftMargin(), LayoutMetrics.rightMargin())) : height
-    height: iconBox._iconsOnly ? (parent.height - 2 * Math.max(LayoutMetrics.topMargin(), LayoutMetrics.bottomMargin())) : undefined
+    width: iconBox._iconsOnly ? Math.max(0, parent.width - 2 * Math.max(LayoutMetrics.leftMargin(), LayoutMetrics.rightMargin())) : height
+    // Keep an explicit height in both modes. Resetting height to undefined
+    // while changing anchors can leave newly relabeled delegates at zero size.
+    height: Math.max(0, parent.height - (iconBox._iconsOnly
+        ? 2 * Math.max(LayoutMetrics.topMargin(), LayoutMetrics.bottomMargin())
+        : anchors.topMargin + anchors.bottomMargin))
 
     readonly property int hoveredIndex: iconBox.tasksRoot ? iconBox.tasksRoot.instantHoveredIndex : -1
     readonly property int myIndex: iconBox.taskItem ? iconBox.taskItem.index : -1
@@ -62,7 +70,7 @@ Item {
     readonly property real distanceToCursor: (virtualCursorIndex !== -1 && myIndex !== -1) ? Math.abs(myIndex - virtualCursorIndex) : -1
 
     readonly property real zoomMultiplier: {
-        if (!iconBox._iconsOnly || !iconBox.config.taskHoverEffect) {
+        if (!iconBox.tasksRoot?.iconsOnly || !iconBox.config.taskHoverEffect) {
             return 0.0;
         }
         if (iconBox._contextMenuOpen) {

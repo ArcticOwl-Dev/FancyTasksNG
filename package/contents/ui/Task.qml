@@ -33,6 +33,7 @@ import QtQuick.Effects
 
 import "code/layoutmetrics.js" as LayoutMetrics
 import "code/tools.js" as TaskTools
+import "code/TitlePolicy.js" as TitlePolicy
 import "code/singletones"
 
 Item {
@@ -95,6 +96,7 @@ Item {
     }
     implicitWidth: {
         if (!tasksRoot) return LayoutMetrics.preferredMinWidth();
+        if ((tasksRoot.iconsOnly || conditionalLabel) && !tasksRoot.vertical) return titleLayoutWidth;
         if (tasksRoot.vertical) {
             let stripes = task.config.maxStripes || 1;
             if (task.isIcon) {
@@ -114,7 +116,7 @@ Item {
     Layout.fillWidth: true
     Layout.fillHeight: !task.inPopup
     Layout.maximumWidth: (!tasksRoot || tasksRoot.vertical) ?
-        -1 : ((task.model?.IsLauncher && !tasksRoot.iconsOnly) ? (tasksRoot.height / tasksRoot.taskList.rows) + LayoutMetrics.horizontalMargins() : LayoutMetrics.preferredMaxWidth())
+        -1 : ((tasksRoot.iconsOnly || conditionalLabel || isIcon) ? titleLayoutWidth : LayoutMetrics.preferredMaxWidth())
     Layout.maximumHeight: (!tasksRoot || !tasksRoot.vertical) ?
         -1 : ((task.model?.IsLauncher && !tasksRoot.iconsOnly) ? (tasksRoot.width / tasksRoot.taskList.columns) + LayoutMetrics.verticalMargins() : LayoutMetrics.preferredMaxHeight())
 
@@ -124,8 +126,34 @@ Item {
 
     readonly property int pid: (task.model && task.model.AppPid) ? task.model.AppPid : 0
     readonly property string appName: (task.model && task.model.AppName) ? task.model.AppName : ""
+    readonly property string displayLabelText: TitlePolicy.labelText(task.model?.display, task.appName,
+        task.config.titleOnly && task.isWindow && !task.model?.IsGroupParent)
     readonly property string appId: (task.model && task.model.AppId) ? task.model.AppId.replace(/\.desktop/, '') : ""
-    readonly property bool isIcon: task.model ? (tasksRoot.iconsOnly || !!task.model.IsLauncher) : tasksRoot.iconsOnly
+    readonly property real iconTaskWidth: tasksRoot.height / Math.max(1, tasksRoot.taskList.rows) + LayoutMetrics.horizontalMargins()
+    readonly property bool conditionalLabel: !!task.model && (tasksRoot.iconsOnly || tasksRoot.titleOverride(task.model.AppId, task.model.AppName) === "labeled")
+        && task.model.IsWindow && !task.model.IsGroupParent && tasksRoot.windowHasTitle(task.model.AppId, task.model.AppName, task.model.decoration)
+    readonly property bool isIcon: task.model ? ((tasksRoot.iconsOnly && !conditionalLabel) || (!!task.model.IsLauncher && !task.isWindow)
+        || tasksRoot.titleOverride(task.model.AppId, task.model.AppName) === "iconOnly") : tasksRoot.iconsOnly
+    readonly property real desiredTitleWidth: Math.max(iconTaskWidth, Math.min(Math.max(iconTaskWidth, task.config.maxButtonLength),
+        iconTaskWidth + titleMetrics.advanceWidth + labelZoomMargin + LayoutMetrics.labelMargin
+        + (tasksRoot.iconsOnly ? 0 : LayoutMetrics.rightMargin())))
+    readonly property real labelZoomMargin: conditionalLabel && tasksRoot.iconsOnly && task.config.taskHoverEffect ? Math.max(0, task.config.iconZoomFactor) / 2 : 0
+    property real titleLayoutWidth: iconTaskWidth
+    Binding {
+        target: task
+        property: "titleLayoutWidth"
+        value: !task.isIcon && !task.model?.IsGroupParent ? task.desiredTitleWidth : task.iconTaskWidth
+        when: task.completed
+    }
+    Behavior on titleLayoutWidth {
+        enabled: task.completed && task.config.animateTitleWidth && task.config.titleWidthAnimationDuration > 0 && !task.tasksRoot.vertical
+        NumberAnimation { duration: task.config.titleWidthAnimationDuration; easing.type: Easing.InOutQuad }
+    }
+    TextMetrics {
+        id: titleMetrics
+        font: label.font
+        text: task.displayLabelText
+    }
     property bool toolTipOpen: false
     property bool inPopup: false
 
@@ -861,13 +889,14 @@ Item {
     PlasmaComponents3.Label {
         id: label
 
-        visible: (task.inPopup || !task.tasksRoot.iconsOnly && !task.model.IsLauncher && (parent.width - taskIconBox.height - task.smallSpacing) >= LayoutMetrics.spaceRequiredToShowText())
+        visible: (task.inPopup || (!task.isIcon && (!task.model.IsLauncher || task.isWindow) && (parent.width - taskIconBox.height - task.smallSpacing) >= LayoutMetrics.spaceRequiredToShowText()))
 
         anchors {
             fill: parent
-            leftMargin: LayoutMetrics.leftMargin() + taskIconBox.width + LayoutMetrics.labelMargin
+            leftMargin: taskIconBox.anchors.leftMargin + taskIconBox.width + task.labelZoomMargin + LayoutMetrics.labelMargin
             topMargin: LayoutMetrics.topMargin()
-            rightMargin: LayoutMetrics.rightMargin()
+            rightMargin: task.conditionalLabel && tasksRoot.iconsOnly && !tasksRoot.vertical
+                ? taskIconBox.anchors.leftMargin : LayoutMetrics.rightMargin()
             bottomMargin: LayoutMetrics.bottomMargin()
         }
 
@@ -876,7 +905,7 @@ Item {
         elide: Text.ElideRight
         textFormat: Text.PlainText
         verticalAlignment: Text.AlignVCenter
-        maximumLineCount: task.config.maxTextLines ||
+        maximumLineCount: task.conditionalLabel ? 1 : task.config.maxTextLines ||
             undefined
 
         Accessible.ignored: true
@@ -887,7 +916,7 @@ Item {
             when: label.visible
 
             PropertyChanges {
-                label.text: task.model.display
+                label.text: task.displayLabelText
             }
         }
     }
