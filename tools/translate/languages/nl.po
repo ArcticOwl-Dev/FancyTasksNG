@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fancytasks\n"
 "Report-Msgid-Bugs-To: https://github.com/daydve/FancyTasksNG\n"
-"POT-Creation-Date: 2026-09-24 15:27+0300\n"
+"POT-Creation-Date: 2026-10-18 01:11+0300\n"
 "PO-Revision-Date: 2023-07-13 22:27+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: \n"
@@ -255,6 +255,14 @@ msgstr ""
 
 #: package/contents/config/ConfigAppearance.qml
 msgid "Maximum button width (px):"
+msgstr ""
+
+#: package/contents/config/ConfigAppearance.qml
+msgid "Fit button width to its title"
+msgstr ""
+
+#: package/contents/config/ConfigAppearance.qml
+msgid "Minimum button width (px):"
 msgstr ""
 
 #: package/contents/config/ConfigAppearance.qml

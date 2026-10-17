@@ -333,6 +333,29 @@ ConfigPage {
         value: appearancePage.cfg_maxButtonLength
         onValueModified: appearancePage.cfg_maxButtonLength = value
                 }
+
+                CheckBox {
+        id: fitButtonToText
+        visible: appearancePage.cfg_iconOnly === 0 && !appearancePage.plasmoidVertical
+        text: Wrappers.i18n("Fit button width to its title")
+        checked: appearancePage.cfg_fitButtonToText
+        onToggled: appearancePage.cfg_fitButtonToText = checked
+                }
+
+                Label {
+        visible: fitButtonToText.visible
+        enabled: fitButtonToText.checked
+        text: Wrappers.i18n("Minimum button width (px):")
+                }
+                SpinBox {
+        id: minFitButtonLength
+        visible: fitButtonToText.visible
+        enabled: fitButtonToText.checked
+        from: 40
+        to: 1000
+        value: appearancePage.cfg_minFitButtonLength
+        onValueModified: appearancePage.cfg_minFitButtonLength = value
+                }
     
                 RowLayout {
         spacing: appearancePage.smallSpacing

@@ -107,14 +107,47 @@ Item {
                 let rws = (tasksRoot.taskList && tasksRoot.taskList.rows > 0) ? tasksRoot.taskList.rows : (task.config.maxStripes || 1);
                 return (tasksRoot.height / rws) + LayoutMetrics.horizontalMargins();
             }
-            return LayoutMetrics.preferredMaxWidth();
+            return task.classicButtonWidth;
         }
+    }
+
+    // Every button gets the full max width, like the classic taskbar, unless
+    // "fit to title" is on: then icon + title, kept within [min, max].
+    readonly property real classicButtonWidth: {
+        const maxWidth = LayoutMetrics.preferredMaxWidth();
+        if (!task.config.fitButtonToText)
+            return maxWidth;
+        // The trailing labelMargin mirrors the icon-to-title gap: the frame's
+        // right margin scales with iconSpacing and is 0 when that's 0, which
+        // would leave a fitted title touching the button's edge.
+        const contentWidth = task.labelChromeWidth + Math.ceil(titleMeasure.contentWidth) + LayoutMetrics.labelMargin;
+        return Math.min(maxWidth, Math.max(task.config.minFitButtonLength, contentWidth));
+    }
+    readonly property real labelChromeWidth: LayoutMetrics.leftMargin() + taskIconBox.height + LayoutMetrics.labelMargin + LayoutMetrics.rightMargin()
+
+    // Lays the title out exactly like the label would at the max width
+    // (same wrapping, line limit and height), so contentWidth is the widest
+    // line after wrapping - a two-line title fits to its longer line, not to
+    // its single-line length. Kept separate from the label, which only gets
+    // its text once it's wide enough to be shown. Narrowing the label down
+    // to that width doesn't change where the lines break.
+    Text {
+        id: titleMeasure
+        visible: false
+        width: Math.max(0, LayoutMetrics.preferredMaxWidth() - task.labelChromeWidth)
+        height: label.height
+        font: label.font
+        text: task.config.fitButtonToText && task.model ? (task.model.display || "") : ""
+        textFormat: Text.PlainText
+        wrapMode: label.wrapMode
+        maximumLineCount: label.maximumLineCount
+        elide: Text.ElideRight
     }
 
     Layout.fillWidth: true
     Layout.fillHeight: !task.inPopup
     Layout.maximumWidth: (!tasksRoot || tasksRoot.vertical) ?
-        -1 : ((task.model?.IsLauncher && !tasksRoot.iconsOnly) ? (tasksRoot.height / tasksRoot.taskList.rows) + LayoutMetrics.horizontalMargins() : LayoutMetrics.preferredMaxWidth())
+        -1 : ((task.model?.IsLauncher && !tasksRoot.iconsOnly) ? (tasksRoot.height / tasksRoot.taskList.rows) + LayoutMetrics.horizontalMargins() : (tasksRoot.iconsOnly ? LayoutMetrics.preferredMaxWidth() : task.classicButtonWidth))
     Layout.maximumHeight: (!tasksRoot || !tasksRoot.vertical) ?
         -1 : ((task.model?.IsLauncher && !tasksRoot.iconsOnly) ? (tasksRoot.width / tasksRoot.taskList.columns) + LayoutMetrics.verticalMargins() : LayoutMetrics.preferredMaxHeight())
 
