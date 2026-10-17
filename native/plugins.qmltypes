@@ -1,0 +1,65 @@
+// SPDX-License-Identifier: GPL-2.0-or-later
+// Public API metadata for QML tooling; registration is in WindowRegion.cpp.
+import QtQuick.tooling 1.2
+
+Module {
+    Component {
+        name: "IconIdentity"
+        prototype: "QObject"
+        accessSemantics: "reference"
+        exports: ["FancyTasksNG.Native/IconIdentity 1.0"]
+        exportMetaObjectRevisions: [256]
+        Method {
+            name: "identity"
+            type: "QString"
+            Parameter { name: "decoration"; type: "QVariant" }
+        }
+    }
+    Component {
+        name: "WindowRegion"
+        prototype: "QObject"
+        accessSemantics: "reference"
+        exports: ["FancyTasksNG.Native/WindowRegion 1.0"]
+        exportMetaObjectRevisions: [256]
+        Property { name: "wayland"; type: "bool"; isReadonly: true }
+        Property { name: "dodgeActive"; type: "bool"; isReadonly: true; notify: "anchorStateChanged" }
+        Signal { name: "frameReady" }
+        Signal { name: "anchorStateChanged" }
+        Method {
+            name: "observeAnchor"
+            type: "bool"
+            Parameter { name: "anchor"; type: "QQuickItem"; isPointer: true }
+        }
+        Method {
+            name: "panelContainsPointer"
+            type: "bool"
+        }
+        Method {
+            name: "apply"
+            type: "bool"
+            Parameter { name: "object"; type: "QObject"; isPointer: true }
+            Parameter { name: "rectangles"; type: "QVariantList" }
+        }
+        Method {
+            name: "position"
+            Parameter { name: "object"; type: "QObject"; isPointer: true }
+            Parameter { name: "anchor"; type: "QQuickItem"; isPointer: true }
+            Parameter { name: "offset"; type: "QPointF" }
+        }
+        Method {
+            name: "ownsKeyboardFocus"
+            type: "bool"
+            Parameter { name: "object"; type: "QObject"; isPointer: true }
+        }
+        Method {
+            name: "anchorVisible"
+            type: "bool"
+            Parameter { name: "anchor"; type: "QQuickItem"; isPointer: true }
+        }
+        Method {
+            name: "screenGeometry"
+            type: "QRectF"
+            Parameter { name: "anchor"; type: "QQuickItem"; isPointer: true }
+        }
+    }
+}

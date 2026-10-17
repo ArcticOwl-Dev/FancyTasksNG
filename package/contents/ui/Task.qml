@@ -124,6 +124,18 @@ Item {
     required property int index
     property /*main.qml*/  var tasksRoot
 
+    readonly property Item inputTarget: tasksRoot?.overlayActive ? zoomHitTarget : task
+    ZoomHitTarget {
+        id: zoomHitTarget
+        button: task
+        icon: task.taskIcon
+        expanded: !!task.tasksRoot?.overlayActive
+    }
+    Connections {
+        target: task.tasksRoot
+        function onOverlayMaskUpdateRequested() { zoomHitTarget.refresh(); }
+    }
+
     readonly property int pid: (task.model && task.model.AppPid) ? task.model.AppPid : 0
     readonly property string appName: (task.model && task.model.AppName) ? task.model.AppName : ""
     readonly property string displayLabelText: TitlePolicy.labelText(task.model?.display, task.appName,
@@ -285,14 +297,16 @@ Item {
 
     HoverHandler {
         id: hoverHandler
+        parent: task.inputTarget
         onPointChanged: {
             if (hovered && task.tasksRoot.instantHoveredTask === task) {
+                const local = task.mapFromItem(task.inputTarget, point.position.x, point.position.y);
                 let fraction;
                 if (task.tasksRoot.vertical) {
-                    const rawFraction = point.position.y / task.height;
+                    const rawFraction = local.y / task.height;
                     fraction = task.config.reverseMode ? (1.0 - rawFraction) : rawFraction;
                 } else {
-                    const rawFraction = point.position.x / task.width;
+                    const rawFraction = local.x / task.width;
                     const mirrored = task.tasksRoot.shouldBeMirrored(task.config.reverseMode, Qt.locale().textDirection, task.tasksRoot.vertical);
                     fraction = mirrored ? (1.0 - rawFraction) : rawFraction;
                 }
@@ -362,6 +376,7 @@ Item {
     }
 
     onXChanged: {
+        tasksRoot?.overlayMaskUpdateRequested();
         if (!task.completed) {
             return;
         }
@@ -375,6 +390,7 @@ Item {
         moveAnim.restart();
     }
     onYChanged: {
+        tasksRoot?.overlayMaskUpdateRequested();
         if (!task.completed) {
             return;
         }
@@ -389,6 +405,8 @@ Item {
     }
 
     property real oldX: -1
+    onWidthChanged: tasksRoot?.overlayMaskUpdateRequested()
+    onHeightChanged: tasksRoot?.overlayMaskUpdateRequested()
     property real oldY: -1
     SequentialAnimation {
         id: moveAnim
@@ -429,6 +447,8 @@ Item {
     }
     transform: Translate {
         id: translateTransform
+        onXChanged: task.tasksRoot?.overlayMaskUpdateRequested()
+        onYChanged: task.tasksRoot?.overlayMaskUpdateRequested()
     }
 
     Accessible.name: task.model ? task.model.display : ""
@@ -603,6 +623,7 @@ Item {
 
     TapHandler {
         id: menuTapHandler
+        parent: task.inputTarget
         acceptedButtons: Qt.LeftButton
         acceptedDevices: PointerDevice.TouchScreen |
             PointerDevice.Stylus
@@ -621,6 +642,7 @@ Item {
     }
 
     TapHandler {
+        parent: task.inputTarget
         acceptedButtons: Qt.RightButton
         acceptedDevices: PointerDevice.Mouse |
             PointerDevice.TouchPad | PointerDevice.Stylus
@@ -637,6 +659,7 @@ Item {
 
     TapHandler {
         id: leftTapHandler
+        parent: task.inputTarget
         acceptedButtons: Qt.LeftButton
         onTapped: leftClick()
 
@@ -647,6 +670,7 @@ Item {
     }
 
     TapHandler {
+        parent: task.inputTarget
         acceptedButtons: Qt.MiddleButton
         onTapped: {
             const tModel = task.tasksRoot.tasksModel;
@@ -675,6 +699,7 @@ Item {
     }
 
     TapHandler {
+        parent: task.inputTarget
         acceptedButtons: Qt.BackButton
         onTapped: {
             const playerData = task.tasksRoot.mpris2Source.playerForLauncherUrl(task.model.LauncherUrlWithoutIcon, task.model.AppPid);
@@ -686,6 +711,7 @@ Item {
     }
 
     TapHandler {
+        parent: task.inputTarget
         acceptedButtons: Qt.ForwardButton
         onTapped: {
             const playerData = task.tasksRoot.mpris2Source.playerForLauncherUrl(task.model.LauncherUrlWithoutIcon, task.model.AppPid);
@@ -753,13 +779,15 @@ Item {
         // Avoid repositioning delegate item after dragFinished
         DragHandler {
             id: dragHandler
+            parent: task.tasksRoot?.overlayActive ? zoomHitTarget : backgroundFrame
+            target: backgroundFrame
             grabPermissions: PointerHandler.CanTakeOverFromHandlersOfDifferentType
 
             function setRequestedInhibitDnd(value: bool): void {
                 // This is modifying the value in the panel containment that
                 // inhibits accepting drag and drop, so that we don't accidentally
                 // drop the task on this panel.
-                let item = this;
+                let item = task.tasksRoot;
                 while (item.parent) {
                     item = item.parent;
                     if (item.appletRequestsInhibitDnD !== undefined) {

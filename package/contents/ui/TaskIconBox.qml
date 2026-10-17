@@ -98,6 +98,7 @@ Item {
     }
 
     property int growSize: Math.round(iconBox.zoomMultiplier * iconBox.config.iconZoomFactor)
+    onGrowSizeChanged: if (tasksRoot) tasksRoot.overlayMaskUpdateRequested()
 
     readonly property bool isParabolicTracking: iconBox.config.taskHoverEffectStyle === 1 && iconBox.tasksRoot && iconBox.tasksRoot.instantHoveredIndex !== -1 && iconBox.myIndex !== -1 && !(iconBox._taskHasModel && iconBox.taskItem.model.IsStartup)
 
@@ -112,6 +113,7 @@ Item {
         Translate {
             id: attentionTranslate
             y: 0
+            onYChanged: iconBox.tasksRoot?.overlayMaskUpdateRequested()
         },
         Scale {
             id: zoomScale

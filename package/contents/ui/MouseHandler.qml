@@ -27,6 +27,22 @@ DropArea {
     required property var tasks
     required property var tasksModel
 
+    function taskAt(x, y) {
+        const point = target.mapFromItem(dropArea, x, y);
+        if (tasks.overlayActive) {
+            // Enlarged icons can overlap neighboring buttons. Match their
+            // visual stacking and the same hit target as taps and hover.
+            const buttons = Array.from(target.children).filter(child => child.model && child.inputTarget);
+            buttons.sort((a, b) => b.z - a.z || b.index - a.index);
+            for (const button of buttons) {
+                const local = button.inputTarget.mapFromItem(dropArea, x, y);
+                if (button.inputTarget.contains(local)) return button;
+            }
+            return null;
+        }
+        return target.childAt(point.x, point.y);
+    }
+
     //ignore anything that is neither internal to TaskManager or a URL list
     onEntered: event => {
         if (event.formats.indexOf("text/x-plasmoidservicename") >= 0) {
@@ -37,7 +53,7 @@ DropArea {
 
     onPositionChanged: event => {
         let above;
-        above = target.childAt(event.x, event.y);
+        above = taskAt(event.x, event.y);
 
         if (!above) {
             hoveredItem = null;
@@ -210,7 +226,7 @@ DropArea {
 
             if (increment === 0) return;
 
-            const anchor = dropArea.target.childAt(event.x, event.y);
+            const anchor = dropArea.taskAt(event.x, event.y);
             const isCtrl = (event.modifiers & Qt.ControlModifier) && dropArea.config.wheelCtrlActionEnabled;
             const action = isCtrl ? dropArea.config.wheelCtrlAction : dropArea.config.wheelAction;
 

@@ -56,6 +56,13 @@ more eligible windows as separate labeled buttons. Always labeled and per-app
 Inherit/Icon only/Labeled overrides are available. Width animation defaults to
 200ms; Maximum button width remains in Appearance. Classic mode is retained.
 
+For hover clipping on a non-floating bottom panel, Nix builds include an optional
+native renderer. Enable **Advanced → Experimental floating overlay** and Apply.
+It draws the same task row in a larger transparent surface, keeping the panel's
+height and background. It is off by default and currently supports bottom
+horizontal Wayland panels. Other layouts or unavailable native support retain
+normal rendering.
+
 To return to the previous task presentation, set filtering Off, set title mode
 Off and remove title overrides or set them to Inherit. These options do not
 change the saved launcher list.

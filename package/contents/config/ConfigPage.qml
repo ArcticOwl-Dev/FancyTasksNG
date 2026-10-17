@@ -57,6 +57,8 @@ Kirigami.Page {
     property bool cfg_animateTitleWidthDefault: true
     property int cfg_titleWidthAnimationDuration: 200
     property int cfg_titleWidthAnimationDurationDefault: 200
+    property bool cfg_experimentalFloatingOverlay: false
+    property bool cfg_experimentalFloatingOverlayDefault: false
 
     property bool cfg_unhideOnAttention: false
     property bool cfg_unhideOnAttentionDefault: true

@@ -24,6 +24,7 @@ import QtQuick
 import QtQuick.Layouts
 import org.kde.plasma.plasmoid
 import org.kde.plasma.core as PlasmaCore
+import org.kde.plasma.extras as PlasmaExtras
 import org.kde.plasma.components as PlasmaComponents3
 import org.kde.ksvg as KSvg
 import org.kde.plasma.private.mpris as Mpris
@@ -51,6 +52,8 @@ PlasmoidItem {
     readonly property var config: Plasmoid.configuration
     readonly property int location: Plasmoid.location
     readonly property var containment: Plasmoid.containment
+    readonly property int panelColorSet: Kirigami.Theme.colorSet
+    readonly property int panelColorGroup: Kirigami.Theme.colorGroup
 
     rotation: tasks.config.reverseMode && tasks.vertical ? 180 : 0
 
@@ -273,6 +276,44 @@ PlasmoidItem {
     }
 
     signal requestLayout
+    signal overlayMaskUpdateRequested
+
+    function activeFullscreenOnScreen(screen) {
+        function check(index) {
+            const children = internalTasksModel.rowCount(index);
+            for (let row = 0; row < children; ++row) {
+                if (check(internalTasksModel.index(row, 0, index))) return true;
+            }
+            if (children || internalTasksModel.data(index, TaskManager.AbstractTasksModel.IsActive) !== true
+                || internalTasksModel.data(index, TaskManager.AbstractTasksModel.IsFullScreen) !== true
+                || internalTasksModel.data(index, TaskManager.AbstractTasksModel.IsMinimized) === true) return false;
+            const geometry = internalTasksModel.data(index, TaskManager.AbstractTasksModel.ScreenGeometry);
+            return geometry && geometry.x === screen.x && geometry.y === screen.y
+                && geometry.width === screen.width && geometry.height === screen.height;
+        }
+        for (let row = 0; row < internalTasksModel.count; ++row) {
+            if (check(internalTasksModel.index(row, 0))) return true;
+        }
+        return false;
+    }
+
+    Loader {
+        id: clippingOverlayLoader
+        readonly property bool requested: tasks.config.experimentalFloatingOverlay && !tasks.vertical
+            && tasks.effectiveLocation === PlasmaCore.Types.BottomEdge
+        onRequestedChanged: {
+            if (requested) setSource("ClippingOverlay.qml", {tasksRoot: tasks});
+            else source = "";
+        }
+        Component.onCompleted: if (requested) setSource("ClippingOverlay.qml", {tasksRoot: tasks})
+        onStatusChanged: if (status === Loader.Error) console.warn("FancyTasksNG: native overlay unavailable; using panel rendering.")
+    }
+    readonly property bool overlayActive: clippingOverlayLoader.status === Loader.Ready && clippingOverlayLoader.item.operational
+    readonly property bool overlayInteractionActive: overlayActive && (instantHoveredTask !== null
+        // Keep the panel open through the tooltip's existing 500 ms close
+        // grace period, including the gap between the icon and the popup.
+        || dragSource !== null || mouseHandler.containsDrag || windowTooltipDialog.shouldShow
+        || taskList.children.some(item => item.contextMenu && item.contextMenu.status === PlasmaExtras.Menu.Open))
     signal windowsHovered(var winIds, bool hovered)
     function activateWindowView(winIds) {
         if (!windowViewEffectWatcher.registered)
@@ -750,7 +791,10 @@ PlasmoidItem {
     }
 
     Item {
-        anchors.fill: parent
+        id: taskSurface
+        parent: tasks.overlayActive ? clippingOverlayLoader.item.contentHost : tasks
+        width: tasks.width
+        height: tasks.height
 
         HoverHandler {
             id: rootHoverHandler
@@ -797,7 +841,9 @@ PlasmoidItem {
         Binding {
             target: Plasmoid
             property: "status"
-            value: (tasks.tasksModel && tasks.tasksModel.anyTaskDemandsAttention && tasks.config.unhideOnAttention ? PlasmaCore.Types.NeedsAttentionStatus : PlasmaCore.Types.PassiveStatus)
+            value: tasks.overlayInteractionActive
+                || (tasks.tasksModel && tasks.tasksModel.anyTaskDemandsAttention && tasks.config.unhideOnAttention)
+                ? PlasmaCore.Types.NeedsAttentionStatus : PlasmaCore.Types.PassiveStatus
             restoreMode: Binding.RestoreBinding
         }
 
@@ -889,7 +935,10 @@ PlasmoidItem {
 
         MouseHandler {
             id: mouseHandler
-            anchors.fill: parent
+            x: tasks.overlayActive ? -clippingOverlayLoader.item.padding : 0
+            y: tasks.overlayActive ? -clippingOverlayLoader.item.padding : 0
+            width: parent.width - x * 2
+            height: parent.height - y * 2
             target: taskList
             tasks: tasks
             tasksModel: tasks.tasksModel
