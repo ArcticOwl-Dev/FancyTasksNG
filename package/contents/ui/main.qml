@@ -972,8 +972,9 @@ PlasmoidItem {
             readonly property bool isRight: tasks.effectiveLocation === PlasmaCore.Types.RightEdge
             readonly property bool isBottom: !isLeft && !isRight && !isTop
 
-            // Shadow needs transparent space on free sides to prevent clipping.
-            readonly property int shadowPadding: 16
+            // Shadow needs transparent space on free sides to prevent clipping:
+            // winBgFrame's shadow.size plus its offset.
+            readonly property int shadowPadding: 17
             // 8px gap allows an 8px radius shadow to render fully on the panel side
             readonly property int gapSize: 8
 
@@ -1039,12 +1040,18 @@ PlasmoidItem {
                 height: winContainer.targetHeight
 
                 color: Kirigami.Theme.backgroundColor
-                radius: 4
+                radius: Kirigami.Units.cornerRadius
+
+                // A blurred shadow is inherently fainter at the corners than
+                // along the edges, so on light themes the corner looked bare;
+                // the outline keeps it defined regardless of the shadow.
+                border.width: 1
+                border.color: Kirigami.ColorUtils.linearInterpolation(Kirigami.Theme.backgroundColor, Kirigami.Theme.textColor, 0.2)
 
                 shadow.size: 16
                 shadow.color: Qt.rgba(0, 0, 0, 0.6)
-                shadow.xOffset: 0
-                shadow.yOffset: 0
+                shadow.xOffset: 1
+                shadow.yOffset: 1
 
                 anchors.fill: parent
                 anchors.topMargin: winContainer.marginTop
