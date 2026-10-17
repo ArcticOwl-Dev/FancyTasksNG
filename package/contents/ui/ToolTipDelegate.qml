@@ -522,7 +522,14 @@ Loader {
                     delegate: ToolTipInstance {
                         required property var model
                         
-                        width: groupRoot.showThumbnails ? toolTipDelegate.thumbnailWidthFor(model.Geometry) : groupRoot.tooltipInstanceMaximumWidth
+                        // In a vertical list (vertical panel) every instance spans the
+                        // column, which is as wide as the widest thumbnail, and its own
+                        // thumbnail is centered inside it (Layout.alignment in
+                        // ToolTipInstance). Moving the delegate instead doesn't work:
+                        // ListView keeps resetting x on the axis it doesn't lay out.
+                        width: !groupRoot.showThumbnails ? groupRoot.tooltipInstanceMaximumWidth
+                            : groupToolTipListView.orientation === ListView.Vertical ? groupToolTipListView.width
+                            : toolTipDelegate.thumbnailWidthFor(model.Geometry)
                         windowGeometry: model.Geometry ?? Qt.rect(0, 0, 0, 0)
                         height: implicitHeight
                         
