@@ -228,6 +228,23 @@ ConfigPage {
         }
     
         RowLayout {
+            visible: enableToolTips.checked && showToolTips.checked
+            Item {
+                implicitWidth: behaviorPage.gridUnit * 2
+            }
+            Label {
+                text: Wrappers.i18n("Thumbnail aspect ratio:")
+            }
+            ComboBox {
+                Layout.fillWidth: true
+                Layout.minimumWidth: behaviorPage.gridUnit * 12
+                model: [Wrappers.i18n("Match screen aspect ratio"), Wrappers.i18n("Match window aspect ratio")]
+                currentIndex: behaviorPage.cfg_tooltipMatchWindowAspectRatio ? 1 : 0
+                onActivated: index => behaviorPage.cfg_tooltipMatchWindowAspectRatio = (index === 1)
+            }
+        }
+
+        RowLayout {
             visible: enableToolTips.checked
             Item {
                 implicitWidth: behaviorPage.gridUnit

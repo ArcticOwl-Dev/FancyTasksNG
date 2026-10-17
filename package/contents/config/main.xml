@@ -126,6 +126,10 @@
       <label>Show window thumbnails in tooltips</label>
       <default>true</default>
     </entry>
+    <entry name="tooltipMatchWindowAspectRatio" type="Bool">
+      <label>Size tooltip thumbnails from window geometry instead of the screen aspect ratio</label>
+      <default>false</default>
+    </entry>
     <entry name="showMediaControls" type="Bool">
       <label>Media controls on thumbnails</label>
       <default>true</default>

@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - **Fit Button Width to Title:** New option for the classic (icons + text) mode on horizontal panels: instead of every button being the maximum width, each button is as wide as its icon and title, kept between a configurable minimum and the existing maximum width. Titles longer than the maximum are still elided. Off by default (#52).
+- **Tooltip Thumbnail Sizing:** Added a "Thumbnail aspect ratio" option under Behavior to choose screen-based sizing (the default) or sizing from window geometry. Grouped previews use the median window aspect ratio, and the popup is constrained to the panel's screen.
 
 ### Changed
 - **Diagnostic Report:** Reworked `make diag` / `tools/diag.sh` to collect what's actually needed to diagnose a report: which installed copy plasmashell really loads (with its own version, install time and a content fingerprint) instead of the version of the source tree the script happened to be run from, whether plasmashell was restarted after the last install, whether every QML module the widget imports is present, whether the Python D-Bus bridges can run, the panel's settings next to the widget's, and only the log lines that concern Fancy Tasks NG instead of an unfiltered tail of the whole shell log. Detected problems are listed at the top of the report. The script no longer depends on the rest of the repository, so downloading just `tools/diag.sh` works as the bug report template says.
