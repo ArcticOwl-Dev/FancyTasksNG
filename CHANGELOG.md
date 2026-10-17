@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+- Application allow/block rules, an ungrouped window inspector and staged rule editing.
+- Conditional individual-window labels, title overrides and configurable layout-width animation.
+- Nix development/build commands and a separate dev-widget installation command.
+- An isolated Wayland surface diagnostic. The production overlay remains disabled because selective input and focus checks did not pass.
+
+### Fixed
+- Source/proxy indexes for task actions, reordering and grouped previews, including stale tooltip roots across grouping changes.
+- Equal-position horizontal sorting now retains arrival order instead of changing with focus.
+- Applications settings content is constrained to its page width.
+
 ## [2.2.0] - 2026-09-24
 
 ### Added

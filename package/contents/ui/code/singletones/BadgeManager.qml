@@ -8,6 +8,7 @@ pragma Singleton
 import QtQuick
 import org.kde.plasma.workspace.dbus as DBus
 import org.kde.plasma.plasma5support as Plasma5Support
+import "../PythonRuntime.js" as PythonRuntime
 
 /**
  * BadgeManager: Unified aggregator for taskbar badges.
@@ -30,8 +31,7 @@ Item {
         connectedSources: []
         
         function start() {
-            let scriptPath = Qt.resolvedUrl("../unity_bridge.py").toString().replace(/^file:\/\//, "");
-            connectSource("python3 " + scriptPath);
+            connectSource(PythonRuntime.helperCommand(Qt.resolvedUrl("../unity_bridge.py")));
         }
         
         onNewData: (sourceName, data) => {

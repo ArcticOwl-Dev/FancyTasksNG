@@ -8,6 +8,7 @@ pragma Singleton
 import QtQuick
 import org.kde.plasma.workspace.dbus as DBus
 import org.kde.plasma.plasma5support as Plasma5Support
+import "../PythonRuntime.js" as PythonRuntime
 
 /**
  * DesktopActionsManager — provides desktop file jump list actions
@@ -24,8 +25,7 @@ Item {
         connectedSources: []
         Component.onCompleted: {
             // Start the DBus daemon ONCE
-            let scriptPath = Qt.resolvedUrl("../desktop_actions.py").toString().replace(/^file:\/\//, "");
-            connectSource("python3 '" + scriptPath + "'");
+            connectSource(PythonRuntime.helperCommand(Qt.resolvedUrl("../desktop_actions.py")));
         }
     }
 

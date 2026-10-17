@@ -95,6 +95,87 @@ kpackagetool6 -t Plasma/Applet --install FancyTasksNG.plasmoid
 
 ### Testing an in-development build
 
+To build an installable package with Nix from this repository:
+
+```bash
+nix build .#plasmoid
+# Output: result/FancyTasksNG.plasmoid
+```
+
+Nix packages include a Python runtime with `dbus-python` and `pygobject3` for
+configuration import/export, desktop actions and badge integration. The helpers
+use its absolute store path, so Plasma does not need `python3` on its PATH.
+Keep the package output in your Nix profile or a GC root (such as the `result`
+symlink) while using the widget: the installed archive refers to its runtime
+and native libraries in the Nix store. The `install-dev` command below creates
+this root automatically in `$XDG_STATE_HOME/fancytasksng` (defaulting to
+`~/.local/state/fancytasksng`). After uninstalling the dev widget, remove its
+`io.github.daydve.fancytasksng.m1test` symlink there to release that root.
+These Nix-built archives are intended for
+the machine where they were built; they are not standalone release archives.
+
+For panel testing alongside an existing Fancy Tasks NG installation, build the
+separate **Fancy Tasks NG (Dev)** widget instead:
+
+```bash
+nix build .#plasmoid-test
+# Output: result/FancyTasksNG-M1-Test.plasmoid
+```
+
+To build and install it in one command:
+
+```bash
+nix run .#install-dev
+```
+
+Then use the panel's **Add Widgets** menu to add **Fancy Tasks NG (Dev)**.
+Run the same command after making changes: it upgrades an existing test
+installation under the same widget ID, keeping its panel instance and settings.
+It uses your installed `kpackagetool6` and does not update the regular Fancy Tasks
+NG package. After a successful install or upgrade, it runs
+`systemctl --user restart plasma-plasmashell.service` so the widget loads the
+updated QML. Panels briefly reload; application windows remain open. This
+requires a Plasma session managed by that systemd user service. A failed
+installation does not restart Plasma.
+
+The dev widget previously appeared as **Fancy Tasks NG (M1 Test)**. Its ID and
+archive filename retain `m1test`/`M1-Test` so upgrades keep working. The name does
+not indicate which milestones are included. Plasma's existing **About** dialog
+shows the build commit after the version, for example `2.2.0-cd42d65`. The isolated
+source preview also includes its commit; `-dirty` means uncommitted changes were
+included. An installed package version does not guarantee an existing widget
+instance has reloaded its QML.
+
+The test widget has its own ID and per-widget configuration; the original package
+keeps the normal Fancy Tasks NG ID. Both builds use the locked dependencies,
+compile the committed translations, and create the archive in the Nix store
+without modifying the checkout. Building does not install anything or restart
+Plasma. To remove the test installation, first remove its widget from the panel,
+then run `kpackagetool6 -t Plasma/Applet --remove io.github.daydve.fancytasksng.m1test`.
+
+For local development on NixOS, open a terminal in this repository and run:
+
+```bash
+nix develop
+fancytasks-preview
+```
+
+The locked development shell supplies the build and test tools. The preview
+uses your installed `plasmawindowed` so it matches your Plasma desktop. It copies
+the current source, including uncommitted edits, into a temporary directory with
+isolated settings. Closing the preview discards those settings and removes the
+copy. Nothing is installed and Plasma is not restarted.
+
+The shell includes Python with `dbus-python` and `pygobject3` for the existing
+badge and desktop-action helpers. An installed widget needs those modules in
+the Python environment used by Plasma too; installing a `.plasmoid` does not
+install system packages or change the Plasma session's environment.
+
+You can also launch it directly with `nix run .#preview`. To run the automated
+rule, defaults and shell syntax checks, use `nix flake check`. Inside the shell,
+`make build` creates `release/FancyTasksNG.plasmoid` and may regenerate translation
+files in the checkout; review those changes before committing them.
+
 Want to try a fix or feature before it's released? Every commit to `develop` that touches the widget gets built automatically and uploaded as a workflow artifact — no need to build it yourself. Grab it from the **[Nightly Build workflow runs](https://github.com/daydve/FancyTasksNG/actions/workflows/nightly.yml)**: open the latest successful run and download the `.plasmoid` from its Artifacts section (requires being signed in to GitHub), then install it the same way as above.
 
 *(These are unreleased, in-progress builds — expect rough edges. The version shown in the widget's settings tells you exactly which commit it was built from.)*

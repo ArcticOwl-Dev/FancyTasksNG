@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # SPDX-FileCopyrightText: 2023 Alexandra Stone <alexankitty@gmail.com>
 # SPDX-FileCopyrightText: 2025-2026 Vitaliy Elin <daydve@smbit.pro>
 # SPDX-License-Identifier: GPL-2.0-or-later
