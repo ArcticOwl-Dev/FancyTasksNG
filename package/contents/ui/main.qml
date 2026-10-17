@@ -86,7 +86,8 @@ PlasmoidItem {
         repeat: false
         onTriggered: {
             tasks.applyModelConfiguration();
-            tasks.restoreTaskOrder();
+            if (tasks.config.sortingStrategy === 1)
+                tasks.restoreTaskOrder();
             // Deferred: restoreTaskOrder()'s move() calls pass through several
             // chained proxy models, so their rowsMoved signals aren't
             // guaranteed to arrive in this same tick. Qt.callLater() only
@@ -564,8 +565,14 @@ PlasmoidItem {
 
     function sortModeEnumValue(index) {
         switch (Number(index)) {
+        // "Do not sort" runs on SortManual too. Under SortDisabled, TasksModel
+        // orders launchers by their row in TaskGroupingProxyModel, which
+        // re-appends a launcher at its end when the launcher is shown again
+        // after its window closes - the pinned app then jumped to the end of
+        // the pinned group. SortManual orders launchers by their stable row in
+        // the launcher list instead. Reordering by hand stays gated on
+        // sortingStrategy === 1 (drag-and-drop, keyboard, order restore).
         case 0:
-            return TaskManager.TasksModel.SortDisabled;
         case 1:
             return TaskManager.TasksModel.SortManual;
         case 2:
