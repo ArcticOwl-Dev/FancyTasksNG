@@ -484,15 +484,15 @@ msgstr "Отображать миниатюры окон в подсказках
 
 #: package/contents/config/ConfigBehavior.qml
 msgid "Thumbnail aspect ratio:"
-msgstr ""
+msgstr "Пропорции миниатюр:"
 
 #: package/contents/config/ConfigBehavior.qml
 msgid "Match screen aspect ratio"
-msgstr ""
+msgstr "Как у экрана"
 
 #: package/contents/config/ConfigBehavior.qml
 msgid "Match window aspect ratio"
-msgstr ""
+msgstr "Как у окна"
 
 #: package/contents/config/ConfigBehavior.qml
 msgid "Hide other windows when hovering over a window in the tooltip"

@@ -29,5 +29,5 @@ Everything is managed via `make` from the **root directory of the project**:
 | Template | 281     |        |
 | nl       | 60/281  | 21%    |
 | pt_BR    | 63/281  | 22%    |
-| ru       | 278/281 | 98%    |
+| ru       | 281/281 | 100%   |
 | zh_CN    | 60/281  | 21%    |

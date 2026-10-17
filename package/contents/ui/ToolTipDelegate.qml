@@ -140,70 +140,44 @@ Loader {
     readonly property rect tooltipScreenGeometry: Plasmoid.containment?.screenGeometry ?? Qt.rect(0, 0, 0, 0)
     readonly property bool hasValidTooltipScreenGeometry: tooltipScreenGeometry.width > 0 && tooltipScreenGeometry.height > 0
     readonly property bool matchWindowAspectRatio: toolTipDelegate.config.tooltipMatchWindowAspectRatio
-    // Keep screen-based sizing as the default, including the ultrawide fix (#55).
+    // Deriving from Screen.width/height gives a snugger fit than a fixed
+    // ratio for most monitors, but on an extreme ultrawide (e.g. 5120x1440,
+    // ~3.56:1) it squashes the thumbnail into a sliver most windows render
+    // tiny inside of. Clamped to the range of ordinary desktop monitor shapes
+    // (4:3 up through 21:9) so normal - even slightly non-16:9 - screens
+    // behave exactly as before, and only the pathological cases get capped (#55).
     readonly property real screenRatio: Math.max(4 / 3, Math.min(21 / 9, Screen.width / Screen.height))
-    property real windowThumbnailAspectRatio: 16 / 9
-    readonly property real tooltipThumbnailAspectRatio: matchWindowAspectRatio ? windowThumbnailAspectRatio : screenRatio
-    readonly property int tooltipThumbnailHeight: Math.round(tooltipInstanceMaximumWidth / tooltipThumbnailAspectRatio)
+    // Every thumbnail has this height, in both modes: a maximized window's
+    // thumbnail is the reference, and in window mode a smaller or narrower
+    // window only gets narrower, never taller.
+    readonly property int tooltipThumbnailHeight: Math.round(tooltipInstanceMaximumWidth / screenRatio)
+    // Room for the overlaid title and close button on narrow (portrait) windows.
+    readonly property int minThumbnailWidth: Kirigami.Units.gridUnit * 6
+    readonly property int maxThumbnailWidth: tooltipInstanceMaximumWidth * 2
 
-    function updateTooltipThumbnailAspectRatio(): void {
-        if (!toolTipDelegate.matchWindowAspectRatio) {
-            return;
+    // Screen mode: the screen-shaped box. Window mode: as wide as the window's
+    // own aspect ratio makes it at the shared height, so it has no empty
+    // bands at the sides. Called from bindings with a live Geometry role
+    // value, so it follows windows being resized while the tooltip is open.
+    function thumbnailWidthFor(geometry): int {
+        if (!toolTipDelegate.matchWindowAspectRatio || !geometry || geometry.width <= 0 || geometry.height <= 0) {
+            return toolTipDelegate.tooltipInstanceMaximumWidth;
         }
-
-        const model = toolTipDelegate.tasksModel;
-        const currentRootIndex = toolTipDelegate.rootIndex;
-        if (!model || currentRootIndex == null || !currentRootIndex.valid) {
-            toolTipDelegate.windowThumbnailAspectRatio = 16 / 9;
-            return;
-        }
-
-        const ratios = [];
-        const appendGeometryRatio = modelIndex => {
-            const geometry = model.data(modelIndex, TaskManager.AbstractTasksModel.Geometry);
-            if (geometry && geometry.width > 0 && geometry.height > 0) {
-                ratios.push(geometry.width / geometry.height);
-            }
-        };
-
-        if (toolTipDelegate.isGroup) {
-            for (let index = 0; index < toolTipDelegate.windows.length; ++index) {
-                appendGeometryRatio(model.makeModelIndex(currentRootIndex.row, index));
-            }
-        } else {
-            appendGeometryRatio(currentRootIndex);
-        }
-
-        if (ratios.length === 0) {
-            toolTipDelegate.windowThumbnailAspectRatio = 16 / 9;
-            return;
-        }
-
-        ratios.sort((left, right) => left - right);
-        const middle = Math.floor(ratios.length / 2);
-        const medianRatio = ratios.length % 2 === 1
-            ? ratios[middle]
-            : Math.sqrt(ratios[middle - 1] * ratios[middle]);
-        toolTipDelegate.windowThumbnailAspectRatio = Math.max(1, Math.min(2, medianRatio));
+        const width = Math.round(toolTipDelegate.tooltipThumbnailHeight * geometry.width / geometry.height);
+        return Math.max(toolTipDelegate.minThumbnailWidth, Math.min(toolTipDelegate.maxThumbnailWidth, width));
     }
 
-    onRootIndexChanged: updateTooltipThumbnailAspectRatio()
-    onWindowsChanged: updateTooltipThumbnailAspectRatio()
-    onIsGroupChanged: updateTooltipThumbnailAspectRatio()
-    onTasksModelChanged: updateTooltipThumbnailAspectRatio()
-    onMatchWindowAspectRatioChanged: updateTooltipThumbnailAspectRatio()
-
+    // Bumped on geometry changes so the group's total width - summed over
+    // model.data() lookups, which bindings can't track - is recomputed.
+    property int geometryRevision: 0
     Connections {
-        target: toolTipDelegate.parentTask
-
-        function onToolTipOpenChanged(): void {
-            if (toolTipDelegate.parentTask.toolTipOpen) {
-                toolTipDelegate.updateTooltipThumbnailAspectRatio();
+        target: toolTipDelegate.matchWindowAspectRatio ? toolTipDelegate.tasksModel : null
+        function onDataChanged(topLeft, bottomRight, roles): void {
+            if (roles.length === 0 || roles.indexOf(TaskManager.AbstractTasksModel.Geometry) !== -1) {
+                toolTipDelegate.geometryRevision++;
             }
         }
     }
-
-    Component.onCompleted: updateTooltipThumbnailAspectRatio()
 
     property bool forceTextMode: false
 
@@ -332,6 +306,7 @@ Loader {
                     index: 0 
                     height: implicitHeight
                     submodelIndex: singleRoot.rootIndex
+                    windowGeometry: singleRoot.parentTask?.model?.Geometry ?? Qt.rect(0, 0, 0, 0)
                     explicitWinId: singleInstanceLoader.currentWin
                     
                     appPid: singleRoot.pidParent
@@ -407,10 +382,25 @@ Loader {
                 readonly property int maxTooltipHeight: (groupRoot.hasValidTooltipScreenGeometry
                     ? groupRoot.tooltipScreenGeometry.height
                     : Screen.height) - Kirigami.Units.gridUnit * 2
+                // Thumbnails can differ in width (window aspect mode), so the row
+                // is the sum of their widths - or the widest one when stacked.
                 readonly property real contentTargetWidth: {
-                     // Use same logic as DelegateModel
-                     const count = (!groupRoot.showThumbnails || groupRoot.isVerticalPanel) ? 1 : safeCount;
-                     return Math.ceil(count * groupRoot.tooltipInstanceMaximumWidth + Math.max(0, count - 1) * Kirigami.Units.smallSpacing);
+                    if (!groupRoot.showThumbnails) {
+                        return groupRoot.tooltipInstanceMaximumWidth;
+                    }
+                    void toolTipDelegate.geometryRevision;
+                    const widths = [];
+                    for (let i = 0; i < safeCount; ++i) {
+                        const childIndex = groupRoot.tasksModel.makeModelIndex(groupRoot.rootIndex.row, i);
+                        widths.push(toolTipDelegate.thumbnailWidthFor(groupRoot.tasksModel.data(childIndex, TaskManager.AbstractTasksModel.Geometry)));
+                    }
+                    if (widths.length === 0) {
+                        return groupRoot.tooltipInstanceMaximumWidth;
+                    }
+                    if (groupRoot.isVerticalPanel) {
+                        return Math.max(...widths);
+                    }
+                    return Math.ceil(widths.reduce((sum, width) => sum + width, 0) + (widths.length - 1) * Kirigami.Units.smallSpacing);
                 }
                 
                 Row {
@@ -532,7 +522,8 @@ Loader {
                     delegate: ToolTipInstance {
                         required property var model
                         
-                        width: groupRoot.tooltipInstanceMaximumWidth
+                        width: groupRoot.showThumbnails ? toolTipDelegate.thumbnailWidthFor(model.Geometry) : groupRoot.tooltipInstanceMaximumWidth
+                        windowGeometry: model.Geometry ?? Qt.rect(0, 0, 0, 0)
                         height: implicitHeight
                         
                         index: index 

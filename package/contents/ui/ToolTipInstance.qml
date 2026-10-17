@@ -48,6 +48,8 @@ Item {
     readonly property int tooltipInstanceMaximumWidth: toolTipDelegate ? toolTipDelegate.tooltipInstanceMaximumWidth : Kirigami.Units.gridUnit * 14
     readonly property int tooltipThumbnailHeight: toolTipDelegate ? toolTipDelegate.tooltipThumbnailHeight
         : Math.round(tooltipInstanceMaximumWidth / Math.max(4 / 3, Math.min(21 / 9, Screen.width / Screen.height)))
+    // The window this instance previews; sizes the thumbnail in window aspect mode.
+    property rect windowGeometry: Qt.rect(0, 0, 0, 0)
 
     implicitWidth: mainLayout.implicitWidth
     implicitHeight: mainLayout.implicitHeight
@@ -347,7 +349,7 @@ Item {
     Item {
         id: thumbnailSourceItem
 
-        readonly property int targetWidth: root.tooltipInstanceMaximumWidth
+        readonly property int targetWidth: root.toolTipDelegate ? root.toolTipDelegate.thumbnailWidthFor(root.windowGeometry) : root.tooltipInstanceMaximumWidth
         readonly property int targetHeight: root.tooltipThumbnailHeight
 
         Layout.preferredWidth: root.showThumbnails ? targetWidth : 0
