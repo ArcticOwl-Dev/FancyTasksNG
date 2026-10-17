@@ -494,29 +494,22 @@ Item {
     Keys.onDownPressed: event => Keys.rightPressed(event)
     Keys.onLeftPressed: event => {
         if (!task.inPopup && (event.modifiers & Qt.ControlModifier) && (event.modifiers & Qt.ShiftModifier)) {
-            tasksRoot.tasksModel.move(task.index, task.index 
-                - 1);
+            tasksRoot.moveTask(task.index, task.index - 1);
         } else {
             event.accepted = false;
         }
     }
     Keys.onRightPressed: event => {
         if (!task.inPopup && (event.modifiers & Qt.ControlModifier) && (event.modifiers & Qt.ShiftModifier)) {
-            tasksRoot.tasksModel.move(task.index, task.index + 1);
+            tasksRoot.moveTask(task.index, task.index + 1);
         } else {
             event.accepted = false;
         }
     }
 
     function modelIndex(): /*QModelIndex*/ var {
-        if (tasksRoot && tasksRoot.filteredTasksModel) {
-            const proxyIdx = tasksRoot.filteredTasksModel.index(task.index, 0);
-            if (proxyIdx.valid) {
-                return tasksRoot.filteredTasksModel.mapToSource(proxyIdx);
-            }
-        }
         if (tasksRoot && tasksRoot.tasksModel && task.index >= 0) {
-            return tasksRoot.tasksModel.makeModelIndex(task.index);
+            return tasksRoot.modelIndexForRow(task.index);
         }
         return undefined;
     }

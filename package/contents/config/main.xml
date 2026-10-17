@@ -31,6 +31,26 @@
       <label>Filter tasks by minimized state: 0 = All, 1 = Only Minimized, 2 = Only Not Minimized</label>
       <default>0</default>
     </entry>
+    <entry name="applicationFilterMode" type="Enum">
+      <label>Application filter mode: 0 = Off, 1 = Allowlist, 2 = Blocklist</label>
+      <default>0</default>
+    </entry>
+    <entry name="applicationRules" type="String">
+      <label>Versioned JSON application rules interpreted according to applicationFilterMode.</label>
+      <default></default>
+    </entry>
+    <entry name="applicationAllowlist" type="String">
+      <label>Deprecated allow rules retained for migration to applicationRules.</label>
+      <default>{"version":1,"rules":[]}</default>
+    </entry>
+    <entry name="applicationBlocklist" type="String">
+      <label>Deprecated block rules retained for migration to applicationRules.</label>
+      <default>{"version":1,"rules":[]}</default>
+    </entry>
+    <entry name="filterPinnedLaunchers" type="Bool">
+      <label>Also apply application rules to pinned launchers without running windows.</label>
+      <default>false</default>
+    </entry>
     <entry name="unhideOnAttention" type="Bool">
       <label>Whether to unhide if a window wants attention.</label>
       <default>true</default>

@@ -26,7 +26,6 @@ DropArea {
 
     required property var tasks
     required property var tasksModel
-    required property var proxyModel
 
     //ignore anything that is neither internal to TaskManager or a URL list
     onEntered: event => {
@@ -138,15 +137,8 @@ DropArea {
                 }
 
                 // Safety clamp
-                targetProxyIndex = Math.max(0, Math.min(targetProxyIndex, dropArea.proxyModel.count - 1));
-
-                // Get the source indices from the proxy model
-                const fromIdx = dropArea.proxyModel.mapToSource(dropArea.proxyModel.index(dragSource.index, 0));
-                const toIdx = dropArea.proxyModel.mapToSource(dropArea.proxyModel.index(targetProxyIndex, 0));
-
-                if (fromIdx.row !== -1 && toIdx.row !== -1 && fromIdx.row !== toIdx.row) {
-                    dropArea.tasksModel.move(fromIdx.row, toIdx.row);
-                }
+                targetProxyIndex = Math.max(0, Math.min(targetProxyIndex, dropArea.tasks.effectiveTasksModel.count - 1));
+                dropArea.tasks.moveTask(dragSource.index, targetProxyIndex);
             }
             dropArea.tasks.dropIndicator.visible = false;
             event.accepted = true;

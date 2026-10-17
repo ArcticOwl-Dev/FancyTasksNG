@@ -1,0 +1,1794 @@
+# Translation of FancyTasksNG in German
+# Copyright (C) 2026
+# This file is distributed under the same license as the fancytasksng package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: fancytasksng\n"
+"Report-Msgid-Bugs-To: https://github.com/daydve/FancyTasksNG\n"
+"POT-Creation-Date: 2026-10-18 11:15+0200\n"
+"PO-Revision-Date: 2026-10-18 09:17+0200\n"
+"Last-Translator: Local machine translation; review recommended\n"
+"Language-Team: German\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Translation-Source: Existing entries retained; empty entries machine translated, review recommended\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "These saved rules cannot be read by this version. They will be preserved unless you clear them."
+msgstr "Diese gespeicherten Regeln können von dieser Version nicht gelesen werden. Sie bleiben erhalten, es sei denn, Sie löschen sie."
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Clear unreadable rules"
+msgstr "Unlesbare Regeln löschen"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "No rules"
+msgstr "Keine Regeln"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "App ID"
+msgstr "App-ID"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "App Name"
+msgstr "App-Name"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Always Icon"
+msgstr "Immer Symbol"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Always Label"
+msgstr "Immer mit Beschriftung"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Actions"
+msgstr "Aktionen"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Edit"
+msgstr "Bearbeiten"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml package/contents/config/PinnedAppCard.qml
+msgid "Remove"
+msgstr "Entfernen"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Match"
+msgstr "Übereinstimmung"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Exact"
+msgstr "Genau"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Contains"
+msgstr "Enthält"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Add…"
+msgstr "Hinzufügen …"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Always icon only"
+msgstr "Nur Symbol anzeigen"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml package/contents/config/ConfigAppearance.qml
+msgid "Always labeled"
+msgstr "Immer beschriftet"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Add rule to %1"
+msgstr "Regel zu %1 hinzufügen"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Edit rule in %1"
+msgstr "Regel in %1 bearbeiten"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Match application by:"
+msgstr "Anwendung nach:"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "App ID (recommended)"
+msgstr "App-ID (empfohlen)"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Matching:"
+msgstr "Übereinstimmung:"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Value:"
+msgstr "Wert:"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "For example: org.kde.dolphin"
+msgstr "Beispiel: org.kde.dolphin"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "For example: Dolphin"
+msgstr "Beispiel: Dolphin"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "This rule already exists."
+msgstr "Diese Regel existiert bereits."
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Save"
+msgstr "Speichern"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Cancel"
+msgstr "Abbrechen"
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Experimental floating overlay"
+msgstr "Experimentelles schwebendes Overlay"
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Prevent the Plasma panel from cutting off icons when they expand on hover."
+msgstr "Verhindern, dass das Plasma-Panels Icons abschneidet, wenn sie beim Überfahren erweitert werden."
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "The floating mode settings below apply only to desktop widgets."
+msgstr "Die Einstellungen für den Schwebmodus gelten nur für Desktop-Widgets."
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Floating Mode Settings:"
+msgstr "Einstellungen für den Schwebmodus:"
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Override system direction"
+msgstr "Systemrichtung überschreiben"
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "As on top panel"
+msgstr "Wie im oberen Panel"
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "As on bottom panel"
+msgstr "Wie im unteren Panel"
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "As on left panel"
+msgstr "Wie im linken Panel"
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "As on right panel"
+msgstr "Wie im rechten Panel"
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "When a window wants attention:"
+msgstr "Wenn ein Fenster Aufmerksamkeit benötigt:"
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Unhide panel when a window wants attention"
+msgstr "Panel wieder anzeigen, wenn ein Fenster Aufmerksamkeit benötigt"
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Animate task icon when a window wants attention"
+msgstr "Task-Icon animieren, wenn ein Fenster Aufmerksamkeit benötigt"
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Colorize the task button when a window wants attention"
+msgstr "Task-Button einfärben, wenn ein Fenster Aufmerksamkeit benötigt"
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Layout settings:"
+msgstr "Layout-Einstellungen:"
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "These options are only available when the widget is on a panel."
+msgstr "Diese Optionen sind nur verfügbar, wenn das Widget in einer Leiste platziert ist."
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "These options are only available in icon-only mode."
+msgstr "Diese Optionen sind nur im Icon-only-Modus verfügbar."
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Fill free space on panel"
+msgstr "Freien Platz in der Leiste füllen"
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Alignment:"
+msgstr "Ausrichtung:"
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Edge"
+msgstr "Rand"
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Center"
+msgstr "Mitte"
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Context menu:"
+msgstr "Kontextmenü:"
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Hide 'Move to Desktop' if only one virtual desktop is used"
+msgstr "'Zu Desktop verschieben' ausblenden, wenn nur ein virtueller Desktop verwendet wird"
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Show browsing history in the context menu of web browsers (Experimental)"
+msgstr "Webbrowser-Verlauf im Kontextmenü anzeigen (Experimentell)"
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Number of browser history items:"
+msgstr "Anzahl der Browserverlaufs-Einträge:"
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Configuration:"
+msgstr "Konfiguration:"
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Export Configuration…"
+msgstr "Konfiguration exportieren…"
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Import Configuration…"
+msgstr "Konfiguration importieren…"
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Export FancyTasksNG Configuration"
+msgstr "FancyTasksNG-Konfiguration exportieren"
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "JSON files (*.json)"
+msgstr "JSON-Dateien (*.json)"
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Import FancyTasksNG Configuration"
+msgstr "FancyTasksNG-Konfiguration importieren"
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Configuration exported successfully."
+msgstr "Konfiguration erfolgreich exportiert."
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Failed to export configuration."
+msgstr "Konfigurationsexport fehlgeschlagen."
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Failed to read the configuration file."
+msgstr "Konfigurationsdatei konnte nicht gelesen werden."
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "This file is not a valid FancyTasksNG configuration."
+msgstr "Diese Datei ist keine gültige FancyTasksNG-Konfiguration."
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Configuration imported. Click Apply to save the changes."
+msgstr "Konfiguration importiert. Klicken Sie auf 'Anwenden', um die Änderungen zu speichern."
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Use plasma borders"
+msgstr "Plasma-Rahmen verwenden"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Display:"
+msgstr "Anzeige:"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Classic panel"
+msgstr "Klassisches Panel"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Show icons only"
+msgstr "Nur Symbole anzeigen"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Window titles"
+msgstr "Fenstertitel"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Title display mode:"
+msgstr "Titel-Anzeigemodus:"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml package/contents/config/ConfigApplications.qml
+msgid "Off"
+msgstr "Aus"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Automatic (2+ windows)"
+msgstr "Automatisch (2+ Fenster)"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Automatic shows an icon for one window and separate labeled buttons for two or more windows with the same app name and icon name. Pinned-only launchers stay icon-only. Maximum button width is set in Appearance."
+msgstr "Zeigt ein Symbol für ein Fenster und separate beschriftete Schaltflächen für zwei oder mehr Fenster mit demselben App-Namen und Icon-Namen an. Fixierte Starters bleiben symbolisch. Die maximale Schaltflächenbreite ist in 'Erscheinungsbild' eingestellt."
+
+#: package/contents/config/ConfigAppearance.qml
+# [AI]
+msgid "Per-app title overrides are in Filter → Title overrides."
+msgstr "App-spezifische Titelüberschreibungen findest du unter Filter → Titelüberschreibungen."
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Show only the window title in labels"
+msgstr "Nur den Fenstertitel in Beschriftungen anzeigen"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Removes a trailing program name separated by a dash or vertical bar when it matches the application name reported by Plasma. Other titles stay unchanged."
+msgstr "Entfernt einen nachgestellten Programmnamen, der durch ein Bindestrich oder senkrechten Strich getrennt ist und dem von Plasma gemeldeten App-Namen entspricht. Andere Titel bleiben unverändert."
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Animate title width changes"
+msgstr "Titelbreite animieren"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Width animation duration (ms):"
+msgstr "Dauer der Breitenanimation (ms):"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Icon size:"
+msgstr "Ikonengröße:"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Relative"
+msgstr "Relativ"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Absolute"
+msgstr "Absolut"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Reset to default"
+msgstr "Auf Standard zurücksetzen"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Scale icons from panel edge"
+msgstr "Ikonen vom Panelrand skalieren"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Edge offset (px):"
+msgstr "Randversatz (px):"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Icon hover effects"
+msgstr "Ikon-Überlagerungseffekte"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Hover style:"
+msgstr "Überlagerungsstil:"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Simple"
+msgstr "Einfach"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Parabolic"
+msgstr "Parabolisch"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Icon zoom factor (px):"
+msgstr "Icon-Zoom-Faktor (px):"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "How much the icon should grow when hovered (in pixels)"
+msgstr "Wie stark soll das Symbol beim Überfahren vergrößert werden (in Pixeln)"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Zoom animation duration (ms):"
+msgstr "Dauer der Zoom-Animation (ms):"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Duration of the zoom animation in milliseconds"
+msgstr "Dauer der Zoom-Animation in Millisekunden"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Disable plasma context decorations"
+msgstr "Plasma-Kontextdekorationen deaktivieren"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Button Colors:"
+msgstr "Buttonfarben:"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Using Plasma Style/Accent"
+msgstr "Plasma-Stil/Akzent verwenden"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml package/contents/config/ConfigIndicators.qml
+msgid "Use dominant icon color"
+msgstr "Dominante Symbolfarbe verwenden"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml package/contents/config/ConfigIndicators.qml
+msgid "Custom color"
+msgstr "Benutzerdefinierte Farbe"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "For inactive buttons:"
+msgstr "Für nicht aktive Buttons:"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Hide backgrounds for inactive buttons"
+msgstr "Hintergründe für nicht aktive Buttons ausblenden"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Colorize inactive buttons"
+msgstr "Nicht aktive Buttons einfärben"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Maximum button width (px):"
+msgstr "Maximale Knopfbreite (px):"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Space between taskbar items (px):"
+msgstr "Abstand zwischen Taskbar-Elementen (px):"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Icon Shape:"
+msgstr "Iconform:"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Clip icons to a custom shape"
+msgstr "Icons auf eine benutzerdefinierte Form zuschneiden"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Icon corner radius:"
+msgstr "Icon-Eckradius:"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Show background under clipped icons"
+msgstr "Hintergrund unter zugeschnittenen Icons anzeigen"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Background color source:"
+msgstr "Hintergrundfarbenquelle:"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Dominant icon color"
+msgstr "Dominante Iconfarbe"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Average icon color"
+msgstr "Durchschnittliche Iconfarbe"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Plasma accent color"
+msgstr "Plasma-Akzentfarbe"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Background opacity:"
+msgstr "Hintergrundtransparenz:"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Use multi-column view:"
+msgstr "Mehrspaltenansicht verwenden:"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Use multi-row view:"
+msgstr "Mehrzeilenansicht verwenden:"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Never"
+msgstr "Nie"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "When panel is low on space and thick enough"
+msgstr "Wenn das Panel wenig Platz hat und dick genug ist"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Always when panel is thick enough"
+msgstr "Immer, wenn das Panel dick genug ist"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Maximum columns:"
+msgstr "Maximale Spalten:"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Maximum rows:"
+msgstr "Maximale Zeilen:"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Inner padding:"
+msgstr "Innenabstand:"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Small"
+msgstr "Klein"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Normal"
+msgstr "Normal"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Large"
+msgstr "Groß"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Huge"
+msgstr "Riesig"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Automatically set to Large when in Touch mode"
+msgstr "Automatisch auf Groß setzen im Touch-Modus"
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "Filtering and window-title settings take effect when you apply them. Use the window inspector to choose application IDs."
+msgstr "Die Filter- und Fenstertitel-Einstellungen werden angewendet, sobald Sie sie anwenden. Verwenden Sie den Fensterinspektor, um Anwendungs-IDs auszuwählen."
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "Filtering"
+msgstr "Filtern"
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "Inspect open windows…"
+msgstr "Offene Fenster inspizieren…"
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "Filter mode:"
+msgstr "Filtermodus:"
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "Allowlist"
+msgstr "Zulassungsliste"
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "Blocklist"
+msgstr "Sperrliste"
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "The same rules are used in either mode. Allowlist shows only matching applications; Blocklist hides matching applications. Off ignores the rules. Use * at the start or end of App IDs or names to match any sequence. Matching ignores case and a trailing .desktop in App IDs; window titles are not matched."
+msgstr ""
+"In beiden Modi gelten dieselben Regeln. Die Zulassungsliste zeigt nur passende Anwendungen; die Sperrliste blendet passende Anwendungen aus. Im Modus „Aus“ werden die Regeln ignoriert. Verwende * am Anfang oder Ende von App-IDs oder Namen, um eine beliebige Zeichenfolge zu treffen. Beim Abgleich wird die Groß-/Kleinschreibung ignoriert und .desktop am Ende von App-IDs entfernt; Fenstertitel "
+"werden nicht abgeglichen."
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "Application rules"
+msgstr "Anwendungsregeln"
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "An empty allowlist matches no applications. Only exempt pinned launchers will remain."
+msgstr "Eine leere Erlaubnisliste trifft auf keine Anwendungen zu. Nur ausgenommene festgepinnte Startelemente bleiben erhalten."
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "Filter pinned launchers too"
+msgstr "Auch festgepinnte Startelemente filtern"
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "When unchecked, only pinned launchers without running windows are exempt. A running application is filtered even when it is pinned."
+msgstr "Wenn deaktiviert, sind nur festgepinnte Startelemente ohne laufende Fenster ausgenommen. Eine laufende Anwendung wird auch dann gefiltert, wenn sie festgepinnt ist."
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "Title overrides"
+msgstr "Titel-Überschreibung"
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "Select Always Icon or Always Label for an app. Leave both unchecked to use the default from Appearance. Use * only at the start or end of App IDs or names to match any sequence of characters."
+msgstr "Wähle für eine Anwendung „Immer Symbol“ oder „Immer Beschriftung“. Wenn beide Optionen deaktiviert sind, gilt die Voreinstellung aus Darstellung. Verwende * nur am Anfang oder Ende von App-IDs oder Namen, um eine beliebige Zeichenfolge zu treffen."
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Grouping of tasks:"
+msgstr "Gruppierung von Aufgaben:"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml package/contents/config/ConfigIndicators.qml
+msgctxt "State"
+msgid "Disabled"
+msgstr "Deaktiviert"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Place windows of one application side-by-side"
+msgstr "Fenster einer Anwendung nebeneinander anordnen"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Combine into one button by application name"
+msgstr "Zu einem Button pro Anwendungsname kombinieren"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Standard group overlay"
+msgstr "Standard-Gruppenüberlagerung"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Sort tasks:"
+msgstr "Aufgaben sortieren:"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Do not sort"
+msgstr "Nicht sortieren"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Manually"
+msgstr "Manuell"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Alphabetically"
+msgstr "Alphabetisch"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "By desktop"
+msgstr "Nach Desktop"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "By activity"
+msgstr "Nach Aktivität"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "By horizontal window position"
+msgstr "Nach horizontaler Fensterposition"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Clicking active task minimizes the task"
+msgstr "Aktive Aufgabe minimieren"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Middle-clicking any task:"
+msgstr "Mit der mittleren Maustaste auf eine Aufgabe klicken:"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Does nothing"
+msgstr "Nichts tun"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Closes window or group"
+msgstr "Fenster oder Gruppe schließen"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Opens a new window"
+msgstr "Neues Fenster öffnen"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Minimizes/Restores window or group"
+msgstr "Fenster oder Gruppe minimieren/herstellen"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Toggles grouping"
+msgstr "Gruppierung umschalten"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Brings it to the current virtual desktop"
+msgstr "Auf den aktuellen virtuellen Desktop bringen"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Animation of closing/removing an icon from the panel"
+msgstr "Animation beim Schließen/Einblenden eines Symbols im Panel"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Mouse wheel:"
+msgstr "Mausrad:"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Cycles through all tasks"
+msgstr "Durch alle Aufgaben blättern"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Cycles through all tasks (skip minimized)"
+msgstr "Durch alle Aufgaben blättern (minimierte überspringen)"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Cycles through tasks of the current group"
+msgstr "Wechselt zwischen den Aufgaben der aktuellen Gruppe"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Cycles through tasks of the current group (skip minimized)"
+msgstr "Wechselt zwischen den Aufgaben der aktuellen Gruppe (minimierte überspringen)"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Adjusts volume of the window"
+msgstr "Stellt das Fensterlautstärke ein"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Adjust system volume with Shift key"
+msgstr "Stellt die Systemlautstärke mit der Umschalttaste ein"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Additional action with Ctrl key"
+msgstr "Zusätzliche Aktion mit der Strg-Taste"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Show tooltips when hovering over task buttons"
+msgstr "Zeigt Tooltips beim Überfahren von Task-Buttons an"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Show window thumbnails in tooltips"
+msgstr "Zeigt Fenstervorschaubilder in den Tooltips an"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Hide other windows when hovering over a window in the tooltip"
+msgstr "Versteckt andere Fenster beim Überfahren eines Fensters im Tooltip"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Show media controls"
+msgstr "Zeigt Mediensteuerungen an"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Media controls location:"
+msgstr "Mediensteuerungen-Position:"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "On thumbnails (Overlay)"
+msgstr "Über Vorschaubildern (Overlay)"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Under thumbnails"
+msgstr "Unter Vorschaubildern"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Clicking group button:"
+msgstr "Gruppen-Button klicken:"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Cycles through tasks"
+msgstr "Wechselt zwischen Aufgaben"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Shows small window previews"
+msgstr "Zeigt kleine Fenster-Vorschauen"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Shows large window previews"
+msgstr "Zeigt große Fenster-Vorschauen"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Shows textual list"
+msgstr "Zeigt Textliste"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Show only tasks:"
+msgstr "Nur Aufgaben anzeigen:"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "From current screen"
+msgstr "Vom aktuellen Bildschirm"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "From current desktop"
+msgstr "Vom aktuellen Desktop"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "From current activity"
+msgstr "Vom aktuellen Aktivität"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Invert selected filters"
+msgstr "Ausgewählte Filter invertieren"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Hide matching tasks instead of showing them."
+msgstr "Anstatt sie anzuzeigen, passende Aufgaben ausblenden."
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "In any state"
+msgstr "In jedem Zustand"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Only minimized"
+msgstr "Nur minimiert"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "Only not minimized"
+msgstr "Nicht minimiert"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "New tasks appear:"
+msgstr "Neue Aufgaben anzeigen:"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "On the bottom"
+msgstr "Unten"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "To the right"
+msgstr "Rechts"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "To the left"
+msgstr "Links"
+
+# [AI]
+#: package/contents/config/ConfigBehavior.qml
+msgid "On the top"
+msgstr "Oben"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Active application indicators:"
+msgstr "Anzeiger für aktive Anwendungen:"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgctxt "State"
+msgid "Enabled"
+msgstr "Aktiviert"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Animate indicators"
+msgstr "Anzeiger animieren"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Style:"
+msgstr "Stil:"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Line"
+msgstr "Linie"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Dashes"
+msgstr "Striche"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Override indicator location"
+msgstr "Indikator-Ort überschreiben"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Bottom"
+msgstr "Unten"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Left"
+msgstr "Links"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Right"
+msgstr "Rechts"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Top"
+msgstr "Oben"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Edge offset:"
+msgstr "Randversatz:"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Thickness:"
+msgstr "Dicke:"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Segment length:"
+msgstr "Segmentlänge:"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Resize indicators on activation/hover"
+msgstr "Vergrößerungsindikatoren bei Aktivierung/Überfahren"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Length:"
+msgstr "Länge:"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Segment alignment:"
+msgstr "Segmentausrichtung:"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Align Left"
+msgstr "Links ausrichten"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Align Center"
+msgstr "Mitte ausrichten"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Align Right"
+msgstr "Rechts ausrichten"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Align Top"
+msgstr "Oben ausrichten"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Align Bottom"
+msgstr "Unten ausrichten"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Separate settings for hovered indicators"
+msgstr "Getrennte Einstellungen für überfahrene Indikatoren"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Separate settings for group indicators"
+msgstr "Getrennte Einstellungen für Gruppenindikatoren"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Highlight active window in group"
+msgstr "Aktives Fenster in der Gruppe hervorheben"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Dim inactive indicators"
+msgstr "Inaktive Indikatoren abdunkeln"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Inactive indicator opacity:"
+msgstr "Deckkraft inaktiver Indikator:"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Roundness:"
+msgstr "Abgerundung:"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Side padding:"
+msgstr "Seitenabstand:"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Max segments:"
+msgstr "Maximale Segmente:"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Show '+' on overflow"
+msgstr "'+' bei Überlauf anzeigen"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Colors:"
+msgstr "Farben:"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Use plasma accent color"
+msgstr "Plasma-Akzentfarbe verwenden"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Custom color:"
+msgstr "Benutzerdefinierte Farbe:"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Behavior:"
+msgstr "Verhalten:"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Desaturate when minimized"
+msgstr "Entsättigen, wenn minimiert"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Feedback:"
+msgstr "Rückmeldung:"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Show badges"
+msgstr "Badges anzeigen"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Highlight new notifications"
+msgstr "Neue Benachrichtigungen hervorheben"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Show badges on pinned application icons"
+msgstr "Badges für festgepinnte Anwendungssymbole anzeigen"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Show counters even when the application has no windows in the current view (e.g., minimized to tray or on another screen/desktop/activity)."
+msgstr "Zähler auch dann anzeigen, wenn die Anwendung im aktuellen Ansichtsbereich keine Fenster hat (z. B. in der Leiste minimiert oder auf einem anderen Bildschirm/Arbeitsbereich)."
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Badge background color:"
+msgstr "Badhintergrundfarbe:"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Adaptive (theme color)"
+msgstr "Angepasst (Themenfarbe)"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Fixed red (Classic)"
+msgstr "Fest rot (Klassisch)"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "System accent color"
+msgstr "Systemakzentfarbe"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Custom badge color:"
+msgstr "Benutzerdefinierte Badhintergrundfarbe:"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Mark applications playing audio"
+msgstr "Wiedergabe von Audio markieren"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Progress:"
+msgstr "Fortschritt:"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Fill (Left-Right)"
+msgstr "Auffüllen (Links-Rechts)"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Fill (Bottom-Top)"
+msgstr "Auffüllen (Unten-Oben)"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Strip (Top)"
+msgstr "Streifen (Oben)"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Strip (Bottom)"
+msgstr "Streifen (Unten)"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Strip (Left)"
+msgstr "Streifen (Links)"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Strip (Right)"
+msgstr "Streifen (Rechts)"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Progress color:"
+msgstr "Fortschrittsfarbe:"
+
+# [AI]
+#: package/contents/config/ConfigIndicators.qml
+msgid "Opacity:"
+msgstr "Deckkraft:"
+
+# [AI]
+#: package/contents/config/ConfigPinnedApps.qml
+msgid "Default Web Browser"
+msgstr "Standard-Webbrowser"
+
+# [AI]
+#: package/contents/config/ConfigPinnedApps.qml
+msgid "Default File Manager"
+msgstr "Standarddateimanager"
+
+# [AI]
+#: package/contents/config/ConfigPinnedApps.qml
+msgid "Default Mail Client"
+msgstr "Standard-E-Mail-Client"
+
+# [AI]
+#: package/contents/config/ConfigPinnedApps.qml
+msgid "Browse the Web"
+msgstr "Im Web stöbern"
+
+# [AI]
+#: package/contents/config/ConfigPinnedApps.qml
+msgid "Manage Files"
+msgstr "Dateien verwalten"
+
+# [AI]
+#: package/contents/config/ConfigPinnedApps.qml
+msgid "Send and Receive Email"
+msgstr "E-Mails senden und empfangen"
+
+# [AI]
+#: package/contents/config/ConfigPinnedApps.qml
+msgid "Default Application"
+msgstr "Standardanwendung"
+
+# [AI]
+#: package/contents/config/ConfigPinnedApps.qml
+msgid "Add applications to pin to the taskbar. Drag items to reorder them."
+msgstr "Anwendungen zum Anheften an die Taskleiste hinzufügen. Ziehen Sie Elemente, um sie neu zu ordnen."
+
+# [AI]
+#: package/contents/config/ConfigPinnedApps.qml
+msgid "Unpin app by dragging its icon off the panel"
+msgstr "App durch Ziehen des Symbols von der Leiste lösen"
+
+# [AI]
+#: package/contents/config/ConfigPinnedApps.qml
+msgid "Play removal animation"
+msgstr "Entfernungsanimation wiedergeben"
+
+# [AI]
+#: package/contents/config/ConfigPinnedApps.qml
+msgid "Add Application..."
+msgstr "Anwendung hinzufügen..."
+
+# [AI]
+#: package/contents/config/ConfigPinnedApps.qml
+msgid "Add Special Launcher..."
+msgstr "Sonder-Startverknüpfung hinzufügen..."
+
+# [AI]
+#: package/contents/config/ConfigPinnedApps.qml
+msgid "Back"
+msgstr "Zurück"
+
+# [AI]
+#: package/contents/config/ConfigPinnedApps.qml
+msgid "Add Application"
+msgstr "Anwendung hinzufügen"
+
+# [AI]
+#: package/contents/config/ConfigPinnedApps.qml
+msgid "Search applications..."
+msgstr "Anwendungen suchen..."
+
+# [AI]
+#: package/contents/config/LivePreview.qml
+msgid "Preview"
+msgstr "Vorschau"
+
+# [AI]
+#: package/contents/config/LivePreview.qml
+msgid "Panel thickness (preview):"
+msgstr "Panelstärke (Vorschau):"
+
+# [AI]
+#: package/contents/config/LivePreview.qml
+msgid "This setting only changes the appearance of this preview and does not affect your actual system panel."
+msgstr "Diese Einstellung ändert nur das Aussehen der Vorschau und beeinflusst Ihr tatsächliches Systempanel nicht."
+
+# [AI]
+#: package/contents/config/LivePreview.qml
+msgid "App name"
+msgstr "App-Name"
+
+# [AI]
+#: package/contents/config/LivePreview.qml
+msgid "Window title"
+msgstr "Fenstertitel"
+
+# [AI]
+#: package/contents/config/LivePreview.qml
+msgid "%1 — %2"
+msgstr "%1 — %2"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "Open windows"
+msgstr "Offene Fenster"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "Unavailable"
+msgstr "Nicht verfügbar"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "Search application, ID or window title…"
+msgstr "Anwendung, App-ID oder Fenstertitel suchen…"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "Refresh"
+msgstr "Aktualisieren"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "Select a window to copy its details or prepare a rule. Refresh to update window titles. Rules are saved only when you apply the settings."
+msgstr "Wählen Sie ein Fenster aus, um dessen Details zu kopieren oder eine Regel vorzubereiten. Aktualisieren Sie, um Fenstertitel zu aktualisieren. Regeln werden nur gespeichert, wenn Sie die Einstellungen anwenden."
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "App ID: %1"
+msgstr "App-ID: %1"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "Title: %1"
+msgstr "Titel: %1"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "No matching windows"
+msgstr "Keine übereinstimmenden Fenster"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "No windows reported by KDE TaskManager"
+msgstr "Von KDE TaskManager gemeldete Fenster nicht gefunden"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid ""
+"App Name: %1\n"
+"App ID: %2\n"
+"Title: %3\n"
+"Window IDs: %4"
+msgstr ""
+"App-Name: %1\n"
+"App-ID: %2\n"
+"Titel: %3\n"
+"Fenster-IDs: %4"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "Copy details"
+msgstr "Details kopieren"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "Add to rules…"
+msgstr "Zu den Regeln hinzufügen…"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "Set title behavior…"
+msgstr "Titelfunktion festlegen..."
+
+# [AI]
+#: package/contents/config/config.qml
+msgid "Appearance"
+msgstr "Erscheinungsbild"
+
+# [AI]
+#: package/contents/config/config.qml
+msgid "Behavior"
+msgstr "Verhalten"
+
+# [AI]
+#: package/contents/config/config.qml
+msgid "Filter"
+msgstr "Filter"
+
+# [AI]
+#: package/contents/config/config.qml
+msgid "Indicators"
+msgstr "Indikatoren"
+
+# [AI]
+#: package/contents/config/config.qml
+msgid "Advanced"
+msgstr "Erweitert"
+
+# [AI]
+#: package/contents/config/config.qml
+msgid "Pinned Applications"
+msgstr "Eingefügte Anwendungen"
+
+# [AI]
+#: package/contents/ui/Badge.qml
+msgctxt "Invalid"
+msgid "—"
+msgstr "—"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "Places"
+msgstr "Orte"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "Recent Pages"
+msgstr "Letzte Seiten"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "Recent Folders"
+msgstr "Letzte Ordner"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "Recent Documents"
+msgstr "Zuletzt aufgerufen"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "Trash"
+msgstr "Papierkorb"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "Forget Recent Files"
+msgstr "Letzte Dateien vergessen"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgctxt "Play previous track"
+msgid "Previous Track"
+msgstr "Vorherige Spur"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgctxt "Pause playback"
+msgid "Pause"
+msgstr "Pausieren"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgctxt "Start playback"
+msgid "Play"
+msgstr "Wiedergabe"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgctxt "Play next track"
+msgid "Next Track"
+msgstr "Nächste Spur"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgctxt "Stop playback"
+msgid "Stop"
+msgstr "Anhalten"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgctxt "Quit media player app"
+msgid "Quit"
+msgstr "Beenden"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgctxt "Open or bring to the front window of media player app"
+msgid "Restore"
+msgstr "Wiederherstellen"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "Unmute"
+msgstr "Stummschalten"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml package/contents/ui/ToolTipMediaBar.qml package/contents/ui/ToolTipMediaControls.qml
+msgid "Mute"
+msgstr "Lautstärke wiederherstellen"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "Launch"
+msgstr "Starten"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "Open New Window"
+msgstr "Neues Fenster öffnen"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "Move to &Desktop"
+msgstr "Zu &Arbeitsbereich verschieben"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "Move &To Current Desktop"
+msgstr "Zum aktuellen Arbeitsbereich verschieben"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "&All Desktops"
+msgstr "Alle Arbeitsbereiche"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "&New Desktop"
+msgstr "Neuer Arbeitsbereich"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "Show in &Activities"
+msgstr "In &Aktivitäten anzeigen"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "Add To Current Activity"
+msgstr "Zum aktuellen Aktivitätsbereich hinzufügen"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "All Activities"
+msgstr "Alle Aktivitäten"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "Move to %1"
+msgstr "Zu %1 verschieben"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "&Pin to Task Manager"
+msgstr "Im Aufgabenmanager festpinnen"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "On All Activities"
+msgstr "Auf allen Aktivitäten"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "On The Current Activity"
+msgstr "Aktivität anzeigen"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "Unpin from Task Manager"
+msgstr "Aus Task-Manager lösen"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "More"
+msgstr "Mehr"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "&Move"
+msgstr "Ver&bewegen"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "Re&size"
+msgstr "Grö&ße ändern"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "Ma&ximize"
+msgstr "Voll&bild"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "Mi&nimize"
+msgstr "M&inimieren"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "Keep &Above Others"
+msgstr "Immer &oben"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "Keep &Below Others"
+msgstr "Immer &unten"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "&Fullscreen"
+msgstr "&Vollbild"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "&Shade"
+msgstr "&Einklappen"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "&No Titlebar and Frame"
+msgstr "&Keine Titelleiste und Rahmen"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "&Hide from Screencast"
+msgstr "&Ausblenden für Screencast"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "Allow this program to be grouped"
+msgstr "Dieses Programm zur Gruppierung erlauben"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgctxt "@item:inmenu"
+msgid "&Close All"
+msgstr "&Alle schließen"
+
+# [AI]
+#: package/contents/ui/ContextMenu.qml
+msgid "&Close"
+msgstr "&Schließen"
+
+# [AI]
+#: package/contents/ui/Task.qml
+msgctxt "@info:usagetip %1 application name"
+msgid "Launch %1"
+msgstr "%1 starten"
+
+# [AI]
+#: package/contents/ui/Task.qml
+msgctxt "@info:tooltip"
+msgid "There is %1 new message."
+msgid_plural "There are %1 new messages."
+msgstr[0] "%1 neue Nachricht"
+msgstr[1] "%1 neue Nachrichten"
+
+# [AI]
+#: package/contents/ui/Task.qml
+msgctxt "@info:usagetip %1 task name"
+msgid "Show Task tooltip for %1"
+msgstr "Zuweisungs-Tooltip für %1 anzeigen"
+
+# [AI]
+#: package/contents/ui/Task.qml
+msgctxt "@info:usagetip %1 task name"
+msgid "Show windows side by side for %1"
+msgstr "Fenster nebeneinander für %1 anzeigen"
+
+# [AI]
+#: package/contents/ui/Task.qml
+msgctxt "@info:usagetip %1 task name"
+msgid "Open textual list of windows for %1"
+msgstr "Textliste der Fenster für %1 öffnen"
+
+# [AI]
+#: package/contents/ui/Task.qml
+msgid "Activate %1"
+msgstr "%1 aktivieren"
+
+# [AI]
+#: package/contents/ui/ToolTipDelegate.qml package/contents/ui/ToolTipInstance.qml
+msgctxt "Comma-separated list of desktops"
+msgid "On %1"
+msgstr "Bei %1"
+
+# [AI]
+#: package/contents/ui/ToolTipDelegate.qml package/contents/ui/ToolTipInstance.qml
+msgctxt "Comma-separated list of desktops"
+msgid "Pinned to all desktops"
+msgstr "An allen Arbeitsflächen angeheftet"
+
+# [AI]
+#: package/contents/ui/ToolTipDelegate.qml package/contents/ui/ToolTipInstance.qml
+msgctxt "Which virtual desktop a window is currently on"
+msgid "Available on all activities"
+msgstr "Verfügbar in allen Aktivitäten"
+
+# [AI]
+#: package/contents/ui/ToolTipDelegate.qml package/contents/ui/ToolTipInstance.qml
+msgctxt "Activities a window is currently on (apart from the current one)"
+msgid "Also available on %1"
+msgstr "Auch verfügbar unter %1"
+
+# [AI]
+#: package/contents/ui/ToolTipDelegate.qml package/contents/ui/ToolTipInstance.qml
+msgctxt "Which activities a window is currently on"
+msgid "Available on %1"
+msgstr "Verfügbar unter %1"
+
+# [AI]
+#~ msgid "The same rules are used in either mode. Allowlist shows only matching applications; Blocklist hides matching applications. Off ignores the rules. Matching ignores case and a trailing .desktop in App IDs; window titles are not matched."
+#~ msgstr "In beiden Modi gelten dieselben Regeln. Die Zulassungsliste zeigt nur passende Anwendungen; die Sperrliste blendet passende Anwendungen aus. Im Modus „Aus“ werden die Regeln ignoriert. Beim Abgleich wird die Groß-/Kleinschreibung ignoriert und .desktop am Ende von App-IDs entfernt; Fenstertitel werden nicht abgeglichen."
+
+# [AI]
+#~ msgid "Allowlist shows applications matching an allow rule unless a block rule matches. Blocklist hides applications matching a block rule. Block rules take precedence. Off ignores both lists. Matching ignores case and a trailing .desktop in App IDs; window titles are not matched."
+#~ msgstr ""
+#~ "Die Erlaubnisliste zeigt Anwendungen an, die einer Erlaubnisregel entsprechen, es sei denn, eine Blockierregel trifft zu. Die Blockierliste verbirgt Anwendungen, die einer Blockierregel entsprechen. Blockierregeln haben Vorrang. 'Aus' ignoriert beide Listen. Das Abgleichen ignoriert Groß-/Kleinschreibung und ein abschließendes '.desktop' in App-IDs; Fenstertitel werden nicht abgeglichen."
+
+# [AI]
+#~ msgid "Add to Allowlist…"
+#~ msgstr "Zur Whitelist hinzufügen…"
+
+# [AI]
+#~ msgid "Add to Blocklist…"
+#~ msgstr "Zur Sperrliste hinzufügen..."
+
+# [AI]
+#~ msgid "%1 · %2 · %3"
+#~ msgstr "%1 · %2 · %3"
+
+# [AI]
+#~ msgid "Select Always Icon or Always Label for an app. Leave both unchecked to use the default from Appearance. Use * in App IDs or names to match any sequence of characters."
+#~ msgstr "Wähle für eine Anwendung „Immer Symbol“ oder „Immer Beschriftung“. Wenn beide Optionen deaktiviert sind, gilt die Voreinstellung aus Darstellung. Verwende * in App-IDs oder Namen, um eine beliebige Zeichenfolge zu treffen."
+
+#~ msgid "Select Always Icon or Always Label for an app. Leave both unchecked to use the default from Appearance."
+#~ msgstr "Wähle für eine Anwendung „Immer Symbol“ oder „Immer Beschriftung“. Wenn beide Optionen deaktiviert sind, gilt die Voreinstellung aus Darstellung."
+
+#~ msgid "Search title overrides…"
+#~ msgstr "Titel-Überschreibungen bearbeiten …"
+
+#~ msgid "Inherit default"
+#~ msgstr "Standardwert vererben"
+
+#~ msgid "Override window title behavior for individual apps: always show icons only, always show titles, or follow the default in Appearance."
+#~ msgstr "Verhalten der Fenstertitel für einzelne Anwendungen überschreiben: Immer nur Symbole anzeigen, immer Titel anzeigen oder dem Standard in 'Erscheinungsbild' folgen."

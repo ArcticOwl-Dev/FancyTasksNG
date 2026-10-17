@@ -5,19 +5,165 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fancy Tasks\n"
 "Report-Msgid-Bugs-To: https://github.com/daydve/FancyTasksNG\n"
-"POT-Creation-Date: 2026-09-24 15:27+0300\n"
-"PO-Revision-Date: 2025-12-22 13:00+0300\n"
-"Last-Translator: Vitaliy Elin <daydve@smbit/.pro>\n"
+"POT-Creation-Date: 2026-10-18 11:15+0200\n"
+"PO-Revision-Date: 2026-10-18 09:17+0200\n"
+"Last-Translator: Local machine translation; review recommended\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Translation-Source: Existing entries retained; empty entries machine translated, review recommended\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "These saved rules cannot be read by this version. They will be preserved unless you clear them."
+msgstr "Эти сохранённые правила не могут быть прочитаны этой версией. Они будут сохранены, если вы их не очистите."
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Clear unreadable rules"
+msgstr "Очистить нечитаемые правила"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "No rules"
+msgstr "Правил нет"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "App ID"
+msgstr "ID приложения"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "App Name"
+msgstr "Название приложения"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Always Icon"
+msgstr "Всегда значок"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Always Label"
+msgstr "Всегда подпись"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Actions"
+msgstr "Действия"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Edit"
+msgstr "Изменить"
+
+#: package/contents/config/AppRuleEditor.qml package/contents/config/PinnedAppCard.qml
+msgid "Remove"
+msgstr "Удалить"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Match"
+msgstr "Совпадение"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Exact"
+msgstr "Точно"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Contains"
+msgstr "Содержит"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Add…"
+msgstr "Добавить…"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Always icon only"
+msgstr "Всегда только иконка"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml package/contents/config/ConfigAppearance.qml
+msgid "Always labeled"
+msgstr "Всегда с меткой"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Add rule to %1"
+msgstr "Добавить правило для %1"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Edit rule in %1"
+msgstr "Изменить правило для %1"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Match application by:"
+msgstr "Сопоставление приложения:"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "App ID (recommended)"
+msgstr "ID приложения (рекомендуется)"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Matching:"
+msgstr "Сопоставление:"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Value:"
+msgstr "Значение:"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "For example: org.kde.dolphin"
+msgstr "Например: org.kde.dolphin"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "For example: Dolphin"
+msgstr "Например: Dolphin"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "This rule already exists."
+msgstr "Это правило уже существует."
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Save"
+msgstr "Сохранить"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Cancel"
+msgstr "Отмена"
+
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
-msgid "This option is disabled when the widget is on a panel."
-msgstr "Эта опция недоступна, когда виджет находится на панели."
+msgid "Experimental floating overlay"
+msgstr "Экспериментальный плавающий оверлей"
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Prevent the Plasma panel from cutting off icons when they expand on hover."
+msgstr "Запретить обрезание иконок панели Plasma при их расширении при наведении курсора."
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "The floating mode settings below apply only to desktop widgets."
+msgstr "Настройки режима плавающего окна применяются только к виджетам рабочего стола."
 
 #: package/contents/config/ConfigAdvanced.qml
 msgid "Floating Mode Settings:"
@@ -164,6 +310,56 @@ msgstr "Классическая панель"
 #: package/contents/config/ConfigAppearance.qml
 msgid "Show icons only"
 msgstr "Только значки"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Window titles"
+msgstr "Заголовки окон"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Title display mode:"
+msgstr "Режим отображения заголовка:"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml package/contents/config/ConfigApplications.qml
+msgid "Off"
+msgstr "Выкл"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Automatic (2+ windows)"
+msgstr "Автоматически (2+ окна)"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Automatic shows an icon for one window and separate labeled buttons for two or more windows with the same app name and icon name. Pinned-only launchers stay icon-only. Maximum button width is set in Appearance."
+msgstr "Автоматический режим показывает иконку для одного окна и отдельные подписанные кнопки для двух или более окон с одинаковым именем приложения и иконки. Зафиксированные только запускатели остаются в виде иконок. Максимальная ширина кнопок задана в разделе «Внешний вид»."
+
+#: package/contents/config/ConfigAppearance.qml
+# [AI]
+msgid "Per-app title overrides are in Filter → Title overrides."
+msgstr "Переопределения заголовков для приложений находятся в разделе «Фильтр» → «Переопределения заголовков»."
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Show only the window title in labels"
+msgstr "Показывать только заголовок окна в метках"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Removes a trailing program name separated by a dash or vertical bar when it matches the application name reported by Plasma. Other titles stay unchanged."
+msgstr "Удаляет имя программы, отделенное дефисом или вертикальной чертой, если оно совпадает с именем приложения, сообщаемым Plasma. Остальные заголовки остаются без изменений."
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Animate title width changes"
+msgstr "Анимировать изменение ширины заголовка"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Width animation duration (ms):"
+msgstr "Длительность анимации ширины (мс):"
 
 #: package/contents/config/ConfigAppearance.qml
 msgid "Icon size:"
@@ -348,6 +544,73 @@ msgstr "Огромный"
 #: package/contents/config/ConfigAppearance.qml
 msgid "Automatically set to Large when in Touch mode"
 msgstr "Автоматически «Большой» в сенсорном режиме"
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "Filtering and window-title settings take effect when you apply them. Use the window inspector to choose application IDs."
+msgstr "Фильтрация и настройки заголовков окон вступают в силу после их применения. Используйте инспектор окон для выбора идентификаторов приложений."
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "Filtering"
+msgstr "Фильтрация"
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "Inspect open windows…"
+msgstr "Инспектор открытых окон…"
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "Filter mode:"
+msgstr "Режим фильтрации:"
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "Allowlist"
+msgstr "Разрешенный список"
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "Blocklist"
+msgstr "Запрещенный список"
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "The same rules are used in either mode. Allowlist shows only matching applications; Blocklist hides matching applications. Off ignores the rules. Use * at the start or end of App IDs or names to match any sequence. Matching ignores case and a trailing .desktop in App IDs; window titles are not matched."
+msgstr ""
+"В обоих режимах используются одни и те же правила. Список разрешённых показывает только совпавшие приложения, а список заблокированных скрывает совпавшие приложения. В режиме «Выкл.» правила игнорируются. Используйте * в начале или конце идентификатора или имени приложения для подстановки любой последовательности. При сравнении регистр не учитывается, а суффикс .desktop в конце идентификатора "
+"приложения удаляется; заголовки окон не сравниваются."
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "Application rules"
+msgstr "Правила приложений"
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "An empty allowlist matches no applications. Only exempt pinned launchers will remain."
+msgstr "Пустой разрешенный список не совпадает ни с одним приложением. Останутся только закрепленные ярлыки, которые не заблокированы."
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "Filter pinned launchers too"
+msgstr "Фильтровать закрепленные ярлыки"
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "When unchecked, only pinned launchers without running windows are exempt. A running application is filtered even when it is pinned."
+msgstr "Если снято, освобождаются только закрепленные ярлыки без запущенных окон. Запущенное приложение будет скрыто даже если оно закреплено."
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "Title overrides"
+msgstr "Переопределение заголовков"
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "Select Always Icon or Always Label for an app. Leave both unchecked to use the default from Appearance. Use * only at the start or end of App IDs or names to match any sequence of characters."
+msgstr "Выберите для приложения «Всегда значок» или «Всегда подпись». Если оба флажка сняты, используется значение по умолчанию в разделе «Внешний вид». Используйте * только в начале или конце идентификатора или имени приложения для подстановки любой последовательности символов."
 
 #: package/contents/config/ConfigBehavior.qml
 msgid "Grouping of tasks:"
@@ -856,26 +1119,6 @@ msgstr "Добавить приложение"
 msgid "Search applications..."
 msgstr "Поиск приложений..."
 
-#: package/contents/config/config.qml
-msgid "Appearance"
-msgstr "Внешний вид"
-
-#: package/contents/config/config.qml
-msgid "Behavior"
-msgstr "Поведение"
-
-#: package/contents/config/config.qml
-msgid "Indicators"
-msgstr "Индикаторы"
-
-#: package/contents/config/config.qml
-msgid "Advanced"
-msgstr "Прочее"
-
-#: package/contents/config/config.qml
-msgid "Pinned Applications"
-msgstr "Закрепленные приложения"
-
 #: package/contents/config/LivePreview.qml
 msgid "Preview"
 msgstr "Предпросмотр"
@@ -900,9 +1143,103 @@ msgstr "Заголовок окна"
 msgid "%1 — %2"
 msgstr "%1 — %2"
 
-#: package/contents/config/PinnedAppCard.qml
-msgid "Remove"
-msgstr "Удалить"
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "Open windows"
+msgstr "Открыть окна"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "Unavailable"
+msgstr "Недоступно"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "Search application, ID or window title…"
+msgstr "Поиск приложения, ID или заголовка окна…"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "Refresh"
+msgstr "Обновить"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "Select a window to copy its details or prepare a rule. Refresh to update window titles. Rules are saved only when you apply the settings."
+msgstr "Выберите окно для копирования его деталей или подготовки правила. Обновите список, чтобы обновить заголовки окон. Правила сохраняются только после применения настроек."
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "App ID: %1"
+msgstr "ID приложения: %1"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "Title: %1"
+msgstr "Заголовок: %1"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "No matching windows"
+msgstr "Совпадающие окна не найдены"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "No windows reported by KDE TaskManager"
+msgstr "О KDE TaskManager не сообщено о наличии окон"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid ""
+"App Name: %1\n"
+"App ID: %2\n"
+"Title: %3\n"
+"Window IDs: %4"
+msgstr ""
+"Имя приложения: %1\n"
+"ID приложения: %2\n"
+"Заголовок: %3\n"
+"ID окна: %4"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "Copy details"
+msgstr "Копировать детали"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "Add to rules…"
+msgstr "Добавить в правила…"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "Set title behavior…"
+msgstr "Установить поведение заголовка…"
+
+#: package/contents/config/config.qml
+msgid "Appearance"
+msgstr "Внешний вид"
+
+#: package/contents/config/config.qml
+msgid "Behavior"
+msgstr "Поведение"
+
+# [AI]
+#: package/contents/config/config.qml
+msgid "Filter"
+msgstr "Фильтр"
+
+#: package/contents/config/config.qml
+msgid "Indicators"
+msgstr "Индикаторы"
+
+#: package/contents/config/config.qml
+msgid "Advanced"
+msgstr "Прочее"
+
+#: package/contents/config/config.qml
+msgid "Pinned Applications"
+msgstr "Закрепленные приложения"
 
 #: package/contents/ui/Badge.qml
 msgctxt "Invalid"
@@ -1146,6 +1483,45 @@ msgstr "Также доступно в %1"
 msgctxt "Which activities a window is currently on"
 msgid "Available on %1"
 msgstr "Доступно в %1"
+
+# [AI]
+#~ msgid "The same rules are used in either mode. Allowlist shows only matching applications; Blocklist hides matching applications. Off ignores the rules. Matching ignores case and a trailing .desktop in App IDs; window titles are not matched."
+#~ msgstr "В обоих режимах используются одни и те же правила. Список разрешённых показывает только совпавшие приложения, а список заблокированных скрывает совпавшие приложения. В режиме «Выкл.» правила игнорируются. При сравнении регистр не учитывается, а суффикс .desktop в конце идентификатора приложения удаляется; заголовки окон не сравниваются."
+
+# [AI]
+#~ msgid "Allowlist shows applications matching an allow rule unless a block rule matches. Blocklist hides applications matching a block rule. Block rules take precedence. Off ignores both lists. Matching ignores case and a trailing .desktop in App IDs; window titles are not matched."
+#~ msgstr "Приложения, совпадающие с правилом разрешенного списка, отображаются, если не совпадают ни одно из правил запрещенного списка. Правила запрещенного списка имеют приоритет. Откл. игнорирует оба списка. Совпадение игнорирует регистр и суффикс .desktop в идентификаторах приложений; заголовки окон не проверяются."
+
+# [AI]
+#~ msgid "Add to Allowlist…"
+#~ msgstr "Добавить в список разрешенного…"
+
+# [AI]
+#~ msgid "Add to Blocklist…"
+#~ msgstr "Добавить в список заблокированного…"
+
+# [AI]
+#~ msgid "%1 · %2 · %3"
+#~ msgstr "%1 · %2 · %3"
+
+# [AI]
+#~ msgid "Select Always Icon or Always Label for an app. Leave both unchecked to use the default from Appearance. Use * in App IDs or names to match any sequence of characters."
+#~ msgstr "Выберите для приложения «Всегда значок» или «Всегда подпись». Если оба флажка сняты, используется значение по умолчанию в разделе «Внешний вид». Используйте * в идентификаторе или имени приложения для подстановки любой последовательности символов."
+
+#~ msgid "Select Always Icon or Always Label for an app. Leave both unchecked to use the default from Appearance."
+#~ msgstr "Выберите для приложения «Всегда значок» или «Всегда подпись». Если оба флажка сняты, используется значение по умолчанию в разделе «Внешний вид»."
+
+#~ msgid "Search title overrides…"
+#~ msgstr "Переопределение заголовка поиска…"
+
+#~ msgid "Inherit default"
+#~ msgstr "Наследовать по умолчанию"
+
+#~ msgid "Override window title behavior for individual apps: always show icons only, always show titles, or follow the default in Appearance."
+#~ msgstr "Переопределить поведение заголовка окна для отдельных приложений: всегда показывать только иконки, всегда показывать заголовки или следовать настройкам по умолчанию в разделе «Внешний вид»."
+
+#~ msgid "This option is disabled when the widget is on a panel."
+#~ msgstr "Эта опция недоступна, когда виджет находится на панели."
 
 #~ msgid "Panel Settings:"
 #~ msgstr "Настройки панели:"

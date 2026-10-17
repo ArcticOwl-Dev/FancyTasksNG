@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fancytasksng\n"
 "Report-Msgid-Bugs-To: https://github.com/daydve/FancyTasksNG\n"
-"POT-Creation-Date: 2026-09-24 15:27+0300\n"
+"POT-Creation-Date: 2026-10-18 11:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,8 +18,124 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
+#: package/contents/config/AppRuleEditor.qml
+msgid "These saved rules cannot be read by this version. They will be preserved unless you clear them."
+msgstr ""
+
+#: package/contents/config/AppRuleEditor.qml
+msgid "Clear unreadable rules"
+msgstr ""
+
+#: package/contents/config/AppRuleEditor.qml
+msgid "No rules"
+msgstr ""
+
+#: package/contents/config/AppRuleEditor.qml
+msgid "App ID"
+msgstr ""
+
+#: package/contents/config/AppRuleEditor.qml
+msgid "App Name"
+msgstr ""
+
+#: package/contents/config/AppRuleEditor.qml
+msgid "Always Icon"
+msgstr ""
+
+#: package/contents/config/AppRuleEditor.qml
+msgid "Always Label"
+msgstr ""
+
+#: package/contents/config/AppRuleEditor.qml
+msgid "Actions"
+msgstr ""
+
+#: package/contents/config/AppRuleEditor.qml
+msgid "Edit"
+msgstr ""
+
+#: package/contents/config/AppRuleEditor.qml package/contents/config/PinnedAppCard.qml
+msgid "Remove"
+msgstr ""
+
+#: package/contents/config/AppRuleEditor.qml
+msgid "Match"
+msgstr ""
+
+#: package/contents/config/AppRuleEditor.qml
+msgid "Exact"
+msgstr ""
+
+#: package/contents/config/AppRuleEditor.qml
+msgid "Contains"
+msgstr ""
+
+#: package/contents/config/AppRuleEditor.qml
+msgid "Add…"
+msgstr ""
+
+#: package/contents/config/AppRuleEditor.qml
+msgid "Always icon only"
+msgstr ""
+
+#: package/contents/config/AppRuleEditor.qml package/contents/config/ConfigAppearance.qml
+msgid "Always labeled"
+msgstr ""
+
+#: package/contents/config/AppRuleEditor.qml
+msgid "Add rule to %1"
+msgstr ""
+
+#: package/contents/config/AppRuleEditor.qml
+msgid "Edit rule in %1"
+msgstr ""
+
+#: package/contents/config/AppRuleEditor.qml
+msgid "Match application by:"
+msgstr ""
+
+#: package/contents/config/AppRuleEditor.qml
+msgid "App ID (recommended)"
+msgstr ""
+
+#: package/contents/config/AppRuleEditor.qml
+msgid "Matching:"
+msgstr ""
+
+#: package/contents/config/AppRuleEditor.qml
+msgid "Value:"
+msgstr ""
+
+#: package/contents/config/AppRuleEditor.qml
+msgid "For example: org.kde.dolphin"
+msgstr ""
+
+#: package/contents/config/AppRuleEditor.qml
+msgid "For example: Dolphin"
+msgstr ""
+
+#: package/contents/config/AppRuleEditor.qml
+msgid "This rule already exists."
+msgstr ""
+
+#: package/contents/config/AppRuleEditor.qml
+msgid "Save"
+msgstr ""
+
+#: package/contents/config/AppRuleEditor.qml
+msgid "Cancel"
+msgstr ""
+
 #: package/contents/config/ConfigAdvanced.qml
-msgid "This option is disabled when the widget is on a panel."
+msgid "Experimental floating overlay"
+msgstr ""
+
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Prevent the Plasma panel from cutting off icons when they expand on hover."
+msgstr ""
+
+#: package/contents/config/ConfigAdvanced.qml
+msgid "The floating mode settings below apply only to desktop widgets."
 msgstr ""
 
 #: package/contents/config/ConfigAdvanced.qml
@@ -164,6 +280,48 @@ msgstr ""
 
 #: package/contents/config/ConfigAppearance.qml
 msgid "Show icons only"
+msgstr ""
+
+#: package/contents/config/ConfigAppearance.qml
+msgid "Window titles"
+msgstr ""
+
+#: package/contents/config/ConfigAppearance.qml
+msgid "Title display mode:"
+msgstr ""
+
+#: package/contents/config/ConfigAppearance.qml package/contents/config/ConfigApplications.qml
+msgid "Off"
+msgstr ""
+
+#: package/contents/config/ConfigAppearance.qml
+msgid "Automatic (2+ windows)"
+msgstr ""
+
+#: package/contents/config/ConfigAppearance.qml
+msgid ""
+"Automatic shows an icon for one window and separate labeled buttons for two or more windows with the same app name and icon name. Pinned-only launchers stay icon-only. Maximum button width is set "
+"in Appearance."
+msgstr ""
+
+#: package/contents/config/ConfigAppearance.qml
+msgid "Per-app title overrides are in Filter → Title overrides."
+msgstr ""
+
+#: package/contents/config/ConfigAppearance.qml
+msgid "Show only the window title in labels"
+msgstr ""
+
+#: package/contents/config/ConfigAppearance.qml
+msgid "Removes a trailing program name separated by a dash or vertical bar when it matches the application name reported by Plasma. Other titles stay unchanged."
+msgstr ""
+
+#: package/contents/config/ConfigAppearance.qml
+msgid "Animate title width changes"
+msgstr ""
+
+#: package/contents/config/ConfigAppearance.qml
+msgid "Width animation duration (ms):"
 msgstr ""
 
 #: package/contents/config/ConfigAppearance.qml
@@ -348,6 +506,60 @@ msgstr ""
 
 #: package/contents/config/ConfigAppearance.qml
 msgid "Automatically set to Large when in Touch mode"
+msgstr ""
+
+#: package/contents/config/ConfigApplications.qml
+msgid "Filtering and window-title settings take effect when you apply them. Use the window inspector to choose application IDs."
+msgstr ""
+
+#: package/contents/config/ConfigApplications.qml
+msgid "Filtering"
+msgstr ""
+
+#: package/contents/config/ConfigApplications.qml
+msgid "Inspect open windows…"
+msgstr ""
+
+#: package/contents/config/ConfigApplications.qml
+msgid "Filter mode:"
+msgstr ""
+
+#: package/contents/config/ConfigApplications.qml
+msgid "Allowlist"
+msgstr ""
+
+#: package/contents/config/ConfigApplications.qml
+msgid "Blocklist"
+msgstr ""
+
+#: package/contents/config/ConfigApplications.qml
+msgid ""
+"The same rules are used in either mode. Allowlist shows only matching applications; Blocklist hides matching applications. Off ignores the rules. Use * at the start or end of App IDs or names to "
+"match any sequence. Matching ignores case and a trailing .desktop in App IDs; window titles are not matched."
+msgstr ""
+
+#: package/contents/config/ConfigApplications.qml
+msgid "Application rules"
+msgstr ""
+
+#: package/contents/config/ConfigApplications.qml
+msgid "An empty allowlist matches no applications. Only exempt pinned launchers will remain."
+msgstr ""
+
+#: package/contents/config/ConfigApplications.qml
+msgid "Filter pinned launchers too"
+msgstr ""
+
+#: package/contents/config/ConfigApplications.qml
+msgid "When unchecked, only pinned launchers without running windows are exempt. A running application is filtered even when it is pinned."
+msgstr ""
+
+#: package/contents/config/ConfigApplications.qml
+msgid "Title overrides"
+msgstr ""
+
+#: package/contents/config/ConfigApplications.qml
+msgid "Select Always Icon or Always Label for an app. Leave both unchecked to use the default from Appearance. Use * only at the start or end of App IDs or names to match any sequence of characters."
 msgstr ""
 
 #: package/contents/config/ConfigBehavior.qml
@@ -856,26 +1068,6 @@ msgstr ""
 msgid "Search applications..."
 msgstr ""
 
-#: package/contents/config/config.qml
-msgid "Appearance"
-msgstr ""
-
-#: package/contents/config/config.qml
-msgid "Behavior"
-msgstr ""
-
-#: package/contents/config/config.qml
-msgid "Indicators"
-msgstr ""
-
-#: package/contents/config/config.qml
-msgid "Advanced"
-msgstr ""
-
-#: package/contents/config/config.qml
-msgid "Pinned Applications"
-msgstr ""
-
 #: package/contents/config/LivePreview.qml
 msgid "Preview"
 msgstr ""
@@ -900,8 +1092,84 @@ msgstr ""
 msgid "%1 — %2"
 msgstr ""
 
-#: package/contents/config/PinnedAppCard.qml
-msgid "Remove"
+#: package/contents/config/WindowInspector.qml
+msgid "Open windows"
+msgstr ""
+
+#: package/contents/config/WindowInspector.qml
+msgid "Unavailable"
+msgstr ""
+
+#: package/contents/config/WindowInspector.qml
+msgid "Search application, ID or window title…"
+msgstr ""
+
+#: package/contents/config/WindowInspector.qml
+msgid "Refresh"
+msgstr ""
+
+#: package/contents/config/WindowInspector.qml
+msgid "Select a window to copy its details or prepare a rule. Refresh to update window titles. Rules are saved only when you apply the settings."
+msgstr ""
+
+#: package/contents/config/WindowInspector.qml
+msgid "App ID: %1"
+msgstr ""
+
+#: package/contents/config/WindowInspector.qml
+msgid "Title: %1"
+msgstr ""
+
+#: package/contents/config/WindowInspector.qml
+msgid "No matching windows"
+msgstr ""
+
+#: package/contents/config/WindowInspector.qml
+msgid "No windows reported by KDE TaskManager"
+msgstr ""
+
+#: package/contents/config/WindowInspector.qml
+msgid ""
+"App Name: %1\n"
+"App ID: %2\n"
+"Title: %3\n"
+"Window IDs: %4"
+msgstr ""
+
+#: package/contents/config/WindowInspector.qml
+msgid "Copy details"
+msgstr ""
+
+#: package/contents/config/WindowInspector.qml
+msgid "Add to rules…"
+msgstr ""
+
+#: package/contents/config/WindowInspector.qml
+msgid "Set title behavior…"
+msgstr ""
+
+#: package/contents/config/config.qml
+msgid "Appearance"
+msgstr ""
+
+#: package/contents/config/config.qml
+msgid "Behavior"
+msgstr ""
+
+#: package/contents/config/config.qml
+msgid "Filter"
+msgstr ""
+
+#: package/contents/config/config.qml
+msgid "Indicators"
+msgstr ""
+
+#: package/contents/config/config.qml
+msgid "Advanced"
+msgstr ""
+
+#: package/contents/config/config.qml
+msgid "Pinned Applications"
 msgstr ""
 
 #: package/contents/ui/Badge.qml

@@ -63,8 +63,9 @@ MouseArea {
         if (!tasksModel || rootTask.childCount === 0) return modelIndex;
 
         // Iterate through children
-        // We assume rootTask.index is the row of the group parent
-        const parentRow = rootTask.index;
+        const parentIndex = rootTask.modelIndex();
+        if (!parentIndex || !parentIndex.valid) return modelIndex;
+        const parentRow = parentIndex.row;
         
         for (let i = 0; i < rootTask.childCount; ++i) {
             // Create index for child i

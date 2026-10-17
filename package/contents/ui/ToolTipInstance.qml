@@ -726,7 +726,9 @@ Item {
         if (winId === undefined) return submodelIndex;
 
         // Iterate through children of the parent task
-        const parentRow = root.parentTask.index;
+        const parentIndex = root.parentTask.modelIndex();
+        if (!parentIndex || !parentIndex.valid) return submodelIndex;
+        const parentRow = parentIndex.row;
         const childCount = root.parentTask.childCount;
         
         for (let i = 0; i < childCount; ++i) {

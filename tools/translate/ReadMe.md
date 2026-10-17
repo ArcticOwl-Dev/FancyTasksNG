@@ -6,8 +6,8 @@ Translations are generated within the repository and automatically bundled into 
 
 Everything is managed via `make` from the **root directory of the project**:
 
-* `make translate` - Extracts new translation strings from QML/C++ code into `template.pot`, merges them into existing `.po` files, and then compiles the `.po` files into binary `.mo` format.
-* `make build` - Automatically triggers compiling translations before creating the plasmoid file.
+- `make translate` - Extracts new translation strings from QML/C++ code into `template.pot`, merges them into existing `.po` files, and then compiles the `.po` files into binary `.mo` format.
+- `make build` - Automatically triggers compiling translations before creating the plasmoid file.
 
 ## Adding a New Translation
 
@@ -19,15 +19,18 @@ Everything is managed via `make` from the **root directory of the project**:
 
 ## Links
 
-* [KDE Widget Translations](https://zren.github.io/kde/docs/widget/#translations-i18n)
-* [KDE Localization Tutorial](https://techbase.kde.org/Development/Tutorials/Localization/i18n_Build_Systems)
-* [KI18n Framework API](https://api.kde.org/frameworks/ki18n/html/prg_guide.html)
+- [KDE Widget Translations](https://zren.github.io/kde/docs/widget/#translations-i18n)
+- [KDE Localization Tutorial](https://techbase.kde.org/Development/Tutorials/Localization/i18n_Build_Systems)
+- [KI18n Framework API](https://api.kde.org/frameworks/ki18n/html/prg_guide.html)
 
 ## Status
-| Locale   | Lines   | % Done |
-|----------|---------|--------|
-| Template | 276     |        |
-| nl       | 60/276  | 21%    |
-| pt_BR    | 63/276  | 22%    |
-| ru       | 276/276 | 100%   |
-| zh_CN    | 60/276  | 21%    |
+| Locale   | Lines   | % Done | Machine translated ([AI] tags) |
+|----------|---------|--------|--------------------------------|
+| Template | 341     |        |                                |
+| de       | 341/341 | 100%   | 341                            |
+| nl       | 341/341 | 100%   | 281                            |
+| pt_BR    | 341/341 | 100%   | 278                            |
+| ru       | 341/341 | 100%   | 66                             |
+| zh_CN    | 341/341 | 100%   | 281                            |
+
+Entries tagged `# [AI]` in the `.po` files were machine-translated and should be reviewed by native speakers before release.

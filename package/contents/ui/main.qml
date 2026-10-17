@@ -39,6 +39,8 @@ import org.kde.kitemmodels as KItemModels
 import "code/layoutmetrics.js" as LayoutMetrics
 import "code/tools.js" as TaskTools
 import "code/FloatingLogic.js" as FloatingLogic
+import "code/TaskIndexes.js" as TaskIndexes
+import "code/AppRules.js" as AppRules
 
 PlasmoidItem {
     id: tasks
@@ -122,6 +124,11 @@ PlasmoidItem {
         function onMinimizedFilterChanged() {
             tasks.filteredTasksModel.invalidateFilter();
         }
+
+        function onApplicationFilterModeChanged() { proxyFilterTimer.restart(); }
+        function onApplicationAllowlistChanged() { proxyFilterTimer.restart(); }
+        function onApplicationBlocklistChanged() { proxyFilterTimer.restart(); }
+        function onFilterPinnedLaunchersChanged() { proxyFilterTimer.restart(); }
 
         function onLaunchersChanged(): void {
             if (tasks.tasksModel && !tasks._isInternalLauncherUpdate) {
@@ -367,6 +374,12 @@ PlasmoidItem {
         }
     }
 
+    PositionSorter {
+        id: positionSorter
+        model: internalTasksModel
+        enabled: tasks.config.sortingStrategy === 5
+    }
+
     KItemModels.KSortFilterProxyModel {
         id: internalFilteredTasksModel
         sourceModel: internalTasksModel
@@ -423,11 +436,87 @@ PlasmoidItem {
                 }
             }
 
-            return true;
+            return tasks.acceptsApplicationIndex(idx, source_parent);
         }
     }
 
-    readonly property var effectiveTasksModel: (tasks.config.minimizedFilter === 0 && !tasks.config.reverseFilters) ? internalTasksModel : internalFilteredTasksModel
+    readonly property bool applicationFiltering: tasks.config.applicationFilterMode === 1 || tasks.config.applicationFilterMode === 2
+    readonly property var applicationRules: AppRules.parseRules(tasks.config.applicationRules ||
+        (tasks.config.applicationFilterMode === 1 ? tasks.config.applicationAllowlist : tasks.config.applicationBlocklist)).rules
+    readonly property bool usesFilteredTasksModel: applicationFiltering || tasks.config.minimizedFilter !== 0 || tasks.config.reverseFilters
+    readonly property var effectiveTasksModel: usesFilteredTasksModel ? internalFilteredTasksModel : internalTasksModel
+
+    function acceptsApplicationIndex(index, parentIndex) {
+        if (!applicationFiltering)
+            return true;
+        const model = internalTasksModel;
+        const root = parentIndex && parentIndex.valid ? parentIndex : index;
+        const identities = [];
+        function addIdentity(item) {
+            identities.push({
+                appId: model.data(item, TaskManager.AbstractTasksModel.AppId),
+                appName: model.data(item, TaskManager.AbstractTasksModel.AppName)
+            });
+        }
+        addIdentity(root);
+        const children = model.rowCount(root);
+        for (let child = 0; child < children; ++child)
+            addIdentity(model.index(child, 0, root));
+        const ids = model.data(root, TaskManager.AbstractTasksModel.WinIdList);
+        const pureLauncher = model.data(root, TaskManager.AbstractTasksModel.IsLauncher) === true
+            && model.data(root, TaskManager.AbstractTasksModel.IsWindow) !== true
+            && model.data(root, TaskManager.AbstractTasksModel.IsStartup) !== true
+            && children === 0 && (!ids || ids.length === 0);
+        return AppRules.acceptsApplication(tasks.config.applicationFilterMode, identities,
+            tasks.config.applicationFilterMode === 1 ? applicationRules : [],
+            tasks.config.applicationFilterMode === 2 ? applicationRules : [],
+            pureLauncher, tasks.config.filterPinnedLaunchers);
+    }
+
+    // The C++ proxy cannot track QML dependencies read inside a JS callback.
+    // Re-evaluate on config, relevant metadata and current-context changes.
+    Timer {
+        id: proxyFilterTimer
+        interval: 0
+        onTriggered: internalFilteredTasksModel.invalidateFilter()
+    }
+
+    Connections {
+        target: internalTasksModel
+        function onDataChanged(topLeft, bottomRight, roles) {
+            if (!tasks.usesFilteredTasksModel)
+                return;
+            const relevant = [TaskManager.AbstractTasksModel.AppId, TaskManager.AbstractTasksModel.AppName,
+                TaskManager.AbstractTasksModel.IsLauncher, TaskManager.AbstractTasksModel.IsWindow,
+                TaskManager.AbstractTasksModel.IsStartup, TaskManager.AbstractTasksModel.WinIdList,
+                TaskManager.AbstractTasksModel.IsGroupParent, TaskManager.AbstractTasksModel.ChildCount,
+                TaskManager.AbstractTasksModel.IsMinimized, TaskManager.AbstractTasksModel.ScreenGeometry,
+                TaskManager.AbstractTasksModel.VirtualDesktops, TaskManager.AbstractTasksModel.IsOnAllVirtualDesktops,
+                TaskManager.AbstractTasksModel.Activities, TaskManager.AbstractTasksModel.IsDemandingAttention];
+            if (!roles.length || relevant.some(role => roles.includes(role)))
+                proxyFilterTimer.restart();
+        }
+        function onRowsInserted() { if (tasks.usesFilteredTasksModel) proxyFilterTimer.restart(); }
+        function onRowsRemoved() { if (tasks.usesFilteredTasksModel) proxyFilterTimer.restart(); }
+        function onModelAboutToBeReset() {
+            if (tasks.currentHoveredTask)
+                tasks.hideTooltipImmediately();
+        }
+        function onModelReset() { if (tasks.usesFilteredTasksModel) proxyFilterTimer.restart(); }
+        function onVirtualDesktopChanged() { if (tasks.usesFilteredTasksModel) proxyFilterTimer.restart(); }
+        function onScreenGeometryChanged() { if (tasks.usesFilteredTasksModel) proxyFilterTimer.restart(); }
+        function onActivityChanged() { if (tasks.usesFilteredTasksModel) proxyFilterTimer.restart(); }
+    }
+
+    function modelIndexForRow(row) {
+        return TaskIndexes.sourceIndex(internalTasksModel, effectiveTasksModel, row);
+    }
+
+    function moveTask(fromRow, toRow) {
+        if (tasks.config.sortingStrategy !== 1)
+            return false;
+        return TaskIndexes.move(internalTasksModel, effectiveTasksModel, fromRow, toRow);
+    }
 
     Timer {
         id: modelUpdateTimer
@@ -460,6 +549,8 @@ PlasmoidItem {
 
         internalFilteredTasksModel.invalidateFilter();
 
+        positionSorter.schedule();
+
         tasks._isApplyingConfig = false;
     }
 
@@ -476,7 +567,8 @@ PlasmoidItem {
         case 4:
             return TaskManager.TasksModel.SortActivity;
         case 5:
-            return TaskManager.TasksModel.SortWindowPositionHorizontal;
+            // PositionSorter maintains x/arrival order without activation ties.
+            return TaskManager.TasksModel.SortManual;
         default:
             return TaskManager.TasksModel.SortDisabled;
         }
@@ -728,7 +820,6 @@ PlasmoidItem {
             target: taskList
             tasks: tasks
             tasksModel: tasks.tasksModel
-            proxyModel: internalFilteredTasksModel
             onUrlsDropped: urls => {
                 const isApp = url => {
                     let s = url.toString();
@@ -967,7 +1058,7 @@ PlasmoidItem {
                             const idx = parentTask.modelIndex();
                             if (idx !== undefined && idx !== null) return idx;
                         }
-                        return internalTasksModel.makeModelIndex(parentTask ? parentTask.index : 0, -1);
+                        return internalTasksModel.index(-1, 0);
                     }
                     appName: taskModel ? taskModel.AppName : ""
                     pidParent: taskModel ? taskModel.AppPid : 0

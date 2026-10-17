@@ -3,151 +3,330 @@
 # This file is distributed under the same license as the fancytasks package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: fancytasks\n"
 "Report-Msgid-Bugs-To: https://github.com/daydve/FancyTasksNG\n"
-"POT-Creation-Date: 2026-09-24 15:27+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2026-10-18 11:15+0200\n"
+"PO-Revision-Date: 2026-10-18 09:17+0200\n"
+"Last-Translator: Local machine translation; review recommended\n"
+"Language-Team: Simplified Chinese\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Translation-Source: Existing entries retained; empty entries machine translated, review recommended\n"
 
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "These saved rules cannot be read by this version. They will be preserved unless you clear them."
+msgstr "此版本无法读取这些已保存的规则。除非您清除它们，否则它们将被保留。"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Clear unreadable rules"
+msgstr "清除不可读规则"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "No rules"
+msgstr "无规则"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "App ID"
+msgstr "应用 ID"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "App Name"
+msgstr "应用名称"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Always Icon"
+msgstr "始终显示图标"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Always Label"
+msgstr "始终显示标签"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Actions"
+msgstr "操作"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Edit"
+msgstr "编辑"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml package/contents/config/PinnedAppCard.qml
+msgid "Remove"
+msgstr "移除"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Match"
+msgstr "匹配方式"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Exact"
+msgstr "精确匹配"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Contains"
+msgstr "包含"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Add…"
+msgstr "添加..."
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Always icon only"
+msgstr "始终仅显示图标"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml package/contents/config/ConfigAppearance.qml
+msgid "Always labeled"
+msgstr "始终显示标签"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Add rule to %1"
+msgstr "向 %1 添加规则"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Edit rule in %1"
+msgstr "在 %1 中编辑规则"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Match application by:"
+msgstr "按应用程序匹配:"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "App ID (recommended)"
+msgstr "应用 ID（推荐）"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Matching:"
+msgstr "匹配条件:"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Value:"
+msgstr "值:"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "For example: org.kde.dolphin"
+msgstr "例如：org.kde.dolphin"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "For example: Dolphin"
+msgstr "例如：Dolphin"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "This rule already exists."
+msgstr "此规则已存在。"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Save"
+msgstr "保存"
+
+# [AI]
+#: package/contents/config/AppRuleEditor.qml
+msgid "Cancel"
+msgstr "取消"
+
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
-msgid "This option is disabled when the widget is on a panel."
-msgstr ""
+msgid "Experimental floating overlay"
+msgstr "实验性浮动覆盖层"
 
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "Prevent the Plasma panel from cutting off icons when they expand on hover."
+msgstr "防止 Plasma 面板在悬停时图标扩展时被截断。"
+
+# [AI]
+#: package/contents/config/ConfigAdvanced.qml
+msgid "The floating mode settings below apply only to desktop widgets."
+msgstr "下方的浮动模式设置仅适用于桌面小部件。"
+
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "Floating Mode Settings:"
-msgstr ""
+msgstr "浮动模式设置:"
 
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "Override system direction"
-msgstr ""
+msgstr "覆盖系统方向"
 
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "As on top panel"
-msgstr ""
+msgstr "顶部面板样式"
 
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "As on bottom panel"
-msgstr ""
+msgstr "底部面板样式"
 
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "As on left panel"
-msgstr ""
+msgstr "左侧面板样式"
 
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "As on right panel"
-msgstr ""
+msgstr "右侧面板样式"
 
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "When a window wants attention:"
-msgstr ""
+msgstr "当窗口需要关注时："
 
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "Unhide panel when a window wants attention"
-msgstr ""
+msgstr "当窗口需要关注时取消隐藏面板"
 
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "Animate task icon when a window wants attention"
-msgstr ""
+msgstr "当窗口需要关注时动画化任务图标"
 
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "Colorize the task button when a window wants attention"
-msgstr ""
+msgstr "当窗口需要关注时使任务按钮着色"
 
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "Layout settings:"
-msgstr ""
+msgstr "布局设置："
 
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "These options are only available when the widget is on a panel."
-msgstr ""
+msgstr "这些选项仅在控件位于面板上时可用。"
 
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "These options are only available in icon-only mode."
-msgstr ""
+msgstr "这些选项仅在图标模式下可用。"
 
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "Fill free space on panel"
-msgstr ""
+msgstr "填充面板上的空闲空间"
 
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "Alignment:"
-msgstr ""
+msgstr "对齐方式："
 
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "Edge"
-msgstr ""
+msgstr "边缘"
 
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "Center"
-msgstr ""
+msgstr "居中"
 
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "Context menu:"
-msgstr ""
+msgstr "上下文菜单："
 
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "Hide 'Move to Desktop' if only one virtual desktop is used"
-msgstr ""
+msgstr "如果仅使用一个虚拟桌面，则隐藏“移至桌面”"
 
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "Show browsing history in the context menu of web browsers (Experimental)"
-msgstr ""
+msgstr "在网页浏览器的上下文菜单中显示浏览历史（实验性功能）"
 
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "Number of browser history items:"
-msgstr ""
+msgstr "浏览器历史记录项目数:"
 
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "Configuration:"
-msgstr ""
+msgstr "配置:"
 
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "Export Configuration…"
-msgstr ""
+msgstr "导出配置..."
 
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "Import Configuration…"
-msgstr ""
+msgstr "导入配置..."
 
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "Export FancyTasksNG Configuration"
-msgstr ""
+msgstr "导出 FancyTasksNG 配置"
 
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "JSON files (*.json)"
-msgstr ""
+msgstr "JSON 文件 (*.json)"
 
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "Import FancyTasksNG Configuration"
-msgstr ""
+msgstr "导入 FancyTasksNG 配置"
 
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "Configuration exported successfully."
-msgstr ""
+msgstr "配置导出成功。"
 
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "Failed to export configuration."
-msgstr ""
+msgstr "配置导出失败。"
 
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "Failed to read the configuration file."
-msgstr ""
+msgstr "无法读取配置文件。"
 
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "This file is not a valid FancyTasksNG configuration."
-msgstr ""
+msgstr "此文件不是有效的 FancyTasksNG 配置文件。"
 
+# [AI]
 #: package/contents/config/ConfigAdvanced.qml
 msgid "Configuration imported. Click Apply to save the changes."
-msgstr ""
+msgstr "已导入配置。点击“应用”以保存更改。"
 
 #: package/contents/config/ConfigAppearance.qml
 msgid "Use plasma borders"
@@ -157,165 +336,252 @@ msgstr "使用plasma边框"
 msgid "Display:"
 msgstr "显示："
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Classic panel"
-msgstr ""
+msgstr "经典面板"
 
 #: package/contents/config/ConfigAppearance.qml
 msgid "Show icons only"
 msgstr "只显示图标"
 
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Window titles"
+msgstr "窗口标题"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Title display mode:"
+msgstr "标题显示模式："
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml package/contents/config/ConfigApplications.qml
+msgid "Off"
+msgstr "关闭"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Automatic (2+ windows)"
+msgstr "自动（2 个及以上窗口）"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Automatic shows an icon for one window and separate labeled buttons for two or more windows with the same app name and icon name. Pinned-only launchers stay icon-only. Maximum button width is set in Appearance."
+msgstr "自动模式下，一个窗口显示图标，两个或更多具有相同应用程序名称和图标名称的窗口则分别显示带标签的按钮。仅固定的启动器保持为纯图标。最大按钮宽度在“外观”中设置。"
+
+#: package/contents/config/ConfigAppearance.qml
+# [AI]
+msgid "Per-app title overrides are in Filter → Title overrides."
+msgstr "各应用的标题覆盖设置位于“筛选”→“标题覆盖”。"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Show only the window title in labels"
+msgstr "标签中仅显示窗口标题"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Removes a trailing program name separated by a dash or vertical bar when it matches the application name reported by Plasma. Other titles stay unchanged."
+msgstr "移除与 Plasma 报告的应用程序名称匹配、由破折号或竖线分隔的尾部程序名。其他标题保持不变。"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Animate title width changes"
+msgstr "动画标题宽度变化"
+
+# [AI]
+#: package/contents/config/ConfigAppearance.qml
+msgid "Width animation duration (ms):"
+msgstr "宽度动画持续时间（毫秒）："
+
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Icon size:"
-msgstr ""
+msgstr "图标大小："
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Relative"
-msgstr ""
+msgstr "相对"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Absolute"
-msgstr ""
+msgstr "绝对"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Reset to default"
-msgstr ""
+msgstr "重置为默认值"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Scale icons from panel edge"
-msgstr ""
+msgstr "从面板边缘缩放图标"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Edge offset (px):"
-msgstr ""
+msgstr "边缘偏移量 (像素):"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Icon hover effects"
-msgstr ""
+msgstr "图标悬停效果"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Hover style:"
-msgstr ""
+msgstr "悬停样式:"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Simple"
-msgstr ""
+msgstr "简单"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Parabolic"
-msgstr ""
+msgstr "抛物线"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Icon zoom factor (px):"
-msgstr ""
+msgstr "图标缩放因子 (像素):"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "How much the icon should grow when hovered (in pixels)"
-msgstr ""
+msgstr "悬停时图标的放大程度 (以像素为单位)"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Zoom animation duration (ms):"
-msgstr ""
+msgstr "缩放动画持续时间 (毫秒):"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Duration of the zoom animation in milliseconds"
-msgstr ""
+msgstr "缩放动画持续时间（毫秒）"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Disable plasma context decorations"
-msgstr ""
+msgstr "禁用 Plasma 上下文装饰"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Button Colors:"
-msgstr ""
+msgstr "按钮颜色:"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Using Plasma Style/Accent"
-msgstr ""
+msgstr "使用 Plasma 样式/强调色"
 
 #: package/contents/config/ConfigAppearance.qml package/contents/config/ConfigIndicators.qml
 msgid "Use dominant icon color"
 msgstr "使用图标主体色"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml package/contents/config/ConfigIndicators.qml
 msgid "Custom color"
-msgstr ""
+msgstr "自定义颜色"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "For inactive buttons:"
-msgstr ""
+msgstr "非活动按钮:"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Hide backgrounds for inactive buttons"
-msgstr ""
+msgstr "隐藏非活动按钮的背景"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Colorize inactive buttons"
-msgstr ""
+msgstr "为不活跃按钮着色"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Maximum button width (px):"
-msgstr ""
+msgstr "最大按钮宽度 (px):"
 
 #: package/contents/config/ConfigAppearance.qml
 msgid "Space between taskbar items (px):"
 msgstr "任务栏组件间距（px）"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Icon Shape:"
-msgstr ""
+msgstr "图标形状:"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Clip icons to a custom shape"
-msgstr ""
+msgstr "将图标裁剪为自定义形状"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Icon corner radius:"
-msgstr ""
+msgstr "图标圆角半径:"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Show background under clipped icons"
-msgstr ""
+msgstr "显示被裁剪图标下方的背景"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Background color source:"
-msgstr ""
+msgstr "背景颜色来源："
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Dominant icon color"
-msgstr ""
+msgstr "主色调图标颜色"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Average icon color"
-msgstr ""
+msgstr "平均图标颜色"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Plasma accent color"
-msgstr ""
+msgstr "Plasma 强调色"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Background opacity:"
-msgstr ""
+msgstr "背景不透明度："
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Use multi-column view:"
-msgstr ""
+msgstr "使用多列视图："
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Use multi-row view:"
-msgstr ""
+msgstr "使用多行视图："
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Never"
-msgstr ""
+msgstr "从不"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "When panel is low on space and thick enough"
-msgstr ""
+msgstr "面板空间不足且足够厚时"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Always when panel is thick enough"
-msgstr ""
+msgstr "面板足够厚时始终显示"
 
 #: package/contents/config/ConfigAppearance.qml
 msgid "Maximum columns:"
@@ -325,194 +591,305 @@ msgstr "最大列数"
 msgid "Maximum rows:"
 msgstr "最大行数"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Inner padding:"
-msgstr ""
+msgstr "内部边距："
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Small"
-msgstr ""
+msgstr "小型"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Normal"
-msgstr ""
+msgstr "正常"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Large"
-msgstr ""
+msgstr "大型"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Huge"
-msgstr ""
+msgstr "巨大"
 
+# [AI]
 #: package/contents/config/ConfigAppearance.qml
 msgid "Automatically set to Large when in Touch mode"
-msgstr ""
+msgstr "触控模式下自动设置为大型"
 
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "Filtering and window-title settings take effect when you apply them. Use the window inspector to choose application IDs."
+msgstr "应用过滤和窗口标题设置将在应用时生效。请使用窗口检查器选择应用程序 ID。"
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "Filtering"
+msgstr "过滤模式"
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "Inspect open windows…"
+msgstr "检查打开的窗口..."
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "Filter mode:"
+msgstr "过滤模式:"
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "Allowlist"
+msgstr "白名单"
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "Blocklist"
+msgstr "黑名单"
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "The same rules are used in either mode. Allowlist shows only matching applications; Blocklist hides matching applications. Off ignores the rules. Use * at the start or end of App IDs or names to match any sequence. Matching ignores case and a trailing .desktop in App IDs; window titles are not matched."
+msgstr "两种模式使用同一组规则。允许列表仅显示匹配的应用，阻止列表会隐藏匹配的应用。“关闭”模式会忽略这些规则。在应用 ID 或名称的开头或结尾使用 * 可匹配任意字符序列。匹配时不区分大小写，并会忽略应用 ID 末尾的 .desktop；不会匹配窗口标题。"
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "Application rules"
+msgstr "应用规则"
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "An empty allowlist matches no applications. Only exempt pinned launchers will remain."
+msgstr "空白的允许列表不匹配任何应用程序。仅保留已固定的启动器。"
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "Filter pinned launchers too"
+msgstr "同时过滤已固定的启动器"
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "When unchecked, only pinned launchers without running windows are exempt. A running application is filtered even when it is pinned."
+msgstr "取消勾选时，仅豁免没有运行窗口的已固定启动器。即使应用程序正在运行，也会被过滤掉。"
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "Title overrides"
+msgstr "标题覆盖"
+
+# [AI]
+#: package/contents/config/ConfigApplications.qml
+msgid "Select Always Icon or Always Label for an app. Leave both unchecked to use the default from Appearance. Use * only at the start or end of App IDs or names to match any sequence of characters."
+msgstr "为应用选择“始终显示图标”或“始终显示标签”。若两个选项都未勾选，则使用“外观”中的默认设置。仅在应用 ID 或名称的开头或结尾使用 * 来匹配任意字符序列。"
+
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Grouping of tasks:"
-msgstr ""
+msgstr "任务分组方式:"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml package/contents/config/ConfigIndicators.qml
 msgctxt "State"
 msgid "Disabled"
-msgstr ""
+msgstr "禁用"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Place windows of one application side-by-side"
-msgstr ""
+msgstr "将同一应用程序的窗口并排排列"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Combine into one button by application name"
-msgstr ""
+msgstr "按应用程序名称合并为一个按钮"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Standard group overlay"
-msgstr ""
+msgstr "标准组叠加"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Sort tasks:"
-msgstr ""
+msgstr "排序任务:"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Do not sort"
-msgstr ""
+msgstr "不排序"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Manually"
-msgstr ""
+msgstr "手动"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Alphabetically"
-msgstr ""
+msgstr "按字母顺序"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "By desktop"
-msgstr ""
+msgstr "按桌面"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "By activity"
-msgstr ""
+msgstr "按活动"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "By horizontal window position"
-msgstr ""
+msgstr "按水平窗口位置"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Clicking active task minimizes the task"
-msgstr ""
+msgstr "点击激活任务时最小化该任务"
 
 #: package/contents/config/ConfigBehavior.qml
 msgid "Middle-clicking any task:"
 msgstr "鼠标中键点击活动任务时："
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Does nothing"
-msgstr ""
+msgstr "不执行任何操作"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Closes window or group"
-msgstr ""
+msgstr "关闭窗口或组"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Opens a new window"
-msgstr ""
+msgstr "打开新窗口"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Minimizes/Restores window or group"
-msgstr ""
+msgstr "最小化/还原窗口或组"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Toggles grouping"
-msgstr ""
+msgstr "切换分组"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Brings it to the current virtual desktop"
-msgstr ""
+msgstr "将其带到当前虚拟桌面"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Animation of closing/removing an icon from the panel"
-msgstr ""
+msgstr "图标从面板关闭/移除的动画"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Mouse wheel:"
-msgstr ""
+msgstr "鼠标滚轮:"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Cycles through all tasks"
-msgstr ""
+msgstr "循环切换所有任务"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Cycles through all tasks (skip minimized)"
-msgstr ""
+msgstr "循环切换所有任务（跳过最小化窗口）"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Cycles through tasks of the current group"
-msgstr ""
+msgstr "循环切换当前组的所有任务"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Cycles through tasks of the current group (skip minimized)"
-msgstr ""
+msgstr "循环切换当前组的所有任务（跳过最小化窗口）"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Adjusts volume of the window"
-msgstr ""
+msgstr "调整窗口的音量"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Adjust system volume with Shift key"
-msgstr ""
+msgstr "按 Shift 键调整系统音量"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Additional action with Ctrl key"
-msgstr ""
+msgstr "按 Ctrl 键执行附加操作"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Show tooltips when hovering over task buttons"
-msgstr ""
+msgstr "鼠标悬停在任务按钮上时显示工具提示"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Show window thumbnails in tooltips"
-msgstr ""
+msgstr "在工具提示中显示窗口缩略图"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Hide other windows when hovering over a window in the tooltip"
-msgstr ""
+msgstr "鼠标悬停于工具提示中的窗口时隐藏其他窗口"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Show media controls"
-msgstr ""
+msgstr "显示媒体控件"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Media controls location:"
-msgstr ""
+msgstr "媒体控件位置："
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "On thumbnails (Overlay)"
-msgstr ""
+msgstr "在缩略图上（覆盖）"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Under thumbnails"
-msgstr ""
+msgstr "在缩略图下"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Clicking group button:"
-msgstr ""
+msgstr "点击组按钮时："
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Cycles through tasks"
-msgstr ""
+msgstr "循环切换任务"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Shows small window previews"
-msgstr ""
+msgstr "显示小窗口预览"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Shows large window previews"
-msgstr ""
+msgstr "显示大窗口预览"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Shows textual list"
-msgstr ""
+msgstr "显示文本列表"
 
 #: package/contents/config/ConfigBehavior.qml
 msgid "Show only tasks:"
@@ -530,33 +907,39 @@ msgstr "从当前桌面"
 msgid "From current activity"
 msgstr "从当前活动"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Invert selected filters"
-msgstr ""
+msgstr "反转所选过滤器"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Hide matching tasks instead of showing them."
-msgstr ""
+msgstr "隐藏匹配的任务而不是显示它们"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "In any state"
-msgstr ""
+msgstr "任何状态"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Only minimized"
-msgstr ""
+msgstr "仅最小化"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "Only not minimized"
-msgstr ""
+msgstr "仅未最小化"
 
 #: package/contents/config/ConfigBehavior.qml
 msgid "New tasks appear:"
 msgstr "新任务出现在："
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "On the bottom"
-msgstr ""
+msgstr "底部"
 
 #: package/contents/config/ConfigBehavior.qml
 msgid "To the right"
@@ -566,38 +949,45 @@ msgstr "右边"
 msgid "To the left"
 msgstr "左边"
 
+# [AI]
 #: package/contents/config/ConfigBehavior.qml
 msgid "On the top"
-msgstr ""
+msgstr "顶部"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Active application indicators:"
-msgstr ""
+msgstr "活动应用指示器:"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgctxt "State"
 msgid "Enabled"
-msgstr ""
+msgstr "启用"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Animate indicators"
-msgstr ""
+msgstr "动画指示器"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Style:"
-msgstr ""
+msgstr "样式:"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Line"
-msgstr ""
+msgstr "线条"
 
 #: package/contents/config/ConfigIndicators.qml
 msgid "Dashes"
 msgstr "Dashes"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Override indicator location"
-msgstr ""
+msgstr "覆盖指示器位置"
 
 #: package/contents/config/ConfigIndicators.qml
 msgid "Bottom"
@@ -615,245 +1005,407 @@ msgstr "右边"
 msgid "Top"
 msgstr "顶部"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Edge offset:"
-msgstr ""
+msgstr "边缘偏移:"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Thickness:"
-msgstr ""
+msgstr "厚度:"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Segment length:"
-msgstr ""
+msgstr "段长度："
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Resize indicators on activation/hover"
-msgstr ""
+msgstr "激活/悬停时显示调整大小指示器"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Length:"
-msgstr ""
+msgstr "长度："
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Segment alignment:"
-msgstr ""
+msgstr "段对齐方式："
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Align Left"
-msgstr ""
+msgstr "左对齐"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Align Center"
-msgstr ""
+msgstr "居中对齐"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Align Right"
-msgstr ""
+msgstr "右对齐"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Align Top"
-msgstr ""
+msgstr "顶部对齐"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Align Bottom"
-msgstr ""
+msgstr "底部对齐"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Separate settings for hovered indicators"
-msgstr ""
+msgstr "为悬停指示器设置独立选项"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Separate settings for group indicators"
-msgstr ""
+msgstr "为组指示器设置独立选项"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Highlight active window in group"
-msgstr ""
+msgstr "高亮组中的活动窗口"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Dim inactive indicators"
-msgstr ""
+msgstr "淡化非活动指示器"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Inactive indicator opacity:"
-msgstr ""
+msgstr "非活动指示器透明度："
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Roundness:"
-msgstr ""
+msgstr "圆角："
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Side padding:"
-msgstr ""
+msgstr "侧边内边距："
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Max segments:"
-msgstr ""
+msgstr "最大分段数："
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Show '+' on overflow"
-msgstr ""
+msgstr "溢出时显示 '+'"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Colors:"
-msgstr ""
+msgstr "颜色："
 
 #: package/contents/config/ConfigIndicators.qml
 msgid "Use plasma accent color"
 msgstr "使用plasma预设"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Custom color:"
-msgstr ""
+msgstr "自定义颜色："
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Behavior:"
-msgstr ""
+msgstr "行为："
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Desaturate when minimized"
-msgstr ""
+msgstr "最小化时去饱和"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Feedback:"
-msgstr ""
+msgstr "反馈："
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Show badges"
-msgstr ""
+msgstr "显示徽章"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Highlight new notifications"
-msgstr ""
+msgstr "高亮新通知"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Show badges on pinned application icons"
-msgstr ""
+msgstr "在固定应用图标上显示徽章"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Show counters even when the application has no windows in the current view (e.g., minimized to tray or on another screen/desktop/activity)."
-msgstr ""
+msgstr "即使当前视图中没有该应用的窗口（例如已最小化到托盘或在其他屏幕/桌面/活动）也显示计数器"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Badge background color:"
-msgstr ""
+msgstr "徽章背景颜色:"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Adaptive (theme color)"
-msgstr ""
+msgstr "自适应（主题色）"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Fixed red (Classic)"
-msgstr ""
+msgstr "固定红色（经典）"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "System accent color"
-msgstr ""
+msgstr "系统强调色"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Custom badge color:"
-msgstr ""
+msgstr "自定义徽章颜色:"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Mark applications playing audio"
-msgstr ""
+msgstr "标记正在播放音频的应用"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Progress:"
-msgstr ""
+msgstr "进度:"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Fill (Left-Right)"
-msgstr ""
+msgstr "填充（从左到右）"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Fill (Bottom-Top)"
-msgstr ""
+msgstr "填充（从下到上）"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Strip (Top)"
-msgstr ""
+msgstr "顶部面板"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Strip (Bottom)"
-msgstr ""
+msgstr "底部面板"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Strip (Left)"
-msgstr ""
+msgstr "左侧面板"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Strip (Right)"
-msgstr ""
+msgstr "右侧面板"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Progress color:"
-msgstr ""
+msgstr "进度条颜色:"
 
+# [AI]
 #: package/contents/config/ConfigIndicators.qml
 msgid "Opacity:"
-msgstr ""
+msgstr "透明度:"
 
+# [AI]
 #: package/contents/config/ConfigPinnedApps.qml
 msgid "Default Web Browser"
-msgstr ""
+msgstr "默认网页浏览器"
 
+# [AI]
 #: package/contents/config/ConfigPinnedApps.qml
 msgid "Default File Manager"
-msgstr ""
+msgstr "默认文件管理器"
 
+# [AI]
 #: package/contents/config/ConfigPinnedApps.qml
 msgid "Default Mail Client"
-msgstr ""
+msgstr "默认邮件客户端"
 
+# [AI]
 #: package/contents/config/ConfigPinnedApps.qml
 msgid "Browse the Web"
-msgstr ""
+msgstr "浏览网页"
 
+# [AI]
 #: package/contents/config/ConfigPinnedApps.qml
 msgid "Manage Files"
-msgstr ""
+msgstr "管理文件"
 
+# [AI]
 #: package/contents/config/ConfigPinnedApps.qml
 msgid "Send and Receive Email"
-msgstr ""
+msgstr "收发电子邮件"
 
+# [AI]
 #: package/contents/config/ConfigPinnedApps.qml
 msgid "Default Application"
-msgstr ""
+msgstr "默认应用"
 
+# [AI]
 #: package/contents/config/ConfigPinnedApps.qml
 msgid "Add applications to pin to the taskbar. Drag items to reorder them."
-msgstr ""
+msgstr "将应用程序添加到任务栏固定。拖拽项目以重新排序。"
 
+# [AI]
 #: package/contents/config/ConfigPinnedApps.qml
 msgid "Unpin app by dragging its icon off the panel"
-msgstr ""
+msgstr "通过将其图标拖离面板来取消固定应用"
 
+# [AI]
 #: package/contents/config/ConfigPinnedApps.qml
 msgid "Play removal animation"
-msgstr ""
+msgstr "播放移除动画"
 
+# [AI]
 #: package/contents/config/ConfigPinnedApps.qml
 msgid "Add Application..."
-msgstr ""
+msgstr "添加应用..."
 
+# [AI]
 #: package/contents/config/ConfigPinnedApps.qml
 msgid "Add Special Launcher..."
-msgstr ""
+msgstr "添加特殊启动器..."
 
+# [AI]
 #: package/contents/config/ConfigPinnedApps.qml
 msgid "Back"
-msgstr ""
+msgstr "返回"
 
+# [AI]
 #: package/contents/config/ConfigPinnedApps.qml
 msgid "Add Application"
-msgstr ""
+msgstr "添加应用"
 
+# [AI]
 #: package/contents/config/ConfigPinnedApps.qml
 msgid "Search applications..."
+msgstr "搜索应用..."
+
+# [AI]
+#: package/contents/config/LivePreview.qml
+msgid "Preview"
+msgstr "预览"
+
+# [AI]
+#: package/contents/config/LivePreview.qml
+msgid "Panel thickness (preview):"
+msgstr "面板厚度（预览）:"
+
+# [AI]
+#: package/contents/config/LivePreview.qml
+msgid "This setting only changes the appearance of this preview and does not affect your actual system panel."
+msgstr "此设置仅更改预览的外观，不会影响您的实际系统面板。"
+
+# [AI]
+#: package/contents/config/LivePreview.qml
+msgid "App name"
+msgstr "应用名称"
+
+# [AI]
+#: package/contents/config/LivePreview.qml
+msgid "Window title"
+msgstr "窗口标题"
+
+# [AI]
+#: package/contents/config/LivePreview.qml
+msgid "%1 — %2"
+msgstr "%1 — %2"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "Open windows"
+msgstr "打开的窗口"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "Unavailable"
+msgstr "不可用"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "Search application, ID or window title…"
+msgstr "搜索应用、ID 或窗口标题…"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "Refresh"
+msgstr "刷新"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "Select a window to copy its details or prepare a rule. Refresh to update window titles. Rules are saved only when you apply the settings."
+msgstr "选择窗口以复制其详细信息或准备规则。刷新可更新窗口标题。仅应用设置时保存规则。"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "App ID: %1"
+msgstr "应用 ID：%1"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "Title: %1"
+msgstr "标题：%1"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "No matching windows"
+msgstr "未找到匹配的窗口"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "No windows reported by KDE TaskManager"
+msgstr "KDE 任务管理器未报告任何窗口"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid ""
+"App Name: %1\n"
+"App ID: %2\n"
+"Title: %3\n"
+"Window IDs: %4"
 msgstr ""
+"应用程序名称：%1\n"
+"应用程序 ID：%2\n"
+"标题：%3\n"
+"窗口 ID：%4"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "Copy details"
+msgstr "复制详细信息"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "Add to rules…"
+msgstr "添加到规则…"
+
+# [AI]
+#: package/contents/config/WindowInspector.qml
+msgid "Set title behavior…"
+msgstr "设置标题行为…"
 
 #: package/contents/config/config.qml
 msgid "Appearance"
@@ -863,74 +1415,60 @@ msgstr "外观"
 msgid "Behavior"
 msgstr "行为"
 
+# [AI]
+#: package/contents/config/config.qml
+msgid "Filter"
+msgstr "筛选"
+
 #: package/contents/config/config.qml
 msgid "Indicators"
 msgstr "指示器"
 
+# [AI]
 #: package/contents/config/config.qml
 msgid "Advanced"
-msgstr ""
+msgstr "高级"
 
+# [AI]
 #: package/contents/config/config.qml
 msgid "Pinned Applications"
-msgstr ""
+msgstr "固定应用程序"
 
-#: package/contents/config/LivePreview.qml
-msgid "Preview"
-msgstr ""
-
-#: package/contents/config/LivePreview.qml
-msgid "Panel thickness (preview):"
-msgstr ""
-
-#: package/contents/config/LivePreview.qml
-msgid "This setting only changes the appearance of this preview and does not affect your actual system panel."
-msgstr ""
-
-#: package/contents/config/LivePreview.qml
-msgid "App name"
-msgstr ""
-
-#: package/contents/config/LivePreview.qml
-msgid "Window title"
-msgstr ""
-
-#: package/contents/config/LivePreview.qml
-msgid "%1 — %2"
-msgstr ""
-
-#: package/contents/config/PinnedAppCard.qml
-msgid "Remove"
-msgstr ""
-
+# [AI]
 #: package/contents/ui/Badge.qml
 msgctxt "Invalid"
 msgid "—"
-msgstr ""
+msgstr "—"
 
+# [AI]
 #: package/contents/ui/ContextMenu.qml
 msgid "Places"
-msgstr ""
+msgstr "位置"
 
+# [AI]
 #: package/contents/ui/ContextMenu.qml
 msgid "Recent Pages"
-msgstr ""
+msgstr "最近页面"
 
+# [AI]
 #: package/contents/ui/ContextMenu.qml
 msgid "Recent Folders"
-msgstr ""
+msgstr "最近文件夹"
 
+# [AI]
 #: package/contents/ui/ContextMenu.qml
 msgid "Recent Documents"
-msgstr ""
+msgstr "最近文档"
 
+# [AI]
 #: package/contents/ui/ContextMenu.qml
 msgid "Trash"
-msgstr ""
+msgstr "回收站"
 
+# [AI]
 #: package/contents/ui/ContextMenu.qml
 msgid "Forget Recent Files"
-msgstr ""
+msgstr "忘记最近文件"
 
 #: package/contents/ui/ContextMenu.qml
 msgctxt "Play previous track"
@@ -967,17 +1505,19 @@ msgctxt "Open or bring to the front window of media player app"
 msgid "Restore"
 msgstr "恢复"
 
+# [AI]
 #: package/contents/ui/ContextMenu.qml
 msgid "Unmute"
-msgstr ""
+msgstr "取消静音"
 
 #: package/contents/ui/ContextMenu.qml package/contents/ui/ToolTipMediaBar.qml package/contents/ui/ToolTipMediaControls.qml
 msgid "Mute"
 msgstr "静音"
 
+# [AI]
 #: package/contents/ui/ContextMenu.qml
 msgid "Launch"
-msgstr ""
+msgstr "启动"
 
 #: package/contents/ui/ContextMenu.qml
 msgid "Open New Window"
@@ -1019,13 +1559,15 @@ msgstr "移动到%1"
 msgid "&Pin to Task Manager"
 msgstr "固定到任务栏"
 
+# [AI]
 #: package/contents/ui/ContextMenu.qml
 msgid "On All Activities"
-msgstr ""
+msgstr "在所有活动中显示"
 
+# [AI]
 #: package/contents/ui/ContextMenu.qml
 msgid "On The Current Activity"
-msgstr ""
+msgstr "在当前活动中显示"
 
 #: package/contents/ui/ContextMenu.qml
 msgid "Unpin from Task Manager"
@@ -1067,53 +1609,60 @@ msgstr "全屏"
 msgid "&Shade"
 msgstr "折叠"
 
+# [AI]
 #: package/contents/ui/ContextMenu.qml
 msgid "&No Titlebar and Frame"
-msgstr ""
+msgstr "无边框且无标题栏"
 
+# [AI]
 #: package/contents/ui/ContextMenu.qml
 msgid "&Hide from Screencast"
-msgstr ""
+msgstr "从屏幕录制中隐藏"
 
 #: package/contents/ui/ContextMenu.qml
 msgid "Allow this program to be grouped"
 msgstr "允许这个程序被分组"
 
+# [AI]
 #: package/contents/ui/ContextMenu.qml
 msgctxt "@item:inmenu"
 msgid "&Close All"
-msgstr ""
+msgstr "全部关闭"
 
 #: package/contents/ui/ContextMenu.qml
 msgid "&Close"
 msgstr "关闭"
 
+# [AI]
 #: package/contents/ui/Task.qml
 msgctxt "@info:usagetip %1 application name"
 msgid "Launch %1"
-msgstr ""
+msgstr "启动%1"
 
+# [AI]
 #: package/contents/ui/Task.qml
 msgctxt "@info:tooltip"
 msgid "There is %1 new message."
 msgid_plural "There are %1 new messages."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1 条新消息"
 
+# [AI]
 #: package/contents/ui/Task.qml
 msgctxt "@info:usagetip %1 task name"
 msgid "Show Task tooltip for %1"
-msgstr ""
+msgstr "为%1显示任务提示"
 
+# [AI]
 #: package/contents/ui/Task.qml
 msgctxt "@info:usagetip %1 task name"
 msgid "Show windows side by side for %1"
-msgstr ""
+msgstr "将窗口并排显示于%1"
 
+# [AI]
 #: package/contents/ui/Task.qml
 msgctxt "@info:usagetip %1 task name"
 msgid "Open textual list of windows for %1"
-msgstr ""
+msgstr "打开%1的文本窗口列表"
 
 #: package/contents/ui/Task.qml
 msgid "Activate %1"
@@ -1143,6 +1692,42 @@ msgstr "也在 %1 上可用"
 msgctxt "Which activities a window is currently on"
 msgid "Available on %1"
 msgstr "在 %1 上可用"
+
+# [AI]
+#~ msgid "The same rules are used in either mode. Allowlist shows only matching applications; Blocklist hides matching applications. Off ignores the rules. Matching ignores case and a trailing .desktop in App IDs; window titles are not matched."
+#~ msgstr "两种模式使用同一组规则。允许列表仅显示匹配的应用，阻止列表会隐藏匹配的应用。“关闭”模式会忽略这些规则。匹配时不区分大小写，并会忽略应用 ID 末尾的 .desktop；不会匹配窗口标题。"
+
+# [AI]
+#~ msgid "Allowlist shows applications matching an allow rule unless a block rule matches. Blocklist hides applications matching a block rule. Block rules take precedence. Off ignores both lists. Matching ignores case and a trailing .desktop in App IDs; window titles are not matched."
+#~ msgstr "白名单显示符合允许规则的应用程序，除非匹配了阻止规则。黑名单隐藏符合阻止规则的应用程序。阻止规则优先级更高。关闭则忽略两个列表。匹配时不区分大小写且忽略 App ID 末尾的 .desktop；不匹配窗口标题。"
+
+# [AI]
+#~ msgid "Add to Allowlist…"
+#~ msgstr "添加到白名单…"
+
+# [AI]
+#~ msgid "Add to Blocklist…"
+#~ msgstr "添加到黑名单…"
+
+# [AI]
+#~ msgid "%1 · %2 · %3"
+#~ msgstr "%1 · %2 · %3"
+
+# [AI]
+#~ msgid "Select Always Icon or Always Label for an app. Leave both unchecked to use the default from Appearance. Use * in App IDs or names to match any sequence of characters."
+#~ msgstr "为应用选择“始终显示图标”或“始终显示标签”。若两个选项都未勾选，则使用“外观”中的默认设置。在应用 ID 或名称中使用 * 可匹配任意字符序列。"
+
+#~ msgid "Select Always Icon or Always Label for an app. Leave both unchecked to use the default from Appearance."
+#~ msgstr "为应用选择“始终显示图标”或“始终显示标签”。若两个选项都未勾选，则使用“外观”中的默认设置。"
+
+#~ msgid "Search title overrides…"
+#~ msgstr "搜索标题覆盖..."
+
+#~ msgid "Inherit default"
+#~ msgstr "继承默认设置"
+
+#~ msgid "Override window title behavior for individual apps: always show icons only, always show titles, or follow the default in Appearance."
+#~ msgstr "为单个应用程序覆盖窗口标题行为：始终只显示图标、始终显示标题或遵循“外观”中的默认设置。"
 
 #~ msgid "Custom Color:"
 #~ msgstr "自定义颜色："

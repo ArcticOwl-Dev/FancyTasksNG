@@ -25,6 +25,11 @@ ConfigModel {
         source: "../config/ConfigBehavior.qml"
     }
     ConfigCategory {
+        name: i18n("Filter")
+        icon: "applications-all"
+        source: "../config/ConfigApplications.qml"
+    }
+    ConfigCategory {
         name: i18n("Indicators")
         icon: "preferences-desktop-navigation"
         source: "../config/ConfigIndicators.qml"

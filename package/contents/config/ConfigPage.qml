@@ -34,6 +34,20 @@ Kirigami.Page {
     property bool cfg_reverseFiltersDefault: false
     property int cfg_minimizedFilter: 0
     property int cfg_minimizedFilterDefault: 0
+
+    // --- Application rules (staged by the Plasma settings framework) ---
+    property int cfg_applicationFilterMode: 0
+    property int cfg_applicationFilterModeDefault: 0
+    property string cfg_applicationRules: ""
+    property string cfg_applicationRulesDefault: ""
+    // Legacy settings retained so existing installations can migrate their rules.
+    property string cfg_applicationAllowlist: "{\"version\":1,\"rules\":[]}"
+    property string cfg_applicationAllowlistDefault: "{\"version\":1,\"rules\":[]}"
+    property string cfg_applicationBlocklist: "{\"version\":1,\"rules\":[]}"
+    property string cfg_applicationBlocklistDefault: "{\"version\":1,\"rules\":[]}"
+    property bool cfg_filterPinnedLaunchers: false
+    property bool cfg_filterPinnedLaunchersDefault: false
+
     property bool cfg_unhideOnAttention: false
     property bool cfg_unhideOnAttentionDefault: true
     property bool cfg_animateAttentionStatus: true

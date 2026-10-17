@@ -151,7 +151,7 @@ Loader {
 
     // Do not load the tooltip at all when tooltips are disabled — prevents PipeWireThumbnail from
     // attempting to grab invisible window images and emitting "grabToImage: item's window is not visible".
-    active: rootIndex !== undefined && toolTipDelegate.config.enableToolTips
+    active: rootIndex !== undefined && rootIndex.valid && toolTipDelegate.config.enableToolTips
     asynchronous: false
 
     sourceComponent: isGroup ? groupToolTip : singleTooltip

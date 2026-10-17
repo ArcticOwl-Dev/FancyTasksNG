@@ -43,6 +43,11 @@ Fancy Tasks NG is a standalone task manager widget that includes the following f
 
 For a complete list of features and version history, refer to the [CHANGELOG](CHANGELOG.md).
 
+## Application filtering (development)
+
+The **Filter** settings page provides application allow/block rules and a
+window inspector.
+
 ## Requirements
 
 - **KDE Plasma 6.5** (or newer)
