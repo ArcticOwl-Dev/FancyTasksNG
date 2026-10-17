@@ -101,10 +101,12 @@ PlasmoidItem {
     // restart. TasksModel's own manual-sort logic has no memory of the
     // previous live arrangement (e.g. a dragged-away pinned button) - it
     // only rebuilds sort order from scratch. Saved on every real order
-    // change, applied once the model has settled at startup.
+    // change, applied once the model has settled at startup. One category
+    // per applet: the settings file is shared by the whole plasmashell, and
+    // several instances (e.g. one per panel) would overwrite each other.
     QtCore.Settings {
         id: taskOrderSettings
-        category: "TaskOrder"
+        category: "TaskOrder-" + Plasmoid.id
         property string savedOrder: "[]"
     }
 

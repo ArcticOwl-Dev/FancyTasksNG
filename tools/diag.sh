@@ -329,10 +329,10 @@ else
     emit "(${APPSRC} not found)"
 fi
 
-section "Saved task order (restored across plasmashell restarts)"
+section "Saved task order (one group per instance, by applet id)"
 TASK_ORDER_FILE="${CONFIG_HOME}/kde.org/plasmashell.conf"
 if [ -f "${TASK_ORDER_FILE}" ]; then
-    kconfig_groups "${TASK_ORDER_FILE}" "[TaskOrder]" >> "${BUF}"
+    kconfig_groups "${TASK_ORDER_FILE}" "[TaskOrder" >> "${BUF}"
 else
     emit "(none saved)"
 fi
