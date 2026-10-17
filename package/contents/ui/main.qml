@@ -32,7 +32,7 @@ import org.kde.kirigami as Kirigami
 import org.kde.plasma.workspace.trianglemousefilter
 
 import org.kde.taskmanager as TaskManager
-import Qt.labs.settings as LabsSettings
+import QtCore as QtCore
 // import org.kde.plasma.private.taskmanager as TaskManagerApplet
 import org.kde.plasma.workspace.dbus as DBus
 import org.kde.kitemmodels as KItemModels
@@ -101,7 +101,7 @@ PlasmoidItem {
     // previous live arrangement (e.g. a dragged-away pinned button) - it
     // only rebuilds sort order from scratch. Saved on every real order
     // change, applied once the model has settled at startup.
-    LabsSettings.Settings {
+    QtCore.Settings {
         id: taskOrderSettings
         category: "TaskOrder"
         property string savedOrder: "[]"

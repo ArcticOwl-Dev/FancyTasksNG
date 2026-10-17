@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - **Diagnostic Report:** Reworked `make diag` / `tools/diag.sh` to collect what's actually needed to diagnose a report: which installed copy plasmashell really loads (with its own version, install time and a content fingerprint) instead of the version of the source tree the script happened to be run from, whether plasmashell was restarted after the last install, whether every QML module the widget imports is present, whether the Python D-Bus bridges can run, the panel's settings next to the widget's, and only the log lines that concern Fancy Tasks NG instead of an unfiltered tail of the whole shell log. Detected problems are listed at the top of the report. The script no longer depends on the rest of the repository, so downloading just `tools/diag.sh` works as the bug report template says.
+- **Task Order Storage:** Switched the saved task order from the deprecated `Qt.labs.settings` to `QtCore`'s `Settings`, silencing a deprecation warning plasmashell logged on every start. Both store into the same file, so the already-saved order is kept.
 
 ### Fixed
 - **Meta+Number Shortcuts:** Restored `activateTaskAtIndex()`, the method plasmashell calls in response to Meta+Number shortcuts — it was mistakenly removed as "dead code" in 2.1.0's refactor since it has no in-repo caller (it's invoked externally by plasmashell itself) (fixes #54).
