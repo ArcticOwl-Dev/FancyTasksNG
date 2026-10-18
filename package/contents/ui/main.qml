@@ -976,7 +976,7 @@ PlasmoidItem {
 
             // Shadow needs transparent space on free sides to prevent clipping:
             // winBgFrame's shadow.size plus its offset.
-            readonly property int shadowPadding: 17
+            readonly property int shadowPadding: 9
             // 8px gap allows an 8px radius shadow to render fully on the panel side
             readonly property int gapSize: 8
 
@@ -1050,7 +1050,10 @@ PlasmoidItem {
                 border.width: 1
                 border.color: Kirigami.ColorUtils.linearInterpolation(Kirigami.Theme.backgroundColor, Kirigami.Theme.textColor, 0.2)
 
-                shadow.size: 16
+                // Kept narrow on purpose: the wider Kirigami's shadow is relative
+                // to the corner radius, the more it rounds off and thins out
+                // at the corners, and the corners looked recessed (#57).
+                shadow.size: 8
                 shadow.color: Qt.rgba(0, 0, 0, 0.6)
                 shadow.xOffset: 1
                 shadow.yOffset: 1
