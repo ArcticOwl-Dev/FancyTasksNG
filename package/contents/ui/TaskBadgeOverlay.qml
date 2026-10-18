@@ -30,18 +30,19 @@ Item {
 
     readonly property real iconR: Math.min(boxW, boxH) / 2
     readonly property real badgeR: iconR / 3
-    readonly property real badgeDiam: badgeR * 2
+    readonly property var config: Plasmoid.configuration
+    readonly property real badgeScale: (config.badgeScale || 100) / 100
+    readonly property real badgeDiam: badgeR * 2 * badgeScale
 
     // Dot mode only for tiny panels (< 30px effective icon area)
     readonly property bool dotMode: badgeDiam < 10
-    readonly property real effectiveBadgeDiam: Math.max(6, badgeDiam)
+    readonly property real effectiveBadgeDiam: Math.max(1, badgeDiam)
 
     // Audio badge is symbol-only (no background), needs larger area
     readonly property real audioBadgeDiam: effectiveBadgeDiam * 1.4
 
     // ── Panel location ─────────────────────────────────────────────
     readonly property int location: Plasmoid.location
-    readonly property var config: Plasmoid.configuration
     readonly property bool isVertPanel: location === PlasmaCore.Types.LeftEdge
                                         || location === PlasmaCore.Types.RightEdge
 
@@ -91,11 +92,11 @@ Item {
     // ── Audio Badge ────────────────────────────────────────────────
     Badge {
         id: audioBadge
-        readonly property real idealX: root.audioBaseX + root.diveDx
-        readonly property real idealY: root.audioBaseY + root.diveDy
+        readonly property real idealX: root.audioBaseX + root.diveDx + root.config.badgeOffsetX
+        readonly property real idealY: root.audioBaseY + root.diveDy + root.config.badgeOffsetY
 
-        x: root.iconsOnly ? idealX : 0
-        y: root.iconsOnly ? idealY : 0
+        x: root.iconsOnly ? idealX : root.config.badgeOffsetX
+        y: root.iconsOnly ? idealY : root.config.badgeOffsetY
 
         Behavior on x {
             enabled: root.iconsOnly
@@ -106,7 +107,7 @@ Item {
             NumberAnimation { duration: Kirigami.Units.shortDuration; easing.type: Easing.OutCubic }
         }
 
-        height: root.iconsOnly ? root.audioBadgeDiam : Math.round(Kirigami.Units.gridUnit * 0.85)
+        height: root.iconsOnly ? root.audioBadgeDiam : Math.round(Kirigami.Units.gridUnit * 0.85 * root.badgeScale)
         visible: root.parentTask ? (root.config.indicateAudioStreams && (root.parentTask.playingAudio || root.parentTask.muted)) : false
 
         textSource: "🕪"
@@ -147,15 +148,15 @@ Item {
     Badge {
         id: notificationBadge
 
-        readonly property real idealCenterX: root.notifBaseCX + root.diveDx
-        readonly property real idealY: root.notifBaseCY + root.diveDy
+        readonly property real idealCenterX: root.notifBaseCX + root.diveDx + root.config.badgeOffsetX
+        readonly property real idealY: root.notifBaseCY + root.diveDy + root.config.badgeOffsetY
 
         x: root.iconsOnly
             ? (idealCenterX - width / 2)
-            : (root.boxW - width)
+            : (root.boxW - width + root.config.badgeOffsetX)
         y: root.iconsOnly
             ? idealY
-            : 0
+            : root.config.badgeOffsetY
 
         Behavior on x {
             enabled: root.iconsOnly
@@ -168,7 +169,7 @@ Item {
 
         height: root.iconsOnly
             ? (root.dotMode ? Math.round(root.effectiveBadgeDiam * 0.5) : root.effectiveBadgeDiam)
-            : Math.round(Kirigami.Units.gridUnit * 0.85)
+            : Math.round(Kirigami.Units.gridUnit * 0.85 * root.badgeScale)
 
         visible: !!root.parentTask?.badgeVisible
         appId: root.parentTask?.model?.AppId || ""

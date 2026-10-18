@@ -513,6 +513,18 @@
       <label>Highlight the badge color when the notification count increases.</label>
       <default>true</default>
     </entry>
+    <entry name="badgeScale" type="Int">
+      <label>Scale task badges as a percentage.</label>
+      <default>100</default>
+    </entry>
+    <entry name="badgeOffsetX" type="Int">
+      <label>Horizontal task badge offset in pixels.</label>
+      <default>0</default>
+    </entry>
+    <entry name="badgeOffsetY" type="Int">
+      <label>Vertical task badge offset in pixels.</label>
+      <default>0</default>
+    </entry>
     <entry name="showBadgesOnLaunchers" type="Bool">
       <label>Show notification badges on pinned application icons.</label>
       <default>true</default>

@@ -264,6 +264,12 @@ Kirigami.Page {
     property bool cfg_showBadgesDefault: true
     property bool cfg_badgeHighlightNew: true
     property bool cfg_badgeHighlightNewDefault: true
+    property int cfg_badgeScale: 100
+    property int cfg_badgeScaleDefault: 100
+    property int cfg_badgeOffsetX: 0
+    property int cfg_badgeOffsetXDefault: 0
+    property int cfg_badgeOffsetY: 0
+    property int cfg_badgeOffsetYDefault: 0
     property bool cfg_showLivePreview: true
     property bool cfg_showLivePreviewDefault: true
     property bool cfg_smokeExplosionOnClose: false

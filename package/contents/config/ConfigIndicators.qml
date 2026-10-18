@@ -485,6 +485,69 @@ ConfigPage {
             checked: indicatorsPage.cfg_showBadges
             onToggled: indicatorsPage.cfg_showBadges = checked
         }
+
+        RowLayout {
+            visible: cfg_showBadges.checked
+            Label { text: Wrappers.i18n("Badge size:") }
+            Slider {
+                id: badgeScaleSlider
+                Layout.fillWidth: true
+                from: 1
+                to: 300
+                stepSize: 1
+                value: indicatorsPage.cfg_badgeScale
+                onMoved: indicatorsPage.cfg_badgeScale = Math.round(value)
+            }
+            SpinBox {
+                from: 1
+                to: 300
+                editable: true
+                value: Math.round(badgeScaleSlider.value)
+                onValueModified: indicatorsPage.cfg_badgeScale = value
+            }
+            Label { text: "%" }
+            Button {
+                icon.name: "edit-reset"
+                flat: true
+                onClicked: indicatorsPage.cfg_badgeScale = 100
+                ToolTip.text: Wrappers.i18n("Reset to default")
+                ToolTip.visible: hovered
+                ToolTip.delay: 1000
+            }
+        }
+
+        RowLayout {
+            visible: cfg_showBadges.checked
+            Label { text: Wrappers.i18n("Badge offset:") }
+            Label { text: "X:" }
+            SpinBox {
+                from: -999
+                to: 999
+                editable: true
+                value: indicatorsPage.cfg_badgeOffsetX
+                onValueModified: indicatorsPage.cfg_badgeOffsetX = value
+            }
+            Label { text: "Y:" }
+            SpinBox {
+                from: -999
+                to: 999
+                editable: true
+                value: indicatorsPage.cfg_badgeOffsetY
+                onValueModified: indicatorsPage.cfg_badgeOffsetY = value
+            }
+            Label { text: "px" }
+            Button {
+                icon.name: "edit-reset"
+                flat: true
+                onClicked: {
+                    indicatorsPage.cfg_badgeOffsetX = 0;
+                    indicatorsPage.cfg_badgeOffsetY = 0;
+                }
+                ToolTip.text: Wrappers.i18n("Reset to default")
+                ToolTip.visible: hovered
+                ToolTip.delay: 1000
+            }
+        }
     
         RowLayout {
             visible: cfg_showBadges.checked

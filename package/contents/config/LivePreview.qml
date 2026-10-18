@@ -655,13 +655,13 @@ Item {
                                         z: 10
 
                                         readonly property real iconR: Math.min(taskIcon.width, taskIcon.height) / 2
-                                        readonly property real badgeDiam: Math.max(8, iconR * 0.7)
+                                        readonly property real badgeDiam: Math.max(1, iconR * 0.7 * (mockTask.cfgReady ? mockTask.cfg.cfg_badgeScale / 100 : 1))
                                         height: badgeDiam
 
                                         readonly property real notifCX: previewRoot.isVertical ? (taskIcon.width * 0.5) : (taskIcon.width * 0.88)
                                         readonly property real notifCY: previewRoot.isVertical ? (taskIcon.height * 0.88) : (taskIcon.height * 0.05)
-                                        x: taskIcon.x + notifCX - width / 2
-                                        y: taskIcon.y + notifCY
+                                        x: taskIcon.x + notifCX - width / 2 + (mockTask.cfgReady ? mockTask.cfg.cfg_badgeOffsetX : 0)
+                                        y: taskIcon.y + notifCY + (mockTask.cfgReady ? mockTask.cfg.cfg_badgeOffsetY : 0)
 
                                         number: mockTask.badgeCount
                                         isRound: true
@@ -677,7 +677,7 @@ Item {
                                     z: 50
 
                                     readonly property real iconR: Math.min(taskIcon.width, taskIcon.height) / 2
-                                    readonly property real badgeDiam: Math.max(8, iconR * 0.7)
+                                    readonly property real badgeDiam: Math.max(1, iconR * 0.7 * (mockTask.cfgReady ? mockTask.cfg.cfg_badgeScale / 100 : 1))
                                     readonly property real audioBadgeDiam: badgeDiam * 1.4
                                     
                                     height: audioBadgeDiam
@@ -687,8 +687,8 @@ Item {
                                     readonly property real audioBaseX: previewRoot.isVertical ? (taskIcon.width * 0.045) : (-taskIcon.width * 0.045)
                                     readonly property real audioBaseY: previewRoot.isVertical ? (taskIcon.height * 0.1) : (taskIcon.height * 0.045)
 
-                                    x: taskIcon.x + audioBaseX
-                                    y: taskIcon.y + audioBaseY
+                                    x: taskIcon.x + audioBaseX + (mockTask.cfgReady ? mockTask.cfg.cfg_badgeOffsetX : 0)
+                                    y: taskIcon.y + audioBaseY + (mockTask.cfgReady ? mockTask.cfg.cfg_badgeOffsetY : 0)
 
                                     textSource: "🕪"
                                     mirrorText: true
